@@ -314,9 +314,12 @@ public class Ddm2EmdHandlerMap implements CrosswalkHandlerMap<EasyMetadata> {
         map.put("/dcterms:description", descriptionHandler);
         // EasyMetadataImpl: EmdDescription emdDescription;
 
-        final BasicStringHandler dcFormatHandler = new DcFormatHandler();
+        final BasicStringHandler dcFormatHandler = new DcFormatHandler(false);
+        final BasicStringHandler imtFormatHandler = new DcFormatHandler(true);
         map.put("/dc:format", dcFormatHandler);
         map.put("/dcterms:format", dcFormatHandler);
+        map.put("IMT/dc:format", imtFormatHandler);
+        map.put("IMT/dcterms:format", imtFormatHandler);
         // <ref-panelId>dc.format.imt</ref-panelId>
         // <ref-panelId>dc.format</ref-panelId>
         // EasyMetadataImpl: EmdFormat emdFormat;
@@ -355,6 +358,8 @@ public class Ddm2EmdHandlerMap implements CrosswalkHandlerMap<EasyMetadata> {
         final BasicStringHandler dcTypeHandler = new DcTypeHandler();
         map.put("/dc:type", dcTypeHandler);
         map.put("/dcterms:type", dcTypeHandler);
+        map.put("DCMIType/dc:type", dcTypeHandler);
+        map.put("DCMIType/dcterms:type", dcTypeHandler);
         // <ref-panelId>dc.type</ref-panelId>
         // EasyMetadataImpl: EmdType emdType;
     }

@@ -31,6 +31,96 @@ import static org.junit.Assert.assertThat;
 public class Ddm2EmdCrosswalkTest {
 
     @Test
+    public void formatWithSchemeAndId() throws Exception {
+        // @formatter:off
+        String ddm = "<?xml version='1.0' encoding='utf-8'?><ddm:DDM"
+            + "  xmlns:dc='http://purl.org/dc/elements/1.1/'"
+            + "  xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'"
+            + "  xmlns:dcterms='http://purl.org/dc/terms/'"
+            + "  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>"
+            + "  <ddm:dcmiMetadata>"
+            + "    <dc:format xsi:type='dcterms:IMT'>text/plain</dc:format>"
+            + "    <dc:format>application/vnd.openxmlformats-officedocument.wordprocessingml.document</dc:format>"
+            + "  </ddm:dcmiMetadata>"
+            + "</ddm:DDM>";
+        // @formatter:on
+
+        DefaultElement top = firstEmdElementFrom(ddm);
+        assertThat(top.elements().size(), is(2));
+        assertThat(top.getQualifiedName(), is("emd:format"));
+
+        DefaultElement sub1 = (DefaultElement) top.elements().get(0);
+        assertThat(sub1.getQualifiedName(), is("dc:format"));
+        assertThat(sub1.getText(), is("text/plain"));
+        assertThat(sub1.attributeCount(), is(2));
+        assertThat(sub1.attribute("scheme").getQualifiedName(), is("eas:scheme"));
+        assertThat(sub1.attribute("scheme").getValue(), is("IMT"));
+        assertThat(sub1.attribute("schemeId").getQualifiedName(), is("eas:schemeId"));
+        assertThat(sub1.attribute("schemeId").getValue(), is("common.dc.format"));
+
+        DefaultElement sub = (DefaultElement) top.elements().get(1);
+        assertThat(sub.getQualifiedName(), is("dc:format"));
+        assertThat(sub.getText(), is("application/vnd.openxmlformats-officedocument.wordprocessingml.document"));
+        assertThat(sub.attributeCount(), is(0));
+    }
+
+    @Test
+    public void typeWithSchemeAndId() throws Exception {
+        // @formatter:off
+        String ddm = "<?xml version='1.0' encoding='utf-8'?><ddm:DDM"
+            + "  xmlns:dc='http://purl.org/dc/elements/1.1/'"
+            + "  xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'"
+            + "  xmlns:dcterms='http://purl.org/dc/terms/'"
+            + "  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>"
+            + "  <ddm:dcmiMetadata>"
+            + "    <dcterms:type xsi:type='dcterms:DCMIType'>Text</dcterms:type>"
+            + "  </ddm:dcmiMetadata>"
+            + "</ddm:DDM>";
+        // @formatter:on
+
+        DefaultElement top = firstEmdElementFrom(ddm);
+        assertThat(top.elements().size(), is(1));
+        assertThat(top.getQualifiedName(), is("emd:type"));
+
+        DefaultElement sub = (DefaultElement) top.elements().get(0);
+        assertThat(sub.getQualifiedName(), is("dc:type"));
+        assertThat(sub.getText(), is("Text"));
+        assertThat(sub.attributeCount(), is(2));
+        assertThat(sub.attribute("scheme").getQualifiedName(), is("eas:scheme"));
+        assertThat(sub.attribute("scheme").getValue(), is("DCMI"));
+        assertThat(sub.attribute("schemeId").getQualifiedName(), is("eas:schemeId"));
+        assertThat(sub.attribute("schemeId").getValue(), is("common.dc.type"));
+    }
+
+    @Test
+    public void languageWithSchemeAndId() throws Exception {
+        // @formatter:off
+        String ddm = "<?xml version='1.0' encoding='utf-8'?><ddm:DDM"
+            + "  xmlns:dc='http://purl.org/dc/elements/1.1/'"
+            + "  xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'"
+            + "  xmlns:dcterms='http://purl.org/dc/terms/'"
+            + "  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>"
+            + "  <ddm:dcmiMetadata>"
+            + "    <dc:language xsi:type='dcterms:ISO639-2'>nld</dc:language>"
+            + "  </ddm:dcmiMetadata>"
+            + "</ddm:DDM>";
+        // @formatter:on
+
+        DefaultElement top = firstEmdElementFrom(ddm);
+        assertThat(top.elements().size(), is(1));
+        assertThat(top.getQualifiedName(), is("emd:language"));
+
+        DefaultElement sub = (DefaultElement) top.elements().get(0);
+        assertThat(sub.getQualifiedName(), is("dc:language"));
+        assertThat(sub.getText(), is("nld"));
+        assertThat(sub.attributeCount(), is(2));
+        assertThat(sub.attribute("scheme").getQualifiedName(), is("eas:scheme"));
+        assertThat(sub.attribute("scheme").getValue(), is("ISO 639"));
+        assertThat(sub.attribute("schemeId").getQualifiedName(), is("eas:schemeId"));
+        assertThat(sub.attribute("schemeId").getValue(), is("common.dc.language"));
+    }
+
+    @Test
     public void spatialGmlEnvelope() throws Exception {
         // @formatter:off
         String ddm = "<?xml version='1.0' encoding='utf-8'?><ddm:DDM" +

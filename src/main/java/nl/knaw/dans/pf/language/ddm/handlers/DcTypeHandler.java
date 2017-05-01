@@ -24,7 +24,10 @@ public class DcTypeHandler extends BasicStringHandler {
     @Override
     protected void finishElement(final String uri, final String localName) throws SAXException {
         BasicString basicString = createBasicString(uri, localName);
-        if (basicString != null)
+        if (basicString != null) {
+            basicString.setScheme("DCMI");
+            basicString.setSchemeId("common.dc.type");
             getTarget().getEmdType().getDcType().add(basicString);
+        }
     }
 }

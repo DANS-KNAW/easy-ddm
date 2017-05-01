@@ -21,10 +21,22 @@ import nl.knaw.dans.pf.language.emd.types.BasicString;
 import org.xml.sax.SAXException;
 
 public class DcFormatHandler extends BasicStringHandler {
+
+    private final boolean imt;
+
+    public DcFormatHandler(boolean imt) {
+        this.imt = imt;
+    }
+
     @Override
     protected void finishElement(final String uri, final String localName) throws SAXException {
         BasicString basicString = createBasicString(uri, localName);
-        if (basicString != null)
+        if (basicString != null) {
+            if (imt) {
+                basicString.setScheme("IMT");
+                basicString.setSchemeId("common.dc.format");
+            }
             getTarget().getEmdFormat().getDcFormat().add(basicString);
+        }
     }
 }

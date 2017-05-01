@@ -24,7 +24,10 @@ public class DcLanguageHandler extends BasicStringHandler {
     @Override
     protected void finishElement(final String uri, final String localName) throws SAXException {
         BasicString basicString = createBasicString(uri, localName);
-        if (basicString != null)
+        if (basicString != null) {
+            basicString.setScheme("ISO 639");
+            basicString.setSchemeId("common.dc.language");
             getTarget().getEmdLanguage().getDcLanguage().add(basicString);
+        }
     }
 }
