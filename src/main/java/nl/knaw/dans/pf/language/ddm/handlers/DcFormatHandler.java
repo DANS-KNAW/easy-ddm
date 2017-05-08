@@ -22,17 +22,17 @@ import org.xml.sax.SAXException;
 
 public class DcFormatHandler extends BasicStringHandler {
 
-    private final boolean imt;
+    private final boolean isInternetMediaType;
 
-    public DcFormatHandler(boolean imt) {
-        this.imt = imt;
+    public DcFormatHandler(boolean isInternetMediaType) {
+        this.isInternetMediaType = isInternetMediaType;
     }
 
     @Override
     protected void finishElement(final String uri, final String localName) throws SAXException {
         BasicString basicString = createBasicString(uri, localName);
         if (basicString != null) {
-            if (imt) {
+            if (isInternetMediaType) {
                 basicString.setScheme("IMT");
                 basicString.setSchemeId("common.dc.format");
             }
