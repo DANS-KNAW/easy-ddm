@@ -57,7 +57,11 @@ public class ValidatorTest {
 
     @Test
     public void testDDMValidation() throws Exception {
-        assumeTrue("last DDM is published", DDM.equals(RECENT_SCHEMAS.get(new File(DDM.xsd).getName())));
+        String name = new File(DDM.xsd).getName();
+        System.out.println(name);
+        File other = RECENT_SCHEMAS.get(name);
+        System.out.println(other);
+        assumeTrue("last DDM is published", DDM.xsd.equals(other));
         XMLErrorHandler handler = new DDMValidator().validate(new File("src/test/resources/input/ddm.xml"));
         assertTrue(handler.passed());
     }
