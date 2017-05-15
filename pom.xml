@@ -29,7 +29,7 @@
     <name>Dans Dataset Metadata Library (DDM)</name>
     <inceptionYear>2014</inceptionYear>
     <properties>
-        <easy.schema.version>1.8</easy.schema.version>
+        <easy.schema.version>1.9</easy.schema.version>
     </properties>
     <scm>
         <developerConnection>scm:git:https://github.com/DANS-KNAW/${project.artifactId}</developerConnection>
