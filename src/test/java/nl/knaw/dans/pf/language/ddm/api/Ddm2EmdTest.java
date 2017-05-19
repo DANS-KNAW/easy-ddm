@@ -21,8 +21,13 @@ package nl.knaw.dans.pf.language.ddm.api;
 import nl.knaw.dans.pf.language.ddm.handlermaps.NameSpace;
 import nl.knaw.dans.pf.language.emd.EasyMetadata;
 import nl.knaw.dans.pf.language.emd.binding.EmdMarshaller;
+import nl.knaw.dans.pf.language.emd.binding.EmdUnmarshaller;
+import nl.knaw.dans.pf.language.emd.types.IsoDate;
 import nl.knaw.dans.pf.language.xml.validation.XMLErrorHandler;
 import org.apache.commons.io.FileUtils;
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeUtils;
+import org.joda.time.DateTimeZone;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -52,7 +57,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Locale;
 import java.util.Map;
+import java.util.TimeZone;
 
 import static nl.knaw.dans.pf.language.ddm.api.SpecialValidator.LOCAL_SCHEMA_DIR;
 import static nl.knaw.dans.pf.language.ddm.handlermaps.NameSpace.DC;
@@ -122,6 +129,7 @@ public class Ddm2EmdTest {
     @Test
     public void publicExamplesTransformToExceptedEMD() throws Exception {
         externalSchemaCheck();
+        DateTimeZone.setDefault(DateTimeZone.forTimeZone(TimeZone.getTimeZone("Europe/Amsterdam")));
         for (File ddmFile : publicExamples) {
             File emdFile = new File(getClass().getResource("/output/" + ddmFile.getName()).toURI());
             String expected = FileUtils.readFileToString(emdFile).trim();
