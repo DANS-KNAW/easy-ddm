@@ -122,7 +122,7 @@ public class Ddm2EmdTest {
     @Test
     public void publicExamplesTransformToExceptedEMD() throws Exception {
         externalSchemaCheck();
-        for (File ddmFile: publicExamples) {
+        for (File ddmFile : publicExamples) {
             File emdFile = new File(getClass().getResource("/output/" + ddmFile.getName()).toURI());
             String expected = FileUtils.readFileToString(emdFile).trim();
 

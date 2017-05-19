@@ -143,6 +143,7 @@
                 <configuration combine.self="append">
                     <excludes>
                         <exclude>doc/*</exclude>
+                        <exclude>src/test/resources/output/*</exclude>
                     </excludes>
                 </configuration>
             </plugin>
