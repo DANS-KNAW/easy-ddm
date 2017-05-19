@@ -23,12 +23,17 @@ import nl.knaw.dans.pf.language.emd.EasyMetadata;
 import nl.knaw.dans.pf.language.emd.binding.EmdMarshaller;
 import nl.knaw.dans.pf.language.xml.validation.XMLErrorHandler;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.w3c.dom.*;
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Text;
 import org.xml.sax.InputSource;
 
 import javax.xml.namespace.NamespaceContext;
@@ -45,7 +50,9 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import static nl.knaw.dans.pf.language.ddm.api.SpecialValidator.LOCAL_SCHEMA_DIR;
 import static nl.knaw.dans.pf.language.ddm.handlermaps.NameSpace.DC;
@@ -109,6 +116,21 @@ public class Ddm2EmdTest {
             // just a limited check of the output
             assertThat("EMD content from " + file, emdString, containsString("easy-discipline:"));
 
+        }
+    }
+
+    @Test
+    public void publicExamplesTransformToExceptedEMD() throws Exception {
+        externalSchemaCheck();
+        for (File ddmFile: publicExamples) {
+            File emdFile = new File(getClass().getResource("/output/" + ddmFile.getName()).toURI());
+            String expected = FileUtils.readFileToString(emdFile).trim();
+
+            Ddm2EmdCrosswalk crosswalk = new Ddm2EmdCrosswalk();
+            EasyMetadata emd = crosswalk.createFrom(ddmFile);
+            String actual = new EmdMarshaller(emd).getXmlString().trim();
+
+            assertThat("", actual, is(expected));
         }
     }
 

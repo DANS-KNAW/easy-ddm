@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<emd:easymetadata xmlns:emd="http://easy.dans.knaw.nl/easy/easymetadata/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dct="http://purl.org/dc/terms/" xmlns:eas="http://easy.dans.knaw.nl/easy/easymetadata/eas/" emd:version="0.1">
+    <emd:title>
+        <dc:title xml:lang="en">Title of the dataset 6</dc:title>
+        <dc:title xml:lang="nl">Titel van de dataset</dc:title>
+        <dc:title>alternatief</dc:title>
+        <dc:title>titel</dc:title>
+        <dc:title>Titel</dc:title>
+    </emd:title>
+    <emd:creator>
+        <dc:creator>maker</dc:creator>
+        <dc:creator>maker term</dc:creator>
+        <eas:creator>
+            <eas:title>Prof.</eas:title>
+            <eas:initials>D.N.</eas:initials>
+            <eas:prefix>van den</eas:prefix>
+            <eas:surname>Aarden</eas:surname>
+            <eas:organization>Utrecht University</eas:organization>
+            <eas:entityId eas:scheme="DAI">123456789</eas:entityId>
+        </eas:creator>
+        <eas:creator>
+            <eas:title>dr.</eas:title>
+            <eas:initials>P</eas:initials>
+            <eas:prefix>v.d.</eas:prefix>
+            <eas:surname>P</eas:surname>
+            <eas:organization>DC.LPEeo</eas:organization>
+            <eas:entityId eas:scheme="DAI">93313935x</eas:entityId>
+        </eas:creator>
+    </emd:creator>
+    <emd:subject>
+        <dc:subject eas:scheme="ABR" eas:schemeId="archaeology.dc.subject">EGVW</dc:subject>
+        <dc:subject eas:scheme="ABR" eas:schemeId="archaeology.dc.subject">ELA</dc:subject>
+        <dc:subject>onderwerp</dc:subject>
+        <dc:subject>school leavers</dc:subject>
+        <dc:subject>labour market</dc:subject>
+    </emd:subject>
+    <emd:description>
+        <dc:description xml:lang="la">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</dc:description>
+        <dc:description>beschrijving</dc:description>
+        <dc:description>Beschrijving</dc:description>
+    </emd:description>
+    <emd:publisher>
+        <dc:publisher>uitgever</dc:publisher>
+        <dc:publisher>Uitgever</dc:publisher>
+    </emd:publisher>
+    <emd:contributor>
+        <dc:contributor>bijdrager</dc:contributor>
+        <dc:contributor>bijdrager term</dc:contributor>
+        <eas:contributor>
+            <eas:title>Prof.</eas:title>
+            <eas:initials>A.A.</eas:initials>
+            <eas:surname>Jansen</eas:surname>
+            <eas:organization>Babylon b.v.</eas:organization>
+            <eas:entityId eas:scheme="DAI">123456789</eas:entityId>
+        </eas:contributor>
+    </emd:contributor>
+    <emd:date>
+        <dc:date>11-2013</dc:date>
+        <dc:date>12-2013</dc:date>
+        <dct:created>03-2013</dct:created>
+        <dct:valid>06-2013</dct:valid>
+        <dct:available>04-2013</dct:available>
+        <dct:issued>07-2013</dct:issued>
+        <dct:modified>08-2013</dct:modified>
+        <dct:dateAccepted>05-2013</dct:dateAccepted>
+        <dct:dateCopyrighted>09-2013</dct:dateCopyrighted>
+        <dct:dateSubmitted>10-2013</dct:dateSubmitted>
+        <eas:date eas:scheme="W3CDTF" eas:format="MONTH">1909-04-01T00:00:00.000+00:19:32</eas:date>
+        <eas:date eas:scheme="W3CDTF" eas:format="MONTH">1910-04-01T00:00:00.000+00:19:32</eas:date>
+        <eas:created eas:scheme="W3CDTF" eas:format="MONTH">2012-12-01T00:00:00.000+01:00</eas:created>
+        <eas:created eas:scheme="W3CDTF" eas:format="MONTH">1901-04-01T00:00:00.000+00:19:32</eas:created>
+        <eas:valid eas:scheme="W3CDTF" eas:format="MONTH">1904-04-01T00:00:00.000+00:19:32</eas:valid>
+        <eas:available eas:scheme="W3CDTF" eas:format="MONTH">2013-05-01T00:00:00.000+02:00</eas:available>
+        <eas:available eas:scheme="W3CDTF" eas:format="YEAR">1900-01-01T00:00:00.000+00:19:32</eas:available>
+        <eas:available eas:scheme="W3CDTF" eas:format="MONTH">1902-04-01T00:00:00.000+00:19:32</eas:available>
+        <eas:issued eas:scheme="W3CDTF" eas:format="MONTH">1905-04-01T00:00:00.000+00:19:32</eas:issued>
+        <eas:issued eas:scheme="W3CDTF" eas:format="DAY">2012-10-09T00:00:00.000+02:00</eas:issued>
+        <eas:modified eas:scheme="W3CDTF" eas:format="MONTH">1906-04-01T00:00:00.000+00:19:32</eas:modified>
+        <eas:dateAccepted eas:scheme="W3CDTF" eas:format="MONTH">1903-04-01T00:00:00.000+00:19:32</eas:dateAccepted>
+        <eas:dateCopyrighted eas:scheme="W3CDTF" eas:format="MONTH">1907-04-01T00:00:00.000+00:19:32</eas:dateCopyrighted>
+        <eas:dateSubmitted eas:scheme="W3CDTF" eas:format="MONTH">1908-04-01T00:00:00.000+00:19:32</eas:dateSubmitted>
+    </emd:date>
+    <emd:type>
+        <dc:type eas:scheme="DCMI" eas:schemeId="common.dc.type">tiepe</dc:type>
+        <dc:type eas:scheme="DCMI" eas:schemeId="common.dc.type">Tiepe</dc:type>
+    </emd:type>
+    <emd:format>
+        <dc:format>formaat</dc:format>
+        <dc:format>Formaat</dc:format>
+    </emd:format>
+    <emd:identifier>
+        <dc:identifier>some ientifier 1</dc:identifier>
+        <dc:identifier>some ientifier 2</dc:identifier>
+    </emd:identifier>
+    <emd:source>
+        <dc:source>bron</dc:source>
+        <dc:source>nog een bron</dc:source>
+    </emd:source>
+    <emd:language>
+        <dc:language eas:scheme="ISO 639" eas:schemeId="common.dc.language">Nederlands</dc:language>
+        <dc:language eas:scheme="ISO 639" eas:schemeId="common.dc.language">Engels</dc:language>
+        <dc:language eas:scheme="ISO 639" eas:schemeId="common.dc.language">Ned</dc:language>
+        <dc:language eas:scheme="ISO 639" eas:schemeId="common.dc.language">en</dc:language>
+        <dc:language eas:scheme="ISO 639" eas:schemeId="common.dc.language">Dui</dc:language>
+        <dc:language eas:scheme="ISO 639" eas:schemeId="common.dc.language">fr</dc:language>
+    </emd:language>
+    <emd:relation>
+        <dc:relation eas:schemeId="STREAMING_SURROGATE_RELATION">/domain/dans/user/somebody/collection/test1/presentation/testA</dc:relation>
+        <dc:relation>urn:nbn:nl:ui:13-fant-asy</dc:relation>
+        <dc:relation>10.5072/fantasy-doi-rel</dc:relation>
+        <dct:conformsTo>http://doi.org/10.1111/sode.12120</dct:conformsTo>
+        <dct:isVersionOf>http://hdl.handle.net/2066/121062</dct:isVersionOf>
+        <dct:hasVersion>http://www.persistent-identifier.nl/?identifier=urn:nbn:nl:ui:13-2ajw-cq</dct:hasVersion>
+        <dct:isReplacedBy>A descriptin of object 6</dct:isReplacedBy>
+        <dct:replaces>A descriptin of object 7</dct:replaces>
+        <dct:isRequiredBy>A descriptin of object 8</dct:isRequiredBy>
+        <dct:requires>A descriptin of object 9</dct:requires>
+        <dct:isPartOf>A descriptin of object 10</dct:isPartOf>
+        <dct:hasPart>A descriptin of object 11</dct:hasPart>
+        <dct:isReferencedBy>A descriptin of object 12</dct:isReferencedBy>
+        <dct:references>A descriptin of object 13</dct:references>
+        <dct:isFormatOf>A descriptin of object 14</dct:isFormatOf>
+        <dct:hasFormat>A descriptin of object 15</dct:hasFormat>
+    </emd:relation>
+    <emd:coverage>
+        <dc:coverage>Dekking</dc:coverage>
+        <dc:coverage>meer dekking</dc:coverage>
+        <dct:spatial>Ruimte</dct:spatial>
+        <dct:temporal eas:scheme="ABR" eas:schemeId="archaeology.dcterms.temporal">PALEOLB</dct:temporal>
+        <dct:temporal>bronzen tijdperk</dct:temporal>
+        <eas:spatial>
+            <eas:place/>
+            <eas:point eas:scheme="degrees">
+                <eas:x>2.0</eas:x>
+                <eas:y>1.0</eas:y>
+            </eas:point>
+        </eas:spatial>
+        <eas:spatial>
+            <eas:place/>
+            <eas:point eas:scheme="degrees">
+                <eas:x>4.34510</eas:x>
+                <eas:y>52.08113</eas:y>
+            </eas:point>
+        </eas:spatial>
+        <eas:spatial>
+            <eas:place>Entrance of DANS Building</eas:place>
+            <eas:point eas:scheme="degrees">
+                <eas:x>4.34521</eas:x>
+                <eas:y>52.08110</eas:y>
+            </eas:point>
+        </eas:spatial>
+        <eas:spatial>
+            <eas:place>Entrance of DANS Building</eas:place>
+            <eas:point eas:scheme="RD">
+                <eas:x>83575.4</eas:x>
+                <eas:y>455271.2</eas:y>
+            </eas:point>
+        </eas:spatial>
+        <eas:spatial>
+            <eas:place/>
+            <eas:box eas:scheme="RD">
+                <eas:north>486890.5</eas:north>
+                <eas:east>121811.88</eas:east>
+                <eas:south>436172.5</eas:south>
+                <eas:west>91232.016</eas:west>
+            </eas:box>
+        </eas:spatial>
+    </emd:coverage>
+    <emd:rights>
+        <dct:accessRights>OPEN_ACCESS</dct:accessRights>
+        <dct:rightsHolder>Houder van rechten</dct:rightsHolder>
+    </emd:rights>
+    <emd:audience>
+        <dct:audience eas:schemeId="custom.disciplines">easy-discipline:54</dct:audience>
+        <dct:audience eas:schemeId="custom.disciplines">easy-discipline:55</dct:audience>
+        <dct:audience eas:schemeId="custom.disciplines">easy-discipline:55</dct:audience>
+    </emd:audience>
+    <emd:other>
+        <eas:application-specific>
+            <eas:metadataformat>ANY_DISCIPLINE</eas:metadataformat>
+            <eas:pakbon-status>NOT_IMPORTED</eas:pakbon-status>
+        </eas:application-specific>
+        <eas:etc/>
+    </emd:other>
+</emd:easymetadata>
