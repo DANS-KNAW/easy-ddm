@@ -23,9 +23,9 @@ public class DcRelationHandler extends BasicStringHandler {
     @Override
     public void finishElement(final String uri, final String localName) throws SAXException {
         final BasicString relation = createBasicString(uri, localName);
-        final String schemeId = getAttribute("", "scheme");
-        if (schemeId != null)
-            relation.setSchemeId(schemeId);
+        final String scheme = getAttribute("", "scheme");
+        if (scheme != null)
+            relation.setScheme(scheme);
         if (relation != null)
             getTarget().getEmdRelation().getDcRelation().add(relation);
     }
