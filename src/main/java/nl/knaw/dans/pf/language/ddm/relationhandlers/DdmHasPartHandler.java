@@ -29,16 +29,19 @@ public class DdmHasPartHandler extends BasicIdentifierHandler {
         final BasicIdentifier relation = createIdentifier(uri, localName);
         final String href = getAttribute("", "href");
 
-        if (href == null)
-            throw new SAXException("href attribute is mandatory in ddm:hasPart");
-
+      if (href == null) {
+        if (relation != null)
+          getTarget().getEmdRelation().getTermsHasPart().add(relation);
+      }
+      else {
         try {
-            final Relation rel = new Relation(relation);
-            rel.setSubjectLink(new URI(href));
-            getTarget().getEmdRelation().getEasHasPart().add(rel);
+          final Relation rel = new Relation(relation);
+          rel.setSubjectLink(new URI(href));
+          getTarget().getEmdRelation().getEasHasPart().add(rel);
         }
         catch (URISyntaxException e) {
-            throw new SAXException(e);
+          throw new SAXException(e);
         }
+      }
     }
 }

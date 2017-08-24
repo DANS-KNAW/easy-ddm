@@ -29,16 +29,19 @@ public class DdmIsVersionOfHandler extends BasicIdentifierHandler {
         final BasicIdentifier relation = createIdentifier(uri, localName);
         final String href = getAttribute("", "href");
 
-        if (href == null)
-            throw new SAXException("href attribute is mandatory in ddm:isVersionOf");
-
+      if (href == null) {
+        if (relation != null)
+          getTarget().getEmdRelation().getTermsIsVersionOf().add(relation);
+      }
+      else {
         try {
-            final Relation rel = new Relation(relation);
-            rel.setSubjectLink(new URI(href));
-            getTarget().getEmdRelation().getEasIsVersionOf().add(rel);
+          final Relation rel = new Relation(relation);
+          rel.setSubjectLink(new URI(href));
+          getTarget().getEmdRelation().getEasIsVersionOf().add(rel);
         }
         catch (URISyntaxException e) {
-            throw new SAXException(e);
+          throw new SAXException(e);
         }
+      }
     }
 }

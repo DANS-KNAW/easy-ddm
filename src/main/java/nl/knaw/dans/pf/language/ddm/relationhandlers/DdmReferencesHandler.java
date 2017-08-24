@@ -29,16 +29,19 @@ public class DdmReferencesHandler extends BasicIdentifierHandler {
         final BasicIdentifier relation = createIdentifier(uri, localName);
         final String href = getAttribute("", "href");
 
-        if (href == null)
-            throw new SAXException("href attribute is mandatory in ddm:references");
-
+      if (href == null) {
+        if (relation != null)
+          getTarget().getEmdRelation().getTermsReferences().add(relation);
+      }
+      else {
         try {
-            final Relation rel = new Relation(relation);
-            rel.setSubjectLink(new URI(href));
-            getTarget().getEmdRelation().getEasReferences().add(rel);
+          final Relation rel = new Relation(relation);
+          rel.setSubjectLink(new URI(href));
+          getTarget().getEmdRelation().getEasReferences().add(rel);
         }
         catch (URISyntaxException e) {
-            throw new SAXException(e);
+          throw new SAXException(e);
         }
+      }
     }
 }
