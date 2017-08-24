@@ -15,15 +15,31 @@
  */
 package nl.knaw.dans.pf.language.ddm.relationhandlers;
 
-import nl.knaw.dans.pf.language.ddm.handlertypes.BasicStringHandler;
-import nl.knaw.dans.pf.language.emd.types.BasicString;
+import nl.knaw.dans.pf.language.ddm.handlertypes.BasicIdentifierHandler;
+import nl.knaw.dans.pf.language.emd.types.BasicIdentifier;
+import nl.knaw.dans.pf.language.emd.types.Relation;
 import org.xml.sax.SAXException;
 
-public class DcRelationHandler extends BasicStringHandler {
+import java.net.URI;
+import java.net.URISyntaxException;
+
+public class DdmRequiresHandler extends BasicIdentifierHandler {
     @Override
     public void finishElement(final String uri, final String localName) throws SAXException {
-        final BasicString relation = createBasicString(uri, localName);
-        if (relation != null)
-            getTarget().getEmdRelation().getDcRelation().add(relation);
+        final BasicIdentifier relation = createIdentifier(uri, localName);
+        final String href = getAttribute("", "href");
+
+        if (href == null) {
+            throw new SAXException("href attribute is mandatory in ddm:requires");
+        }
+
+        try {
+            final Relation rel = new Relation(relation);
+            rel.setSubjectLink(new URI(href));
+            getTarget().getEmdRelation().getEasRequires().add(rel);
+        }
+        catch (URISyntaxException e) {
+            throw new SAXException(e);
+        }
     }
 }

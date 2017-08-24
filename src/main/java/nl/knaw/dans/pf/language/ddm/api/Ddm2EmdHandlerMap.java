@@ -63,7 +63,21 @@ import nl.knaw.dans.pf.language.ddm.handlertypes.BasicIdentifierHandler;
 import nl.knaw.dans.pf.language.ddm.handlertypes.BasicStringHandler;
 import nl.knaw.dans.pf.language.ddm.handlertypes.IsoDateHandler;
 import nl.knaw.dans.pf.language.ddm.relationhandlers.DcRelationHandler;
-import nl.knaw.dans.pf.language.ddm.relationhandlers.IsVersionOfHandler;
+import nl.knaw.dans.pf.language.ddm.relationhandlers.DdmConformsToHandler;
+import nl.knaw.dans.pf.language.ddm.relationhandlers.DdmHasFormatHandler;
+import nl.knaw.dans.pf.language.ddm.relationhandlers.DdmHasPartHandler;
+import nl.knaw.dans.pf.language.ddm.relationhandlers.DdmHasVersionHandler;
+import nl.knaw.dans.pf.language.ddm.relationhandlers.DdmIsFormatOfHandler;
+import nl.knaw.dans.pf.language.ddm.relationhandlers.DdmIsPartOfHandler;
+import nl.knaw.dans.pf.language.ddm.relationhandlers.DdmIsReferencedByHandler;
+import nl.knaw.dans.pf.language.ddm.relationhandlers.DdmIsReplacedByHandler;
+import nl.knaw.dans.pf.language.ddm.relationhandlers.DdmIsRequiredByHandler;
+import nl.knaw.dans.pf.language.ddm.relationhandlers.DdmIsVersionOfHandler;
+import nl.knaw.dans.pf.language.ddm.relationhandlers.DdmReferencesHandler;
+import nl.knaw.dans.pf.language.ddm.relationhandlers.DdmRelationHandler;
+import nl.knaw.dans.pf.language.ddm.relationhandlers.DdmReplacesHandler;
+import nl.knaw.dans.pf.language.ddm.relationhandlers.DdmRequiresHandler;
+import nl.knaw.dans.pf.language.ddm.relationhandlers.TermsIsVersionOfHandler;
 import nl.knaw.dans.pf.language.ddm.relationhandlers.TermsConformsToHandler;
 import nl.knaw.dans.pf.language.ddm.relationhandlers.TermsHasFormatHandler;
 import nl.knaw.dans.pf.language.ddm.relationhandlers.TermsHasPartHandler;
@@ -200,11 +214,12 @@ public class Ddm2EmdHandlerMap implements CrosswalkHandlerMap<EasyMetadata> {
 
     private void putRelationHandlers() {
         final BasicStringHandler dcRelationHandler = new DcRelationHandler();
-        map.put("/ddm:relation", dcRelationHandler);
+
         map.put("/dc:relation", dcRelationHandler);
+
         map.put("/dcterms:relation", dcRelationHandler);
         map.put("/dcterms:conformsTo", new TermsConformsToHandler());
-        map.put("/dcterms:isVersionOf", new IsVersionOfHandler());
+        map.put("/dcterms:isVersionOf", new TermsIsVersionOfHandler());
         map.put("/dcterms:hasVersion", new TermsHasVersionHandler());
         map.put("/dcterms:isReplacedBy", new TermsIsReplacedByHandler());
         map.put("/dcterms:replaces", new TermsReplacesHandler());
@@ -216,9 +231,21 @@ public class Ddm2EmdHandlerMap implements CrosswalkHandlerMap<EasyMetadata> {
         map.put("/dcterms:references", new TermsReferencesHandler());
         map.put("/dcterms:isFormatOf", new TermsIsFormatOfHandler());
         map.put("/dcterms:hasFormat", new TermsHasFormatHandler());
-        // DDM does not yet support a complex relation field
-        // so no handlers that extend the not yet implemented RelationHandler
-        // and add content to getTarget().getEmdRelation().getDcXXX
+
+        map.put("/ddm:relation", new DdmRelationHandler());
+        map.put("/ddm:conformsTo", new DdmConformsToHandler());
+        map.put("/ddm:isVersionOf", new DdmIsVersionOfHandler());
+        map.put("/ddm:hasVersion", new DdmHasVersionHandler());
+        map.put("/ddm:isReplacedBy", new DdmIsReplacedByHandler());
+        map.put("/ddm:replaces", new DdmReplacesHandler());
+        map.put("/ddm:isRequiredBy", new DdmIsRequiredByHandler());
+        map.put("/ddm:requires", new DdmRequiresHandler());
+        map.put("/ddm:isPartOf", new DdmIsPartOfHandler());
+        map.put("/ddm:hasPart", new DdmHasPartHandler());
+        map.put("/ddm:isReferencedBy", new DdmIsReferencedByHandler());
+        map.put("/ddm:references", new DdmReferencesHandler());
+        map.put("/ddm:isFormatOf", new DdmIsFormatOfHandler());
+        map.put("/ddm:hasFormat", new DdmHasFormatHandler());
     }
 
     private void putNotImplementedHandlers() {

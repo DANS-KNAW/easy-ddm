@@ -24,6 +24,7 @@ import org.junit.Test;
 
 import java.util.List;
 
+import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -569,6 +570,31 @@ public class Ddm2EmdCrosswalkTest {
         assertThat(sub.attributeCount(), is(1));
         assertThat(sub.attribute("scheme").getQualifiedName(), is("eas:scheme"));
         assertThat(sub.attribute("scheme").getValue(), is("STREAMING_SURROGATE_RELATION"));
+    }
+
+    @Test
+    public void normalRelation() throws Exception {
+        // @formatter:off
+        String ddm = "<?xml version='1.0' encoding='utf-8'?><ddm:DDM" +
+                "  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'" +
+                "  xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'" +
+                "  xmlns:dc='http://purl.org/dc/elements/1.1/'" +
+                "  xmlns:abr='http://www.den.nl/standaard/166/Archeologisch-Basisregister/'" +
+                ">" +
+                " <ddm:dcmiMetadata>" +
+                "  <dc:relation>some content</dc:relation> "+
+                " </ddm:dcmiMetadata>" +
+                "</ddm:DDM>";
+        // @formatter:on
+
+        DefaultElement top = firstEmdElementFrom(ddm);
+        DefaultElement sub = (DefaultElement) top.elements().get(0);
+
+        assertThat(top.elements().size(), is(1));
+        assertThat(top.getQualifiedName(), is("emd:relation"));
+        assertThat(sub.elements().size(), is(0));
+        assertThat(sub.getQualifiedName(), is("dc:relation"));
+        assertThat(sub.getText(), is("some content"));
     }
 
     private DefaultElement firstEmdElementFrom(String ddm) throws XMLSerializationException, CrosswalkException {

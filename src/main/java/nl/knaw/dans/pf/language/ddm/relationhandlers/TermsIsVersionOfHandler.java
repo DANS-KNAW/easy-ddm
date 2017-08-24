@@ -15,15 +15,16 @@
  */
 package nl.knaw.dans.pf.language.ddm.relationhandlers;
 
-import nl.knaw.dans.pf.language.ddm.handlertypes.BasicStringHandler;
-import nl.knaw.dans.pf.language.emd.types.BasicString;
+import nl.knaw.dans.pf.language.ddm.handlertypes.BasicIdentifierHandler;
+import nl.knaw.dans.pf.language.emd.types.BasicIdentifier;
+
 import org.xml.sax.SAXException;
 
-public class DcRelationHandler extends BasicStringHandler {
+public class TermsIsVersionOfHandler extends BasicIdentifierHandler {
     @Override
     public void finishElement(final String uri, final String localName) throws SAXException {
-        final BasicString relation = createBasicString(uri, localName);
+        final BasicIdentifier relation = createIdentifier(uri, localName);
         if (relation != null)
-            getTarget().getEmdRelation().getDcRelation().add(relation);
+            getTarget().getEmdRelation().getTermsIsVersionOf().add(relation);
     }
 }
