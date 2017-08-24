@@ -29,9 +29,8 @@ public class DdmIsFormatOfHandler extends BasicIdentifierHandler {
         final BasicIdentifier relation = createIdentifier(uri, localName);
         final String href = getAttribute("", "href");
 
-        if (href == null) {
+        if (href == null)
             throw new SAXException("href attribute is mandatory in ddm:isFormatOf");
-        }
 
         try {
             final Relation rel = new Relation(relation);
