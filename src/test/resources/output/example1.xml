@@ -35,6 +35,16 @@
         <eas:available eas:scheme="W3CDTF" eas:format="MONTH">2013-05-01T00:00:00.000+02:00</eas:available>
         <eas:issued eas:scheme="W3CDTF" eas:format="DAY">2012-10-09T00:00:00.000+02:00</eas:issued>
     </emd:date>
+    <emd:relation>
+        <eas:relation>
+            <eas:subject-title>example.com</eas:subject-title>
+            <eas:subject-link>http://www.example.com</eas:subject-link>
+        </eas:relation>
+        <eas:isPartOf>
+            <eas:subject-title>journal title</eas:subject-title>
+            <eas:subject-link>http://doi.org/journaldoi</eas:subject-link>
+        </eas:isPartOf>
+    </emd:relation>
     <emd:rights>
         <dct:accessRights>OPEN_ACCESS_FOR_REGISTERED_USERS</dct:accessRights>
     </emd:rights>
