@@ -29,19 +29,18 @@ public class DdmIsFormatOfHandler extends BasicIdentifierHandler {
         final BasicIdentifier relation = createIdentifier(uri, localName);
         final String href = getAttribute("", "href");
 
-      if (href == null) {
-        if (relation != null)
-          getTarget().getEmdRelation().getTermsIsFormatOf().add(relation);
-      }
-      else {
-        try {
-          final Relation rel = new Relation(relation);
-          rel.setSubjectLink(new URI(href));
-          getTarget().getEmdRelation().getEasIsFormatOf().add(rel);
+        if (href == null) {
+            if (relation != null)
+                getTarget().getEmdRelation().getTermsIsFormatOf().add(relation);
+        } else {
+            try {
+                final Relation rel = new Relation(relation);
+                rel.setSubjectLink(new URI(href));
+                getTarget().getEmdRelation().getEasIsFormatOf().add(rel);
+            }
+            catch (URISyntaxException e) {
+                throw new SAXException(e);
+            }
         }
-        catch (URISyntaxException e) {
-          throw new SAXException(e);
-        }
-      }
     }
 }

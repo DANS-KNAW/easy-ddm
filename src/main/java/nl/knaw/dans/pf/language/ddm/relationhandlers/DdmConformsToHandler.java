@@ -30,18 +30,17 @@ public class DdmConformsToHandler extends BasicIdentifierHandler {
         final String href = getAttribute("", "href");
 
         if (href == null) {
-          if (relation != null)
-            getTarget().getEmdRelation().getTermsConformsTo().add(relation);
-        }
-        else {
-          try {
-            final Relation rel = new Relation(relation);
-            rel.setSubjectLink(new URI(href));
-            getTarget().getEmdRelation().getEasConformsTo().add(rel);
-          }
-          catch (URISyntaxException e) {
-            throw new SAXException(e);
-          }
+            if (relation != null)
+                getTarget().getEmdRelation().getTermsConformsTo().add(relation);
+        } else {
+            try {
+                final Relation rel = new Relation(relation);
+                rel.setSubjectLink(new URI(href));
+                getTarget().getEmdRelation().getEasConformsTo().add(rel);
+            }
+            catch (URISyntaxException e) {
+                throw new SAXException(e);
+            }
         }
     }
 }
