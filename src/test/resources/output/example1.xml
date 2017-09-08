@@ -47,6 +47,7 @@
     </emd:relation>
     <emd:rights>
         <dct:accessRights>OPEN_ACCESS_FOR_REGISTERED_USERS</dct:accessRights>
+        <dct:license>http://opensource.org/licenses/BSD-2-Clause</dct:license>
     </emd:rights>
     <emd:audience>
         <dct:audience eas:schemeId="custom.disciplines">easy-discipline:54</dct:audience>

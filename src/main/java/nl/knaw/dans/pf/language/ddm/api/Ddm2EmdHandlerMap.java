@@ -48,6 +48,7 @@ import nl.knaw.dans.pf.language.ddm.handlers.DcSourceHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.DcTypeHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.DescriptionHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.EasSpatialHandler;
+import nl.knaw.dans.pf.language.ddm.handlers.TermsLicenseHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.SimpleContributorHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.SimpleCreatorHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.SkippedFieldHandler;
@@ -258,7 +259,6 @@ public class Ddm2EmdHandlerMap implements CrosswalkHandlerMap<EasyMetadata> {
         map.put("/dcterms:provenance", SKIPPED_FIELD_HANDLER);
         map.put("/dcterms:bibliographicCitation", SKIPPED_FIELD_HANDLER);
         map.put("/dcterms:medium", SKIPPED_FIELD_HANDLER);
-        map.put("/dcterms:license", SKIPPED_FIELD_HANDLER);
         map.put("/dcterms:extent", SKIPPED_FIELD_HANDLER);
         map.put("/dcterms:abstract", SKIPPED_FIELD_HANDLER);
         map.put("/dcterms:tableOfContents", SKIPPED_FIELD_HANDLER);
@@ -320,6 +320,7 @@ public class Ddm2EmdHandlerMap implements CrosswalkHandlerMap<EasyMetadata> {
         map.put("/dcterms:accessRights", NOT_YET_IMPLEMENTED);
         map.put("/dc:rights", NOT_YET_IMPLEMENTED);
         map.put("/dcterms:rights", NOT_YET_IMPLEMENTED);
+        map.put("URI/dcterms:license", new TermsLicenseHandler());
         // <ref-panelId>dc.rights</ref-panelId>
         // <ref-panelId>dcterms.accessrights</ref-panelId>
         // EasyMetadataImpl: EmdRights emdRights;
