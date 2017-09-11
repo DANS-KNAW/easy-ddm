@@ -439,7 +439,7 @@ public class Ddm2EmdCrosswalkTest {
     }
 
     @Test
-    public void spatialPolygon() throws Exception {
+    public void spatialPolygonWGS84() throws Exception {
         // @formatter:off
         String ddm = "<?xml version='1.0' encoding='utf-8'?><ddm:DDM" +
             "  xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'" +
@@ -636,6 +636,206 @@ public class Ddm2EmdCrosswalkTest {
         assertTrue(((DefaultElement) in24.elements().get(1)).elements().isEmpty());
         assertThat(((DefaultElement) in24.elements().get(1)).getQualifiedName(), is("eas:y"));
         assertThat(((DefaultElement) in24.elements().get(1)).getText(), is("4.344215"));
+    }
+
+    @Test
+    public void spatialPolygonRD() throws Exception {
+        // @formatter:off
+        String ddm = "<?xml version='1.0' encoding='utf-8'?><ddm:DDM" +
+            "  xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'" +
+            "  xmlns:gml='http://www.opengis.net/gml'" +
+            "  xmlns:dcx-gml='http://easy.dans.knaw.nl/schemas/dcx/gml/'>" +
+            " <ddm:dcmiMetadata>" +
+            "   <dcx-gml:spatial>" +
+            "     <Polygon xmlns='http://www.opengis.net/gml' srsName='http://www.opengis.net/def/crs/EPSG/0/28992'>" +
+            "       <description>A triangle between DANS, NWO and the railway station</description>" +
+            "       <exterior>" +
+            "         <LinearRing>" +
+            "           <description>main triangle</description>" +
+            "           <posList>455271 83575 455229 83507 455054 83443 455271 83575</posList>" +
+            "         </LinearRing>" +
+            "       </exterior>" +
+            "       <interior>" +
+            "         <LinearRing>" +
+            "           <description>hole1</description>" +
+            "           <posList>455210 83506 455200 83513 455189 83499 455210 83506</posList>" +
+            "         </LinearRing>" +
+            "       </interior>" +
+            "       <interior>" +
+            "         <LinearRing>" +
+            "           <description>hole2</description>" +
+            "           <posList>455210 83506 455200 83513 455189 83499 455210 83506</posList>" +
+            "         </LinearRing>" +
+            "       </interior>" +
+            "     </Polygon>" +
+            "   </dcx-gml:spatial>" +
+            " </ddm:dcmiMetadata>" +
+            "</ddm:DDM>";
+        // @formatter:on
+
+        DefaultElement coverage = firstEmdElementFrom(ddm);
+        DefaultElement spatial = (DefaultElement) coverage.elements().get(0);
+        DefaultElement place = (DefaultElement) spatial.elements().get(0);
+        DefaultElement polygon = (DefaultElement) spatial.elements().get(1);
+        DefaultElement exterior = (DefaultElement) polygon.elements().get(0);
+        DefaultElement interior1 = (DefaultElement) polygon.elements().get(1);
+        DefaultElement interior2 = (DefaultElement) polygon.elements().get(2);
+        DefaultElement exPlace = (DefaultElement) exterior.elements().get(0);
+        DefaultElement ex1 = (DefaultElement) exterior.elements().get(1);
+        DefaultElement ex2 = (DefaultElement) exterior.elements().get(2);
+        DefaultElement ex3 = (DefaultElement) exterior.elements().get(3);
+        DefaultElement ex4 = (DefaultElement) exterior.elements().get(4);
+        DefaultElement inPlace1 = (DefaultElement) interior1.elements().get(0);
+        DefaultElement in11 = (DefaultElement) interior1.elements().get(1);
+        DefaultElement in12 = (DefaultElement) interior1.elements().get(2);
+        DefaultElement in13 = (DefaultElement) interior1.elements().get(3);
+        DefaultElement in14 = (DefaultElement) interior1.elements().get(4);
+        DefaultElement inPlace2 = (DefaultElement) interior2.elements().get(0);
+        DefaultElement in21 = (DefaultElement) interior2.elements().get(1);
+        DefaultElement in22 = (DefaultElement) interior2.elements().get(2);
+        DefaultElement in23 = (DefaultElement) interior2.elements().get(3);
+        DefaultElement in24 = (DefaultElement) interior2.elements().get(4);
+
+        assertThat(coverage.elements().size(), is(1));
+        assertThat(coverage.getQualifiedName(), is("emd:coverage"));
+
+        assertThat(spatial.elements().size(), is(2));
+        assertThat(spatial.getQualifiedName(), is("eas:spatial"));
+
+        assertTrue(place.elements().isEmpty());
+        assertThat(place.getQualifiedName(), is("eas:place"));
+        assertThat(place.getText(), is("A triangle between DANS, NWO and the railway station"));
+
+        assertThat(polygon.elements().size(), is(3));
+        assertThat(polygon.getQualifiedName(), is("eas:polygon"));
+        assertThat(polygon.attribute("scheme").getQualifiedName(), is("eas:scheme"));
+        assertThat(polygon.attribute("scheme").getValue(), is("RD"));
+
+        assertThat(exterior.elements().size(), is(5));
+        assertThat(exterior.getQualifiedName(), is("eas:polygon-exterior"));
+
+        assertThat(interior1.elements().size(), is(5));
+        assertThat(interior1.getQualifiedName(), is("eas:polygon-interior"));
+
+        assertTrue(exPlace.elements().isEmpty());
+        assertThat(exPlace.getQualifiedName(), is("eas:place"));
+        assertThat(exPlace.getText(), is("main triangle"));
+
+        assertThat(ex1.elements().size(), is(2));
+        assertThat(ex1.getQualifiedName(), is("eas:polygon-point"));
+        assertTrue(((DefaultElement) ex1.elements().get(0)).elements().isEmpty());
+        assertThat(((DefaultElement) ex1.elements().get(0)).getQualifiedName(), is("eas:x"));
+        assertThat(((DefaultElement) ex1.elements().get(0)).getText(), is("83575"));
+        assertTrue(((DefaultElement) ex1.elements().get(1)).elements().isEmpty());
+        assertThat(((DefaultElement) ex1.elements().get(1)).getQualifiedName(), is("eas:y"));
+        assertThat(((DefaultElement) ex1.elements().get(1)).getText(), is("455271"));
+
+        assertThat(ex2.elements().size(), is(2));
+        assertThat(ex2.getQualifiedName(), is("eas:polygon-point"));
+        assertTrue(((DefaultElement) ex2.elements().get(0)).elements().isEmpty());
+        assertThat(((DefaultElement) ex2.elements().get(0)).getQualifiedName(), is("eas:x"));
+        assertThat(((DefaultElement) ex2.elements().get(0)).getText(), is("83507"));
+        assertTrue(((DefaultElement) ex2.elements().get(1)).elements().isEmpty());
+        assertThat(((DefaultElement) ex2.elements().get(1)).getQualifiedName(), is("eas:y"));
+        assertThat(((DefaultElement) ex2.elements().get(1)).getText(), is("455229"));
+
+        assertThat(ex3.elements().size(), is(2));
+        assertThat(ex3.getQualifiedName(), is("eas:polygon-point"));
+        assertTrue(((DefaultElement) ex3.elements().get(0)).elements().isEmpty());
+        assertThat(((DefaultElement) ex3.elements().get(0)).getQualifiedName(), is("eas:x"));
+        assertThat(((DefaultElement) ex3.elements().get(0)).getText(), is("83443"));
+        assertTrue(((DefaultElement) ex3.elements().get(1)).elements().isEmpty());
+        assertThat(((DefaultElement) ex3.elements().get(1)).getQualifiedName(), is("eas:y"));
+        assertThat(((DefaultElement) ex3.elements().get(1)).getText(), is("455054"));
+
+        assertThat(ex4.elements().size(), is(2));
+        assertThat(ex4.getQualifiedName(), is("eas:polygon-point"));
+        assertTrue(((DefaultElement) ex4.elements().get(0)).elements().isEmpty());
+        assertThat(((DefaultElement) ex4.elements().get(0)).getQualifiedName(), is("eas:x"));
+        assertThat(((DefaultElement) ex4.elements().get(0)).getText(), is("83575"));
+        assertTrue(((DefaultElement) ex4.elements().get(1)).elements().isEmpty());
+        assertThat(((DefaultElement) ex4.elements().get(1)).getQualifiedName(), is("eas:y"));
+        assertThat(((DefaultElement) ex4.elements().get(1)).getText(), is("455271"));
+
+        assertTrue(inPlace1.elements().isEmpty());
+        assertThat(inPlace1.getQualifiedName(), is("eas:place"));
+        assertThat(inPlace1.getText(), is("hole1"));
+
+        assertThat(in11.elements().size(), is(2));
+        assertThat(in11.getQualifiedName(), is("eas:polygon-point"));
+        assertTrue(((DefaultElement) in11.elements().get(0)).elements().isEmpty());
+        assertThat(((DefaultElement) in11.elements().get(0)).getQualifiedName(), is("eas:x"));
+        assertThat(((DefaultElement) in11.elements().get(0)).getText(), is("83506"));
+        assertTrue(((DefaultElement) in11.elements().get(1)).elements().isEmpty());
+        assertThat(((DefaultElement) in11.elements().get(1)).getQualifiedName(), is("eas:y"));
+        assertThat(((DefaultElement) in11.elements().get(1)).getText(), is("455210"));
+
+        assertThat(in12.elements().size(), is(2));
+        assertThat(in12.getQualifiedName(), is("eas:polygon-point"));
+        assertTrue(((DefaultElement) in12.elements().get(0)).elements().isEmpty());
+        assertThat(((DefaultElement) in12.elements().get(0)).getQualifiedName(), is("eas:x"));
+        assertThat(((DefaultElement) in12.elements().get(0)).getText(), is("83513"));
+        assertTrue(((DefaultElement) in12.elements().get(1)).elements().isEmpty());
+        assertThat(((DefaultElement) in12.elements().get(1)).getQualifiedName(), is("eas:y"));
+        assertThat(((DefaultElement) in12.elements().get(1)).getText(), is("455200"));
+
+        assertThat(in13.elements().size(), is(2));
+        assertThat(in13.getQualifiedName(), is("eas:polygon-point"));
+        assertTrue(((DefaultElement) in13.elements().get(0)).elements().isEmpty());
+        assertThat(((DefaultElement) in13.elements().get(0)).getQualifiedName(), is("eas:x"));
+        assertThat(((DefaultElement) in13.elements().get(0)).getText(), is("83499"));
+        assertTrue(((DefaultElement) in13.elements().get(1)).elements().isEmpty());
+        assertThat(((DefaultElement) in13.elements().get(1)).getQualifiedName(), is("eas:y"));
+        assertThat(((DefaultElement) in13.elements().get(1)).getText(), is("455189"));
+
+        assertThat(in14.elements().size(), is(2));
+        assertThat(in14.getQualifiedName(), is("eas:polygon-point"));
+        assertTrue(((DefaultElement) in14.elements().get(0)).elements().isEmpty());
+        assertThat(((DefaultElement) in14.elements().get(0)).getQualifiedName(), is("eas:x"));
+        assertThat(((DefaultElement) in14.elements().get(0)).getText(), is("83506"));
+        assertTrue(((DefaultElement) in14.elements().get(1)).elements().isEmpty());
+        assertThat(((DefaultElement) in14.elements().get(1)).getQualifiedName(), is("eas:y"));
+        assertThat(((DefaultElement) in14.elements().get(1)).getText(), is("455210"));
+
+        assertTrue(inPlace2.elements().isEmpty());
+        assertThat(inPlace2.getQualifiedName(), is("eas:place"));
+        assertThat(inPlace2.getText(), is("hole2"));
+
+        assertThat(in21.elements().size(), is(2));
+        assertThat(in21.getQualifiedName(), is("eas:polygon-point"));
+        assertTrue(((DefaultElement) in21.elements().get(0)).elements().isEmpty());
+        assertThat(((DefaultElement) in21.elements().get(0)).getQualifiedName(), is("eas:x"));
+        assertThat(((DefaultElement) in21.elements().get(0)).getText(), is("83506"));
+        assertTrue(((DefaultElement) in21.elements().get(1)).elements().isEmpty());
+        assertThat(((DefaultElement) in21.elements().get(1)).getQualifiedName(), is("eas:y"));
+        assertThat(((DefaultElement) in21.elements().get(1)).getText(), is("455210"));
+
+        assertThat(in22.elements().size(), is(2));
+        assertThat(in22.getQualifiedName(), is("eas:polygon-point"));
+        assertTrue(((DefaultElement) in22.elements().get(0)).elements().isEmpty());
+        assertThat(((DefaultElement) in22.elements().get(0)).getQualifiedName(), is("eas:x"));
+        assertThat(((DefaultElement) in22.elements().get(0)).getText(), is("83513"));
+        assertTrue(((DefaultElement) in22.elements().get(1)).elements().isEmpty());
+        assertThat(((DefaultElement) in22.elements().get(1)).getQualifiedName(), is("eas:y"));
+        assertThat(((DefaultElement) in22.elements().get(1)).getText(), is("455200"));
+
+        assertThat(in23.elements().size(), is(2));
+        assertThat(in23.getQualifiedName(), is("eas:polygon-point"));
+        assertTrue(((DefaultElement) in23.elements().get(0)).elements().isEmpty());
+        assertThat(((DefaultElement) in23.elements().get(0)).getQualifiedName(), is("eas:x"));
+        assertThat(((DefaultElement) in23.elements().get(0)).getText(), is("83499"));
+        assertTrue(((DefaultElement) in23.elements().get(1)).elements().isEmpty());
+        assertThat(((DefaultElement) in23.elements().get(1)).getQualifiedName(), is("eas:y"));
+        assertThat(((DefaultElement) in23.elements().get(1)).getText(), is("455189"));
+
+        assertThat(in24.elements().size(), is(2));
+        assertThat(in24.getQualifiedName(), is("eas:polygon-point"));
+        assertTrue(((DefaultElement) in24.elements().get(0)).elements().isEmpty());
+        assertThat(((DefaultElement) in24.elements().get(0)).getQualifiedName(), is("eas:x"));
+        assertThat(((DefaultElement) in24.elements().get(0)).getText(), is("83506"));
+        assertTrue(((DefaultElement) in24.elements().get(1)).elements().isEmpty());
+        assertThat(((DefaultElement) in24.elements().get(1)).getQualifiedName(), is("eas:y"));
+        assertThat(((DefaultElement) in24.elements().get(1)).getText(), is("455210"));
     }
 
     @Test
