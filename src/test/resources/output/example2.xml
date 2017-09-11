@@ -206,6 +206,25 @@
                         <eas:y>4.344215</eas:y>
                     </eas:polygon-point>
                 </eas:polygon-interior>
+                <eas:polygon-interior>
+                    <eas:place>hole2</eas:place>
+                    <eas:polygon-point>
+                        <eas:x>52.080542</eas:x>
+                        <eas:y>4.344215</eas:y>
+                    </eas:polygon-point>
+                    <eas:polygon-point>
+                        <eas:x>52.080450</eas:x>
+                        <eas:y>4.344323</eas:y>
+                    </eas:polygon-point>
+                    <eas:polygon-point>
+                        <eas:x>52.080357</eas:x>
+                        <eas:y>4.344110</eas:y>
+                    </eas:polygon-point>
+                    <eas:polygon-point>
+                        <eas:x>52.080542</eas:x>
+                        <eas:y>4.344215</eas:y>
+                    </eas:polygon-point>
+                </eas:polygon-interior>
             </eas:polygon>
         </eas:spatial>
     </emd:coverage>
