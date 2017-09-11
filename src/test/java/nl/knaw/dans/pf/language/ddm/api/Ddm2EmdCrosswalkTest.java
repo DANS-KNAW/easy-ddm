@@ -441,37 +441,37 @@ public class Ddm2EmdCrosswalkTest {
     @Test
     public void spatialPolygon() throws Exception {
         // @formatter:off
-    String ddm = "<?xml version='1.0' encoding='utf-8'?><ddm:DDM" +
-            "  xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'" +
-            "  xmlns:gml='http://www.opengis.net/gml'" +
-            "  xmlns:dcx-gml='http://easy.dans.knaw.nl/schemas/dcx/gml/'>" +
-            " <ddm:dcmiMetadata>" +
-            "   <dcx-gml:spatial>" +
-            "     <Polygon xmlns='http://www.opengis.net/gml' srsName='http://www.opengis.net/def/crs/EPSG/0/4326'>" +
-            "       <description>A triangle between DANS, NWO and the railway station</description>" +
-            "       <exterior>" +
-            "         <LinearRing>" +
-            "           <description>main triangle</description>" +
-            "           <posList>52.08110 4.34521 52.08071 4.34422 52.07913 4.34332 52.08110 4.34521</posList>" +
-            "         </LinearRing>" +
-            "       </exterior>" +
-            "       <interior>" +
-            "         <LinearRing>" +
-            "           <description>hole1</description>" +
-            "           <posList>52.080542 4.344215 52.080450 4.344323 52.080357 4.344110 52.080542 4.344215</posList>" +
-            "         </LinearRing>" +
-            "       </interior>" +
-            "       <interior>" +
-            "         <LinearRing>" +
-            "           <description>hole2</description>" +
-            "           <posList>52.080542 4.344215 52.080450 4.344323 52.080357 4.344110 52.080542 4.344215</posList>" +
-            "         </LinearRing>" +
-            "       </interior>" +
-            "     </Polygon>" +
-            "   </dcx-gml:spatial>" +
-            " </ddm:dcmiMetadata>" +
-            "</ddm:DDM>";
-    // @formatter:on
+        String ddm = "<?xml version='1.0' encoding='utf-8'?><ddm:DDM" +
+      "  xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'" +
+          "  xmlns:gml='http://www.opengis.net/gml'" +
+          "  xmlns:dcx-gml='http://easy.dans.knaw.nl/schemas/dcx/gml/'>" +
+          " <ddm:dcmiMetadata>" +
+          "   <dcx-gml:spatial>" +
+          "     <Polygon xmlns='http://www.opengis.net/gml' srsName='http://www.opengis.net/def/crs/EPSG/0/4326'>" +
+          "       <description>A triangle between DANS, NWO and the railway station</description>" +
+          "       <exterior>" +
+          "         <LinearRing>" +
+          "           <description>main triangle</description>" +
+          "           <posList>52.08110 4.34521 52.08071 4.34422 52.07913 4.34332 52.08110 4.34521</posList>" +
+          "         </LinearRing>" +
+          "       </exterior>" +
+          "       <interior>" +
+          "         <LinearRing>" +
+          "           <description>hole1</description>" +
+          "           <posList>52.080542 4.344215 52.080450 4.344323 52.080357 4.344110 52.080542 4.344215</posList>" +
+          "         </LinearRing>" +
+          "       </interior>" +
+          "       <interior>" +
+          "         <LinearRing>" +
+          "           <description>hole2</description>" +
+          "           <posList>52.080542 4.344215 52.080450 4.344323 52.080357 4.344110 52.080542 4.344215</posList>" +
+          "         </LinearRing>" +
+          "       </interior>" +
+          "     </Polygon>" +
+          "   </dcx-gml:spatial>" +
+          " </ddm:dcmiMetadata>" +
+          "</ddm:DDM>";
+      // @formatter:on
 
         DefaultElement coverage = firstEmdElementFrom(ddm);
         DefaultElement spatial = (DefaultElement) coverage.elements().get(0);
@@ -800,18 +800,18 @@ public class Ddm2EmdCrosswalkTest {
     @Test
     public void license() throws Exception {
         // @formatter:off
-    String ddm = "<?xml version='1.0' encoding='utf-8'?><ddm:DDM" +
-            "  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'" +
-            "  xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'" +
-            "  xmlns:dc='http://purl.org/dc/elements/1.1/'" +
-            "  xmlns:dcterms='http://purl.org/dc/terms/'" +
-            "  xmlns:abr='http://www.den.nl/standaard/166/Archeologisch-Basisregister/'" +
-            ">" +
-            " <ddm:dcmiMetadata>" +
-            "  <dcterms:license xsi:type='dcterms:URI'>http://opensource.org/licenses/BSD-2-Clause</dcterms:license> "+
-            " </ddm:dcmiMetadata>" +
-            "</ddm:DDM>";
-    // @formatter:on
+        String ddm = "<?xml version='1.0' encoding='utf-8'?><ddm:DDM" +
+                "  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'" +
+                "  xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'" +
+                "  xmlns:dc='http://purl.org/dc/elements/1.1/'" +
+                "  xmlns:dcterms='http://purl.org/dc/terms/'" +
+                "  xmlns:abr='http://www.den.nl/standaard/166/Archeologisch-Basisregister/'" +
+                ">" +
+                " <ddm:dcmiMetadata>" +
+                "  <dcterms:license xsi:type='dcterms:URI'>http://opensource.org/licenses/BSD-2-Clause</dcterms:license> "+
+                " </ddm:dcmiMetadata>" +
+                "</ddm:DDM>";
+        // @formatter:on
 
         DefaultElement top = firstEmdElementFrom(ddm);
         DefaultElement sub = (DefaultElement) top.elements().get(0);
