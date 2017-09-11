@@ -162,13 +162,17 @@ public class EasSpatialHandler extends CrosswalkHandler<EasyMetadata> {
             return null;
         }
 
-        // TODO add support for RD/WGS84
+        String easScheme = srsName2EasScheme(foundSRS);
+        boolean isRD = easScheme != null && easScheme.contentEquals("RD");
         List<PolygonPoint> result = new ArrayList<PolygonPoint>(length / 2);
         for (int i = 0; i < length; i += 2) {
             String x = coordinates[i];
             String y = coordinates[i + 1];
 
-            result.add(new PolygonPoint(x, y));
+            if (isRD)
+                result.add(new PolygonPoint(y, x));
+            else
+                result.add(new PolygonPoint(x, y));
         }
         return result;
     }
