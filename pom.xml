@@ -30,7 +30,7 @@
     <inceptionYear>2014</inceptionYear>
     <properties>
         <easy.schema.version>1.13.3</easy.schema.version>
-        <easy.emd.version>3.5</easy.emd.version>
+        <easy.emd.version>3.6</easy.emd.version>
     </properties>
     <scm>
         <developerConnection>scm:git:https://github.com/DANS-KNAW/${project.artifactId}</developerConnection>
