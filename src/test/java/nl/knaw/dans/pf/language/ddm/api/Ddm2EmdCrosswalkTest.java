@@ -994,6 +994,36 @@ public class Ddm2EmdCrosswalkTest {
     }
 
     @Test
+    public void ddmSubject() throws Exception {
+        // @formatter:off
+        String ddm = "<?xml version='1.0' encoding='utf-8'?><ddm:DDM" +
+                "  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'" +
+                "  xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'" +
+                "  xmlns:dc='http://purl.org/dc/elements/1.1/'" +
+                "  xmlns:abr='http://www.den.nl/standaard/166/Archeologisch-Basisregister/'>" +
+                " <ddm:dcmiMetadata>" +
+                "  <ddm:subject subjectScheme='Art and Architecture Thesaurus'" +
+                "               schemeURI='http://vocab.getty.edu/aat/'" +
+                "               valueURI='http://vocab.getty.edu/aat/300209303'" +
+                "               xml:lang='en'>fibulae</ddm:subject>" +
+                " </ddm:dcmiMetadata>" +
+                "</ddm:DDM>";
+        // @formatter:on
+
+        DefaultElement top = firstEmdElementFrom(ddm);
+
+        DefaultElement sub = (DefaultElement) top.elements().get(0);
+
+        assertThat(top.elements().size(), is(1));
+        assertThat(top.getQualifiedName(), is("emd:subject"));
+        assertThat(sub.getQualifiedName(), is("dc:subject"));
+        assertThat(sub.getText(), is("fibulae"));
+        assertThat(sub.attributeCount(), is(1));
+        assertThat(sub.attribute("lang").getQualifiedName(), is("xml:lang"));
+        assertThat(sub.attribute("lang").getValue(), is("en"));
+    }
+
+    @Test
     public void streamingSurrogateRelation() throws Exception {
         // @formatter:off
         String ddm = "<?xml version='1.0' encoding='utf-8'?><ddm:DDM" +

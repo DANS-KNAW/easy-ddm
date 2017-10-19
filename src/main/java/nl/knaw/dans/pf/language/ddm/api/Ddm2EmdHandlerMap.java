@@ -434,6 +434,7 @@ public class Ddm2EmdHandlerMap implements CrosswalkHandlerMap<EasyMetadata> {
         final BasicStringHandler abrSubjectHandler = new SubjectHandler(NameSpace.ABR);
         map.put("/dc:subject", subjectHandler);
         map.put("/dcterms:subject", subjectHandler);
+        map.put("/ddm:subject", subjectHandler);
         map.put("ABRcomplex/dc:subject", abrSubjectHandler);
         map.put("ABRcomplex/dcterms:subject", abrSubjectHandler);
         // <ref-panelId>dc.subject.abr</ref-panelId>
