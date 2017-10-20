@@ -18,6 +18,7 @@
     <emd:subject>
         <dc:subject>school leavers</dc:subject>
         <dc:subject>labour market</dc:subject>
+        <dc:subject xml:lang="en">fibulae</dc:subject>
     </emd:subject>
     <emd:description>
         <dc:description xml:lang="la">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</dc:description>
