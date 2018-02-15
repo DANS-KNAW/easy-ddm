@@ -1024,6 +1024,36 @@ public class Ddm2EmdCrosswalkTest {
     }
 
     @Test
+    public void ddmTemporal() throws Exception {
+        // @formatter:off
+        String ddm = "<?xml version='1.0' encoding='utf-8'?><ddm:DDM" +
+                "  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'" +
+                "  xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'" +
+                "  xmlns:dc='http://purl.org/dc/elements/1.1/'" +
+                "  xmlns:abr='http://www.den.nl/standaard/166/Archeologisch-Basisregister/'>" +
+                " <ddm:dcmiMetadata>" +
+                "  <ddm:temporal subjectScheme='Archeologisch Basis Register'" +
+                "                schemeURI='https://data.cultureelerfgoed.nl/term/id/abr/b6df7840-67bf-48bd-aa56-7ee39435d2ed'" +
+                "                valueURI='https://data.cultureelerfgoed.nl/term/id/abr/697d935b-1d84-4145-86ce-1dcd2185a705'" +
+                "                xml:lang='nld'>Recent</ddm:temporal>" +
+                " </ddm:dcmiMetadata>" +
+                "</ddm:DDM>";
+        // @formatter:on
+
+        DefaultElement top = firstEmdElementFrom(ddm);
+
+        DefaultElement sub = (DefaultElement) top.elements().get(0);
+
+        assertThat(top.elements().size(), is(1));
+        assertThat(top.getQualifiedName(), is("emd:coverage"));
+        assertThat(sub.getQualifiedName(), is("dct:temporal"));
+        assertThat(sub.getText(), is("Recent"));
+        assertThat(sub.attributeCount(), is(1));
+        assertThat(sub.attribute("lang").getQualifiedName(), is("xml:lang"));
+        assertThat(sub.attribute("lang").getValue(), is("nld"));
+    }
+
+    @Test
     public void streamingSurrogateRelation() throws Exception {
         // @formatter:off
         String ddm = "<?xml version='1.0' encoding='utf-8'?><ddm:DDM" +
