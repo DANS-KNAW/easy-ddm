@@ -424,7 +424,9 @@ public class Ddm2EmdHandlerMap implements CrosswalkHandlerMap<EasyMetadata> {
         // <ref-panelId>eas.spatial.box</ref-panelId>
         // getEmdCoverage().get...
 
-        map.put("/dcterms:temporal", new TermsTemporalHandler());
+        final TermsTemporalHandler temporalHandler = new TermsTemporalHandler();
+        map.put("/dcterms:temporal", temporalHandler);
+        map.put("/ddm:temporal", temporalHandler);
         map.put("ABRperiode/dcterms:temporal", new TermsTemporalHandler(NameSpace.ABR));
         // <ref-panelId>dcterms.temporal</ref-panelId>
         // <ref-panelId>dcterms.temporal.abr</ref-panelId>
