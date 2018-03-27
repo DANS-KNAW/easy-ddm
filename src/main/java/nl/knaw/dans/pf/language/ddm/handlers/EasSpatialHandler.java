@@ -91,8 +91,15 @@ public class EasSpatialHandler extends CrosswalkHandler<EasyMetadata> {
             state = state.getNextState();
         else if ("exterior".equals(localName) && state == P_DESCR)
             state = state.getNextState();
+        else if ("exterior".equals(localName) && state == POLYGON)
+            // no description in the polygon
+            state = P_DESCR.getNextState();
         else if ("posList".equals(localName) && (state == E_DESCR || state == I_DESCR))
             state = state.getNextState();
+        else if ("posList".equals(localName) && state == EXTERIOR)
+            state = E_DESCR.getNextState();
+        else if ("posList".equals(localName) && state == INTERIOR)
+            state = I_DESCR.getNextState();
         else if ("interior".equals(localName))
             state = INTERIOR;
     }
@@ -141,6 +148,11 @@ public class EasSpatialHandler extends CrosswalkHandler<EasyMetadata> {
             Spatial.Polygon polygon = createPolygon();
             getTarget().getEmdCoverage().getEasSpatial().add(new Spatial(polygonDescription, polygon));
             state = state.getNextState();
+        } else if ("Polygon".equals(localName) && state == INTERIOR) {
+            // no interior(s) found
+            Spatial.Polygon polygon = createPolygon();
+            getTarget().getEmdCoverage().getEasSpatial().add(new Spatial(polygonDescription, polygon));
+            state = END_POLYGON.getNextState();
         } else if ("Point".equals(localName) && pos != null)
             getTarget().getEmdCoverage().getEasSpatial().add(new Spatial(description, pos));
         else if ("Envelope".equals(localName) && lower != null && upper != null)
