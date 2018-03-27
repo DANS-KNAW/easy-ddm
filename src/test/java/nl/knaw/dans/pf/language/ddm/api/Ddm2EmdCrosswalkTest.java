@@ -32,6 +32,32 @@ import static org.junit.Assert.assertTrue;
 public class Ddm2EmdCrosswalkTest {
 
     @Test
+    public void ddmAccessRight() throws Exception {
+        // @formatter:off
+        String ddm = "<?xml version='1.0' encoding='utf-8'?><ddm:DDM"
+            + "  xmlns:dc='http://purl.org/dc/elements/1.1/'"
+            + "  xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'"
+            + "  xmlns:dcterms='http://purl.org/dc/terms/'"
+            + "  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>"
+            + "  <ddm:profile>"
+            + "    <ddm:accessRights>OPEN_ACCESS</ddm:accessRights>"
+            + "  </ddm:profile>"
+            + "</ddm:DDM>";
+        // @formatter:on
+
+        DefaultElement top = firstEmdElementFrom(ddm);
+        assertThat(top.elements().size(), is(1));
+        assertThat(top.getQualifiedName(), is("emd:rights"));
+
+        DefaultElement sub = (DefaultElement) top.elements().get(0);
+        assertThat(sub.getQualifiedName(), is("dct:accessRights"));
+        assertThat(sub.getText(), is("OPEN_ACCESS"));
+        assertThat(sub.attributeCount(), is(1));
+        assertThat(sub.attribute("schemeId").getQualifiedName(), is("eas:schemeId"));
+        assertThat(sub.attribute("schemeId").getValue(), is("common.dcterms.accessrights"));
+    }
+
+    @Test
     public void identifierWithIdTypeEDNA() throws Exception {
         // @formatter:off
         String ddm = "<?xml version='1.0' encoding='utf-8'?><ddm:DDM"

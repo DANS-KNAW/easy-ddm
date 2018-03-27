@@ -229,7 +229,7 @@
         </eas:spatial>
     </emd:coverage>
     <emd:rights>
-        <dct:accessRights>OPEN_ACCESS</dct:accessRights>
+        <dct:accessRights eas:schemeId="common.dcterms.accessrights">OPEN_ACCESS</dct:accessRights>
         <dct:rightsHolder>Houder van rechten</dct:rightsHolder>
     </emd:rights>
     <emd:audience>

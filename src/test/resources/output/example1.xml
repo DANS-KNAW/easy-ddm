@@ -49,7 +49,7 @@
         </eas:isPartOf>
     </emd:relation>
     <emd:rights>
-        <dct:accessRights>OPEN_ACCESS_FOR_REGISTERED_USERS</dct:accessRights>
+        <dct:accessRights eas:schemeId="common.dcterms.accessrights">OPEN_ACCESS_FOR_REGISTERED_USERS</dct:accessRights>
         <dct:license>http://opensource.org/licenses/BSD-2-Clause</dct:license>
     </emd:rights>
     <emd:audience>

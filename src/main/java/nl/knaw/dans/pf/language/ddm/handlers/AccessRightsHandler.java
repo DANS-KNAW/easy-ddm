@@ -27,6 +27,7 @@ public class AccessRightsHandler extends BasicStringHandler {
     public final void finishElement(final String uri, final String localName) throws SAXException {
         final List<BasicString> accessRightsList = getTarget().getEmdRights().getTermsAccessRights();
         final BasicString basicString = createBasicString(uri, localName);
+        basicString.setSchemeId("common.dcterms.accessrights");
         // skip access rights beyond the ddm:profile
         if (accessRightsList.size() <= 0 && basicString != null)
             accessRightsList.add(basicString);
