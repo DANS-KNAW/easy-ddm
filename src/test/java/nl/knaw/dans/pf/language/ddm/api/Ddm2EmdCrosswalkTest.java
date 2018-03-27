@@ -888,6 +888,30 @@ public class Ddm2EmdCrosswalkTest {
     }
 
     @Test
+    public void spatialISO3166() throws Exception {
+        // @formatter:off
+        String ddm = "<?xml version='1.0' encoding='utf-8'?><ddm:DDM" +
+                "  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'" +
+                "  xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'" +
+                "  xmlns:dcterms='http://purl.org/dc/terms/'" +
+                ">" +
+                " <ddm:dcmiMetadata>" +
+                "  <dcterms:spatial xsi:type=\"dcterms:ISO3166\">NLD</dcterms:spatial>"+
+                " </ddm:dcmiMetadata>" +
+                "</ddm:DDM>";
+        // @formatter:on
+
+        DefaultElement top = firstEmdElementFrom(ddm);
+
+        DefaultElement sub = (DefaultElement) top.elements().get(0);
+
+        assertThat(top.elements().size(), is(1));
+        assertThat(top.getQualifiedName(), is("emd:coverage"));
+        assertThat(sub.getQualifiedName(), is("dct:spatial"));
+        assertThat(sub.getText(), is("Netherlands"));
+    }
+
+    @Test
     public void temporalPlainText() throws Exception {
         // @formatter:off
         String ddm = "<?xml version='1.0' encoding='utf-8'?><ddm:DDM" +

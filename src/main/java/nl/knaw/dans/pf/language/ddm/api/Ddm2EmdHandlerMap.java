@@ -56,6 +56,7 @@ import nl.knaw.dans.pf.language.ddm.handlers.SkippedFieldHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.SubjectHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.TermsRightsHolderHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.TermsSpatialHandler;
+import nl.knaw.dans.pf.language.ddm.handlers.TermsSpatialIso3166Handler;
 import nl.knaw.dans.pf.language.ddm.handlers.TermsTemporalHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.TitleHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.ArchisIdentifierHandler;
@@ -417,6 +418,7 @@ public class Ddm2EmdHandlerMap implements CrosswalkHandlerMap<EasyMetadata> {
 
         final EasSpatialHandler easSpatialHandler = new EasSpatialHandler();
         map.put("/dcterms:spatial", new TermsSpatialHandler());
+        map.put("ISO3166/dcterms:spatial", new TermsSpatialIso3166Handler());
         map.put("/dcx-gml:spatial", easSpatialHandler);
         map.put("SimpleGMLType/dcterms:spatial", easSpatialHandler);
         // <ref-panelId>dcterms.spatial</ref-panelId>
