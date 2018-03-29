@@ -1247,8 +1247,8 @@ public class Ddm2EmdCrosswalkTest {
 
         assertTrue(place.elements().isEmpty());
         assertThat(place.getQualifiedName(), is("eas:place"));
-          // empty here, because this originates from a BasicString (and can therefore contain attributes, which requires a render),
-          // while the eas:place in exterior/interior is a String
+        // empty here, because this originates from a BasicString (and can therefore contain attributes, which requires a render),
+        // while the eas:place in exterior/interior is a String
         assertThat(place.getText(), is(""));
 
         assertThat(polygon.elements().size(), is(3));
