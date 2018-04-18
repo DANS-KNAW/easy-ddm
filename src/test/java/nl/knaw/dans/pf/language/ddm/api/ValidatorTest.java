@@ -83,11 +83,11 @@ public class ValidatorTest {
     }
 
     private static boolean lastDdmIsPublished() {
-      File other = RECENT_SCHEMAS.get(new File(DDM.xsd).getName());
-      String targetSchema = other.toString().replace("target/easy-schema/", "");
+        File other = RECENT_SCHEMAS.get(new File(DDM.xsd).getName());
+        String targetSchema = other.toString().replace("target/easy-schema/", "");
 
-      String ddmSchema = DDM.xsd.replace("http://easy.dans.knaw.nl/schemas/", "");
+        String ddmSchema = DDM.xsd.replace("http://easy.dans.knaw.nl/schemas/", "");
 
-      return targetSchema.equals(ddmSchema);
+        return targetSchema.equals(ddmSchema);
     }
 }

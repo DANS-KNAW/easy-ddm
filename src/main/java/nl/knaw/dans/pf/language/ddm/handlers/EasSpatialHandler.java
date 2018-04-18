@@ -42,13 +42,13 @@ import static nl.knaw.dans.pf.language.ddm.handlers.PolygonParsingState.P_DESCR;
 
 public class EasSpatialHandler extends CrosswalkHandler<EasyMetadata> {
 
-  private final SpatialPointHandler pointHandler;
-  private final SpatialBoxHandler boxHandler;
+    private final SpatialPointHandler pointHandler;
+    private final SpatialBoxHandler boxHandler;
 
-  public EasSpatialHandler(SpatialPointHandler pointHandler, SpatialBoxHandler boxHandler) {
-    this.pointHandler = pointHandler;
-    this.boxHandler = boxHandler;
-  }
+    public EasSpatialHandler(SpatialPointHandler pointHandler, SpatialBoxHandler boxHandler) {
+        this.pointHandler = pointHandler;
+        this.boxHandler = boxHandler;
+    }
 
     public static final String EPSG_URL_WGS84 = "http://www.opengis.net/def/crs/EPSG/0/4326";
     public static final String EPSG_URN_WGS84 = "urn:ogc:def:crs:EPSG::4326";
@@ -92,11 +92,9 @@ public class EasSpatialHandler extends CrosswalkHandler<EasyMetadata> {
         checkSRS(attributes);
         if ("Point".equals(localName)) {
             this.pointHandler.setSRS(foundSRS);
-        }
-        else if ("Envelope".equals(localName)) {
+        } else if ("Envelope".equals(localName)) {
             this.boxHandler.setSRS(foundSRS);
-        }
-        else if ("Polygon".equals(localName) && state == null)
+        } else if ("Polygon".equals(localName) && state == null)
             this.state = POLYGON;
         else if ("description".equals(localName) && (state == POLYGON || state == EXTERIOR || state == INTERIOR))
             state = state.getNextState();
@@ -133,8 +131,7 @@ public class EasSpatialHandler extends CrosswalkHandler<EasyMetadata> {
                 exteriorDescription = getCharsSinceStart().trim();
             else if (state == I_DESCR)
                 interiorDescription = getCharsSinceStart().trim();
-        }
-        else if ("posList".equals(localName)) {
+        } else if ("posList".equals(localName)) {
             if (state == E_POSLIST) {
                 exteriorPoints = createPolygonPoints();
                 state = state.getNextState();
@@ -197,7 +194,7 @@ public class EasSpatialHandler extends CrosswalkHandler<EasyMetadata> {
     /**
      * EASY now only supports schemes (for coordinate systems) 'RD' and 'degrees' (WGS84) in the EMD. The official EPSG codes are 28992 for RD in meters x,y and
      * 4326 for WGS84 in decimal degrees lat,lon
-     *
+     * 
      * @param srsName
      * @return
      */
