@@ -16,6 +16,7 @@
 package nl.knaw.dans.pf.language.ddm.handlers;
 
 import nl.knaw.dans.pf.language.ddm.handlermaps.NameSpace;
+import nl.knaw.dans.pf.language.ddm.handlers.spatial.SpatialPointHandler;
 import nl.knaw.dans.pf.language.emd.EasyMetadata;
 import nl.knaw.dans.pf.language.emd.types.PolygonPart;
 import nl.knaw.dans.pf.language.emd.types.PolygonPoint;
@@ -41,6 +42,13 @@ import static nl.knaw.dans.pf.language.ddm.handlers.PolygonParsingState.POLYGON;
 import static nl.knaw.dans.pf.language.ddm.handlers.PolygonParsingState.P_DESCR;
 
 public class EasSpatialHandler extends CrosswalkHandler<EasyMetadata> {
+
+  private final SpatialPointHandler pointHandler;
+
+  public EasSpatialHandler(SpatialPointHandler pointHandler) {
+    this.pointHandler = pointHandler;
+  }
+
     public static final String EPSG_URL_WGS84 = "http://www.opengis.net/def/crs/EPSG/0/4326";
     public static final String EPSG_URN_WGS84 = "urn:ogc:def:crs:EPSG::4326";
     public static final String EPSG_URL_RD = "http://www.opengis.net/def/crs/EPSG/0/28992";
@@ -51,7 +59,7 @@ public class EasSpatialHandler extends CrosswalkHandler<EasyMetadata> {
 
     private static final String SRS_NAME = "srsName";
     private String description = null;
-    private Point lower, upper, pos = null;
+    private Point lower, upper = null;
 
     private PolygonParsingState state = null;
     private String polygonDescription = null;
@@ -71,7 +79,7 @@ public class EasSpatialHandler extends CrosswalkHandler<EasyMetadata> {
     @Override
     protected void initFirstElement(final String uri, final String localName, final Attributes attributes) {
         description = null;
-        lower = upper = pos = null;
+        lower = upper = null;
         state = null;
         polygonDescription = exteriorDescription = interiorDescription = null;
         exteriorPoints = null;
@@ -85,7 +93,10 @@ public class EasSpatialHandler extends CrosswalkHandler<EasyMetadata> {
     @Override
     protected void initElement(final String uri, final String localName, final Attributes attributes) {
         checkSRS(attributes);
-        if ("Polygon".equals(localName) && state == null)
+        if ("Point".equals(localName)) {
+            this.pointHandler.setSRS(foundSRS);
+        }
+        else if ("Polygon".equals(localName) && state == null)
             this.state = POLYGON;
         else if ("description".equals(localName) && (state == POLYGON || state == EXTERIOR || state == INTERIOR))
             state = state.getNextState();
@@ -124,8 +135,7 @@ public class EasSpatialHandler extends CrosswalkHandler<EasyMetadata> {
                 interiorDescription = getCharsSinceStart().trim();
             else
                 description = getCharsSinceStart().trim();
-        } else if ("pos".equals(localName))
-            pos = createPoint();
+        }
         else if ("lowerCorner".equals(localName))
             lower = createPoint();
         else if ("upperCorner".equals(localName))
@@ -153,8 +163,7 @@ public class EasSpatialHandler extends CrosswalkHandler<EasyMetadata> {
             Spatial.Polygon polygon = createPolygon();
             getTarget().getEmdCoverage().getEasSpatial().add(new Spatial(polygonDescription, polygon));
             state = END_POLYGON.getNextState();
-        } else if ("Point".equals(localName) && pos != null)
-            getTarget().getEmdCoverage().getEasSpatial().add(new Spatial(description, pos));
+        }
         else if ("Envelope".equals(localName) && lower != null && upper != null)
             getTarget().getEmdCoverage().getEasSpatial().add(new Spatial(description, createBox()));
         // other types than point/box/polygon not supported by EMD: don't warn
