@@ -61,6 +61,7 @@ import nl.knaw.dans.pf.language.ddm.handlers.TermsTemporalHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.TitleHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.ArchisIdentifierHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.IdentifierHandler;
+import nl.knaw.dans.pf.language.ddm.handlers.spatial.SpatialBoxHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.spatial.SpatialPointHandler;
 import nl.knaw.dans.pf.language.ddm.handlertypes.BasicDateHandler;
 import nl.knaw.dans.pf.language.ddm.handlertypes.BasicIdentifierHandler;
@@ -419,12 +420,14 @@ public class Ddm2EmdHandlerMap implements CrosswalkHandlerMap<EasyMetadata> {
         // EasyMetadataImpl: EmdCoverage emdCoverage;
 
         final SpatialPointHandler spatialPointHandler = new SpatialPointHandler();
-        final EasSpatialHandler easSpatialHandler = new EasSpatialHandler(spatialPointHandler);
+        final SpatialBoxHandler spatialBoxHandler = new SpatialBoxHandler();
+        final EasSpatialHandler easSpatialHandler = new EasSpatialHandler(spatialPointHandler, spatialBoxHandler);
         map.put("/dcterms:spatial", new TermsSpatialHandler());
         map.put("ISO3166/dcterms:spatial", new TermsSpatialIso3166Handler());
         map.put("/dcx-gml:spatial", easSpatialHandler);
         map.put("SimpleGMLType/dcterms:spatial", easSpatialHandler);
         map.put("/gml:Point", spatialPointHandler);
+        map.put("/gml:boundedBy", spatialBoxHandler);
         // <ref-panelId>dcterms.spatial</ref-panelId>
         // <ref-panelId>eas.spatial.point</ref-panelId>
         // <ref-panelId>eas.spatial.box</ref-panelId>
