@@ -57,14 +57,15 @@ public class ValidatorTest {
 
     @Test
     public void testDDMValidation() throws Exception {
-        assumeTrue("last DDM is published", DDM.equals(RECENT_SCHEMAS.get(new File(DDM.xsd).getName())));
+        assumeTrue("last DDM is published", lastDdmIsPublished());
         XMLErrorHandler handler = new DDMValidator().validate(new File("src/test/resources/input/ddm.xml"));
-        assertTrue(handler.passed());
+
+        assertTrue(handler.getMessages(), handler.passed());
     }
 
     @Test
     public void testDDMValidationWithDOI() throws Exception {
-        assumeTrue("last DDM is published", DDM.equals(RECENT_SCHEMAS.get(new File(DDM.xsd).getName())));
+        assumeTrue("last DDM is published", lastDdmIsPublished());
         XMLErrorHandler handler = new DDMValidator().validate(new File("src/test/resources/input/ddm-with-doi.xml"));
         assertTrue(handler.passed());
     }
@@ -79,5 +80,14 @@ public class ValidatorTest {
         catch (IOException e) {
             return false;
         }
+    }
+
+    private static boolean lastDdmIsPublished() {
+      File other = RECENT_SCHEMAS.get(new File(DDM.xsd).getName());
+      String targetSchema = other.toString().replace("target/easy-schema/", "");
+
+      String ddmSchema = DDM.xsd.replace("http://easy.dans.knaw.nl/schemas/", "");
+
+      return targetSchema.equals(ddmSchema);
     }
 }

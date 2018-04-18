@@ -35,7 +35,7 @@
                 <dcx-dai:initials>I</dcx-dai:initials>
                 <dcx-dai:insertions></dcx-dai:insertions>
                 <dcx-dai:surname>Lastname</dcx-dai:surname>
-                <dcx-dai:ISNI>ISNI:12341234123x</dcx-dai:ISNI>
+                <dcx-dai:ISNI>1111 2222 8150 8690</dcx-dai:ISNI>
                 <dcx-dai:organization>
                     <dcx-dai:name xml:lang="en">DANS</dcx-dai:name>
                 </dcx-dai:organization>
