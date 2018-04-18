@@ -93,7 +93,7 @@ public class SpatialBoxHandler extends CrosswalkHandler<EasyMetadata> {
         if (type != null)
             warning("ignored: not yet implemented");
 
-        final String[] coordinates = getCharsSinceStart().trim().split(" ");
+        final String[] coordinates = getCharsSinceStart().trim().split("\\s+");
         if (coordinates.length < 2) {
             error("expected at least two coordinate numbers separated with a space");
             return null;
