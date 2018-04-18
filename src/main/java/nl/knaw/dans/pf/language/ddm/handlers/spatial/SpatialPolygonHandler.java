@@ -18,7 +18,7 @@ package nl.knaw.dans.pf.language.ddm.handlers.spatial;
 import nl.knaw.dans.pf.language.emd.types.PolygonPart;
 import nl.knaw.dans.pf.language.emd.types.PolygonPoint;
 import nl.knaw.dans.pf.language.emd.types.Spatial;
-import nl.knaw.dans.pf.language.emd.types.Spatial.Polygon;
+import nl.knaw.dans.pf.language.emd.types.Polygon;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 
