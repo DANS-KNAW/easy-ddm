@@ -15,30 +15,28 @@
  */
 package nl.knaw.dans.pf.language.ddm.handlers.spatial;
 
-import nl.knaw.dans.pf.language.emd.EasyMetadata;
 import nl.knaw.dans.pf.language.emd.types.PolygonPart;
 import nl.knaw.dans.pf.language.emd.types.PolygonPoint;
 import nl.knaw.dans.pf.language.emd.types.Spatial;
-import nl.knaw.dans.pf.language.xml.crosswalk.CrosswalkHandler;
+import nl.knaw.dans.pf.language.emd.types.Spatial.Polygon;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static nl.knaw.dans.pf.language.ddm.handlers.spatial.PolygonParsingState.*;
+import static nl.knaw.dans.pf.language.ddm.handlers.spatial.PolygonParsingState.END_EXTERIOR;
+import static nl.knaw.dans.pf.language.ddm.handlers.spatial.PolygonParsingState.END_INTERIOR;
+import static nl.knaw.dans.pf.language.ddm.handlers.spatial.PolygonParsingState.END_POLYGON;
+import static nl.knaw.dans.pf.language.ddm.handlers.spatial.PolygonParsingState.EXTERIOR;
+import static nl.knaw.dans.pf.language.ddm.handlers.spatial.PolygonParsingState.E_DESCR;
+import static nl.knaw.dans.pf.language.ddm.handlers.spatial.PolygonParsingState.E_POSLIST;
+import static nl.knaw.dans.pf.language.ddm.handlers.spatial.PolygonParsingState.INTERIOR;
+import static nl.knaw.dans.pf.language.ddm.handlers.spatial.PolygonParsingState.I_DESCR;
+import static nl.knaw.dans.pf.language.ddm.handlers.spatial.PolygonParsingState.I_POSLIST;
+import static nl.knaw.dans.pf.language.ddm.handlers.spatial.PolygonParsingState.P_DESCR;
 
-public class SpatialPolygonHandler extends CrosswalkHandler<EasyMetadata> {
-
-    public static final String EPSG_URL_WGS84 = "http://www.opengis.net/def/crs/EPSG/0/4326";
-    public static final String EPSG_URN_WGS84 = "urn:ogc:def:crs:EPSG::4326";
-    public static final String EPSG_URL_RD = "http://www.opengis.net/def/crs/EPSG/0/28992";
-    public static final String EPSG_URN_RD = "urn:ogc:def:crs:EPSG::28992";
-    public static final String EAS_SPATIAL_SCHEME_WGS84 = "degrees";// WGS84, but in EASY we call it 'degrees'
-    public static final String EAS_SPATIAL_SCHEME_RD = "RD";
-    public static final String EAS_SPATIAL_SCHEME_LOCAL = "local"; // some other system not known by EASY
-
-    private static final String SRS_NAME = "srsName";
+public class SpatialPolygonHandler extends AbstractSpatialHandler {
 
     private PolygonParsingState state = null;
     private String polygonDescription = null;
@@ -49,27 +47,22 @@ public class SpatialPolygonHandler extends CrosswalkHandler<EasyMetadata> {
     private List<PolygonPoint> interiorPoints = null;
     private List<PolygonPart> interiorParts = null;
 
-    /**
-     * Proper processing requires pushing/popping and inheriting the attribute, so we skip for the current implementation
-     */
-    // the srs is the EPSG_URL_WGS84 by default
-    private String foundSRS = EPSG_URL_WGS84;
-
     @Override
     protected void initFirstElement(final String uri, final String localName, final Attributes attributes) {
+        super.initFirstElement(uri, localName, attributes);
+
         state = null;
         polygonDescription = exteriorDescription = interiorDescription = null;
         exteriorPoints = null;
         exteriorPart = null;
         interiorPoints = null;
         interiorParts = new ArrayList<PolygonPart>();
-        foundSRS = EPSG_URL_WGS84;
-        checkSRS(attributes);
     }
 
     @Override
     protected void initElement(final String uri, final String localName, final Attributes attributes) {
-        checkSRS(attributes);
+        super.initElement(uri, localName, attributes);
+
         if ("description".equals(localName) && state == null)
             this.state = P_DESCR;
         else if ("description".equals(localName) && (state == EXTERIOR || state == INTERIOR))
@@ -87,15 +80,6 @@ public class SpatialPolygonHandler extends CrosswalkHandler<EasyMetadata> {
             state = I_DESCR.getNextState();
         else if ("interior".equals(localName))
             state = INTERIOR;
-    }
-
-    private void checkSRS(final Attributes attributes) {
-        for (int i = 0; i < attributes.getLength(); i++) {
-            if (attributes.getLocalName(i).equals(SRS_NAME)) {
-                foundSRS = attributes.getValue(i);
-                break;
-            }
-        }
     }
 
     @Override
@@ -119,12 +103,12 @@ public class SpatialPolygonHandler extends CrosswalkHandler<EasyMetadata> {
             interiorParts.add(new PolygonPart(interiorDescription, interiorPoints));
             state = state.getNextState();
         } else if ("Polygon".equals(localName) && state == END_POLYGON) {
-            Spatial.Polygon polygon = createPolygon();
+            Polygon polygon = createPolygon();
             getTarget().getEmdCoverage().getEasSpatial().add(new Spatial(polygonDescription, polygon));
             state = state.getNextState();
         } else if ("Polygon".equals(localName) && state == INTERIOR) {
             // no interior(s) found
-            Spatial.Polygon polygon = createPolygon();
+            Polygon polygon = createPolygon();
             getTarget().getEmdCoverage().getEasSpatial().add(new Spatial(polygonDescription, polygon));
             state = END_POLYGON.getNextState();
         }
@@ -145,7 +129,7 @@ public class SpatialPolygonHandler extends CrosswalkHandler<EasyMetadata> {
             return null;
         }
 
-        String easScheme = srsName2EasScheme(foundSRS);
+        String easScheme = srsName2EasScheme(getFoundSRS());
         boolean isRD = easScheme != null && easScheme.contentEquals("RD");
         List<PolygonPoint> result = new ArrayList<PolygonPoint>(length / 2);
         for (int i = 0; i < length; i += 2) {
@@ -160,30 +144,8 @@ public class SpatialPolygonHandler extends CrosswalkHandler<EasyMetadata> {
         return result;
     }
 
-    private Spatial.Polygon createPolygon() {
-        return new Spatial.Polygon(srsName2EasScheme(foundSRS), exteriorPart, interiorParts);
-    }
-
-    /**
-     * EASY now only supports schemes (for coordinate systems) 'RD' and 'degrees' (WGS84) in the EMD. The official EPSG codes are 28992 for RD in meters x,y and
-     * 4326 for WGS84 in decimal degrees lat,lon
-     * 
-     * @param srsName
-     * @return
-     */
-    private static String srsName2EasScheme(final String srsName) {
-        if (srsName == null)
-            return null;
-        else if (srsName.contentEquals(EPSG_URL_RD) || srsName.contentEquals(EPSG_URN_RD))
-            return EAS_SPATIAL_SCHEME_RD;
-        else if (srsName.contentEquals(EPSG_URL_WGS84) || srsName.contentEquals(EPSG_URN_WGS84))
-            return EAS_SPATIAL_SCHEME_WGS84;
-        else
-            return EAS_SPATIAL_SCHEME_LOCAL; // suggesting otherwise it could be 'global', but we can't map it to something else
-    }
-
-    public void setSRS(String foundSRS) {
-        this.foundSRS = foundSRS;
+    private Polygon createPolygon() {
+        return new Polygon(srsName2EasScheme(getFoundSRS()), exteriorPart, interiorParts);
     }
 }
 
