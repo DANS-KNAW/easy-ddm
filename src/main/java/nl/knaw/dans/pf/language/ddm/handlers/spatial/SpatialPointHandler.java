@@ -28,9 +28,9 @@ public class SpatialPointHandler extends AbstractSpatialHandler {
 
     @Override
     protected void initFirstElement(String uri, String localName, Attributes attributes) {
-      super.initFirstElement(uri, localName, attributes);
+        super.initFirstElement(uri, localName, attributes);
 
-      this.description = null;
+        this.description = null;
         this.pos = null;
     }
 

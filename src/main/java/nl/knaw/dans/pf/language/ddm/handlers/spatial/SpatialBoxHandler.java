@@ -29,9 +29,9 @@ public class SpatialBoxHandler extends AbstractSpatialHandler {
 
     @Override
     protected void initFirstElement(final String uri, final String localName, final Attributes attributes) {
-      super.initFirstElement(uri, localName, attributes);
+        super.initFirstElement(uri, localName, attributes);
 
-      description = null;
+        description = null;
         lower = upper = null;
     }
 
