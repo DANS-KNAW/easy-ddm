@@ -658,9 +658,10 @@ public class Ddm2EmdCrosswalkTest {
         DefaultElement spatial = (DefaultElement) coverage.elements().get(0);
         DefaultElement place = (DefaultElement) spatial.elements().get(0);
         DefaultElement polygon = (DefaultElement) spatial.elements().get(1);
-        DefaultElement exterior = (DefaultElement) polygon.elements().get(0);
-        DefaultElement interior1 = (DefaultElement) polygon.elements().get(1);
-        DefaultElement interior2 = (DefaultElement) polygon.elements().get(2);
+        DefaultElement polygonPlace = (DefaultElement) polygon.elements().get(0);
+        DefaultElement exterior = (DefaultElement) polygon.elements().get(1);
+        DefaultElement interior1 = (DefaultElement) polygon.elements().get(2);
+        DefaultElement interior2 = (DefaultElement) polygon.elements().get(3);
         DefaultElement exPlace = (DefaultElement) exterior.elements().get(0);
         DefaultElement ex1 = (DefaultElement) exterior.elements().get(1);
         DefaultElement ex2 = (DefaultElement) exterior.elements().get(2);
@@ -685,12 +686,16 @@ public class Ddm2EmdCrosswalkTest {
 
         assertTrue(place.elements().isEmpty());
         assertThat(place.getQualifiedName(), is("eas:place"));
-        assertThat(place.getText(), is("A triangle between DANS, NWO and the railway station"));
+        assertTrue(place.getText().isEmpty());
 
-        assertThat(polygon.elements().size(), is(3));
+        assertThat(polygon.elements().size(), is(4));
         assertThat(polygon.getQualifiedName(), is("eas:polygon"));
         assertThat(polygon.attribute("scheme").getQualifiedName(), is("eas:scheme"));
         assertThat(polygon.attribute("scheme").getValue(), is("degrees"));
+
+        assertTrue(polygonPlace.elements().isEmpty());
+        assertThat(polygonPlace.getQualifiedName(), is("eas:place"));
+        assertThat(polygonPlace.getText(), is("A triangle between DANS, NWO and the railway station"));
 
         assertThat(exterior.elements().size(), is(5));
         assertThat(exterior.getQualifiedName(), is("eas:polygon-exterior"));
@@ -861,9 +866,10 @@ public class Ddm2EmdCrosswalkTest {
         DefaultElement spatial = (DefaultElement) coverage.elements().get(0);
         DefaultElement place = (DefaultElement) spatial.elements().get(0);
         DefaultElement polygon = (DefaultElement) spatial.elements().get(1);
-        DefaultElement exterior = (DefaultElement) polygon.elements().get(0);
-        DefaultElement interior1 = (DefaultElement) polygon.elements().get(1);
-        DefaultElement interior2 = (DefaultElement) polygon.elements().get(2);
+        DefaultElement polygonPlace = (DefaultElement) polygon.elements().get(0);
+        DefaultElement exterior = (DefaultElement) polygon.elements().get(1);
+        DefaultElement interior1 = (DefaultElement) polygon.elements().get(2);
+        DefaultElement interior2 = (DefaultElement) polygon.elements().get(3);
         DefaultElement exPlace = (DefaultElement) exterior.elements().get(0);
         DefaultElement ex1 = (DefaultElement) exterior.elements().get(1);
         DefaultElement ex2 = (DefaultElement) exterior.elements().get(2);
@@ -888,12 +894,16 @@ public class Ddm2EmdCrosswalkTest {
 
         assertTrue(place.elements().isEmpty());
         assertThat(place.getQualifiedName(), is("eas:place"));
-        assertThat(place.getText(), is("A triangle between DANS, NWO and the railway station"));
+        assertTrue(place.getText().isEmpty());
 
-        assertThat(polygon.elements().size(), is(3));
+        assertThat(polygon.elements().size(), is(4));
         assertThat(polygon.getQualifiedName(), is("eas:polygon"));
         assertThat(polygon.attribute("scheme").getQualifiedName(), is("eas:scheme"));
         assertThat(polygon.attribute("scheme").getValue(), is("RD"));
+
+        assertTrue(polygonPlace.elements().isEmpty());
+        assertThat(polygonPlace.getQualifiedName(), is("eas:place"));
+        assertThat(polygonPlace.getText(), is("A triangle between DANS, NWO and the railway station"));
 
         assertThat(exterior.elements().size(), is(5));
         assertThat(exterior.getQualifiedName(), is("eas:polygon-exterior"));
@@ -1048,7 +1058,7 @@ public class Ddm2EmdCrosswalkTest {
 
         DefaultElement coverage = firstEmdElementFrom(ddm);
         DefaultElement spatial = (DefaultElement) coverage.elements().get(0);
-        DefaultElement place = (DefaultElement) spatial.elements().get(0);
+        DefaultElement polygonPlace = (DefaultElement) spatial.elements().get(0);
         DefaultElement polygon = (DefaultElement) spatial.elements().get(1);
         DefaultElement exterior = (DefaultElement) polygon.elements().get(0);
         DefaultElement ex1 = (DefaultElement) exterior.elements().get(0);
@@ -1062,11 +1072,11 @@ public class Ddm2EmdCrosswalkTest {
         assertThat(spatial.elements().size(), is(2));
         assertThat(spatial.getQualifiedName(), is("eas:spatial"));
 
-        assertTrue(place.elements().isEmpty());
-        assertThat(place.getQualifiedName(), is("eas:place"));
+        assertTrue(polygonPlace.elements().isEmpty());
+        assertThat(polygonPlace.getQualifiedName(), is("eas:place"));
         // empty here, because this originates from a BasicString (and can therefore contain attributes, which requires a render),
         // while the eas:place in exterior/interior is a String
-        assertThat(place.getText(), is(""));
+        assertTrue(polygonPlace.getText().isEmpty());
 
         assertThat(polygon.elements().size(), is(1));
         assertThat(polygon.getQualifiedName(), is("eas:polygon"));
@@ -1137,7 +1147,7 @@ public class Ddm2EmdCrosswalkTest {
 
         DefaultElement coverage = firstEmdElementFrom(ddm);
         DefaultElement spatial = (DefaultElement) coverage.elements().get(0);
-        DefaultElement place = (DefaultElement) spatial.elements().get(0);
+        DefaultElement polygonPlace = (DefaultElement) spatial.elements().get(0);
         DefaultElement polygon = (DefaultElement) spatial.elements().get(1);
         DefaultElement exterior = (DefaultElement) polygon.elements().get(0);
         DefaultElement exPlace = (DefaultElement) exterior.elements().get(0);
@@ -1152,11 +1162,11 @@ public class Ddm2EmdCrosswalkTest {
         assertThat(spatial.elements().size(), is(2));
         assertThat(spatial.getQualifiedName(), is("eas:spatial"));
 
-        assertTrue(place.elements().isEmpty());
-        assertThat(place.getQualifiedName(), is("eas:place"));
+        assertTrue(polygonPlace.elements().isEmpty());
+        assertThat(polygonPlace.getQualifiedName(), is("eas:place"));
         // empty here, because this originates from a BasicString (and can therefore contain attributes, which requires a render),
         // while the eas:place in exterior/interior is a String
-        assertThat(place.getText(), is(""));
+        assertTrue(polygonPlace.getText().isEmpty());
 
         assertThat(polygon.elements().size(), is(1));
         assertThat(polygon.getQualifiedName(), is("eas:polygon"));
@@ -1233,7 +1243,8 @@ public class Ddm2EmdCrosswalkTest {
         DefaultElement spatial = (DefaultElement) coverage.elements().get(0);
         DefaultElement place = (DefaultElement) spatial.elements().get(0);
         DefaultElement polygon = (DefaultElement) spatial.elements().get(1);
-        DefaultElement exterior = (DefaultElement) polygon.elements().get(0);
+        DefaultElement polygonPlace = (DefaultElement) polygon.elements().get(0);
+        DefaultElement exterior = (DefaultElement) polygon.elements().get(1);
         DefaultElement ex1 = (DefaultElement) exterior.elements().get(0);
         DefaultElement ex2 = (DefaultElement) exterior.elements().get(1);
         DefaultElement ex3 = (DefaultElement) exterior.elements().get(2);
@@ -1247,12 +1258,16 @@ public class Ddm2EmdCrosswalkTest {
 
         assertTrue(place.elements().isEmpty());
         assertThat(place.getQualifiedName(), is("eas:place"));
-        assertThat(place.getText(), is("A triangle between DANS, NWO and the railway station"));
+        assertTrue(place.getText().isEmpty());
 
-        assertThat(polygon.elements().size(), is(1));
+        assertThat(polygon.elements().size(), is(2));
         assertThat(polygon.getQualifiedName(), is("eas:polygon"));
         assertThat(polygon.attribute("scheme").getQualifiedName(), is("eas:scheme"));
         assertThat(polygon.attribute("scheme").getValue(), is("degrees"));
+
+        assertTrue(polygonPlace.elements().isEmpty());
+        assertThat(polygonPlace.getQualifiedName(), is("eas:place"));
+        assertThat(polygonPlace.getText(), is("A triangle between DANS, NWO and the railway station"));
 
         assertThat(exterior.elements().size(), is(4));
         assertThat(exterior.getQualifiedName(), is("eas:polygon-exterior"));
@@ -1327,7 +1342,7 @@ public class Ddm2EmdCrosswalkTest {
 
         DefaultElement coverage = firstEmdElementFrom(ddm);
         DefaultElement spatial = (DefaultElement) coverage.elements().get(0);
-        DefaultElement place = (DefaultElement) spatial.elements().get(0);
+        DefaultElement polygonPlace = (DefaultElement) spatial.elements().get(0);
         DefaultElement polygon = (DefaultElement) spatial.elements().get(1);
         DefaultElement exterior = (DefaultElement) polygon.elements().get(0);
         DefaultElement interior1 = (DefaultElement) polygon.elements().get(1);
@@ -1351,11 +1366,11 @@ public class Ddm2EmdCrosswalkTest {
         assertThat(spatial.elements().size(), is(2));
         assertThat(spatial.getQualifiedName(), is("eas:spatial"));
 
-        assertTrue(place.elements().isEmpty());
-        assertThat(place.getQualifiedName(), is("eas:place"));
+        assertTrue(polygonPlace.elements().isEmpty());
+        assertThat(polygonPlace.getQualifiedName(), is("eas:place"));
         // empty here, because this originates from a BasicString (and can therefore contain attributes, which requires a render),
         // while the eas:place in exterior/interior is a String
-        assertThat(place.getText(), is(""));
+        assertTrue(polygonPlace.getText().isEmpty());
 
         assertThat(polygon.elements().size(), is(3));
         assertThat(polygon.getQualifiedName(), is("eas:polygon"));
