@@ -63,6 +63,7 @@ import nl.knaw.dans.pf.language.ddm.handlers.ArchisIdentifierHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.IdentifierHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.spatial.AbstractSpatialHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.spatial.SpatialBoxHandler;
+import nl.knaw.dans.pf.language.ddm.handlers.spatial.SpatialMultiPolygonHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.spatial.SpatialPointHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.spatial.SpatialPolygonHandler;
 import nl.knaw.dans.pf.language.ddm.handlertypes.BasicDateHandler;
@@ -432,6 +433,9 @@ public class Ddm2EmdHandlerMap implements CrosswalkHandlerMap<EasyMetadata> {
         final SpatialPolygonHandler polygonHandler = new SpatialPolygonHandler();
         spatialSubHandlers.put("Polygon", polygonHandler);
 
+        final SpatialMultiPolygonHandler multiPolygonHandler = new SpatialMultiPolygonHandler(polygonHandler);
+        spatialSubHandlers.put("MultiSurface", multiPolygonHandler);
+
         final EasSpatialHandler easSpatialHandler = new EasSpatialHandler(spatialSubHandlers);
         map.put("/dcterms:spatial", new TermsSpatialHandler());
         map.put("ISO3166/dcterms:spatial", new TermsSpatialIso3166Handler());
@@ -440,6 +444,7 @@ public class Ddm2EmdHandlerMap implements CrosswalkHandlerMap<EasyMetadata> {
         map.put("/gml:Point", spatialPointHandler);
         map.put("/gml:boundedBy", spatialBoxHandler);
         map.put("/gml:Polygon", polygonHandler);
+        map.put("/gml:MultiSurface", multiPolygonHandler);
         // <ref-panelId>dcterms.spatial</ref-panelId>
         // <ref-panelId>eas.spatial.point</ref-panelId>
         // <ref-panelId>eas.spatial.box</ref-panelId>

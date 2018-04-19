@@ -47,6 +47,12 @@ public class SpatialPolygonHandler extends AbstractSpatialHandler {
     private List<PolygonPoint> interiorPoints = null;
     private List<PolygonPart> interiorParts = null;
 
+    private Consumer<Polygon> multiPolygonCallback = null;
+
+    public void setMultiPolygonHandler(Consumer<Polygon> callback) {
+        multiPolygonCallback = callback;
+    }
+
     @Override
     protected void initFirstElement(final String uri, final String localName, final Attributes attributes) {
         super.initFirstElement(uri, localName, attributes);
@@ -104,17 +110,22 @@ public class SpatialPolygonHandler extends AbstractSpatialHandler {
         } else if ("interior".equals(localName) && state == END_INTERIOR) {
             interiorParts.add(new PolygonPart(interiorDescription, interiorPoints));
             state = state.getNextState();
-        } else if ("Polygon".equals(localName) && state == END_POLYGON) {
+        } else if ("Polygon".equals(localName)) {
             Polygon polygon = createPolygon();
-            getTarget().getEmdCoverage().getEasSpatial().add(new Spatial(polygonDescription, polygon));
-            state = state.getNextState();
-        } else if ("Polygon".equals(localName) && state == INTERIOR) {
-            // no interior(s) found
-            Polygon polygon = createPolygon();
-            getTarget().getEmdCoverage().getEasSpatial().add(new Spatial(polygonDescription, polygon));
-            state = END_POLYGON.getNextState();
+
+            if (multiPolygonCallback == null)
+                getTarget().getEmdCoverage().getEasSpatial().add(new Spatial(null, polygon));
+            else
+                multiPolygonCallback.accept(polygon);
+
+            // state transition
+            if (state == END_POLYGON)
+                state = state.getNextState();
+            else if (state == INTERIOR)
+                // no interior(s) found
+                state = END_POLYGON.getNextState();
         }
-        // other types than point/box/polygon not supported by EMD: don't warn
+        // other types than point/box/polygon(s) not supported by EMD: don't warn
     }
 
     private List<PolygonPoint> createPolygonPoints() throws SAXException {
@@ -147,7 +158,7 @@ public class SpatialPolygonHandler extends AbstractSpatialHandler {
     }
 
     private Polygon createPolygon() {
-        return new Polygon(srsName2EasScheme(getFoundSRS()), exteriorPart, interiorParts);
+        return new Polygon(srsName2EasScheme(getFoundSRS()), polygonDescription, exteriorPart, interiorParts);
     }
 }
 
