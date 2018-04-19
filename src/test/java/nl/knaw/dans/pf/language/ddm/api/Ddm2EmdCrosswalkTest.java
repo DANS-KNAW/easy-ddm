@@ -53,14 +53,46 @@ public class Ddm2EmdCrosswalkTest {
 
     @Parameters
     public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][] { {"alternativeTitle"}, {"dcxDaiAuthor"}, {"dcxIsniAuthor"}, {"ddmAccessRight"},
-                {"ddmDescriptionWithRequiredDescriptionType"}, {"ddmSubject"}, {"ddmTemporal"}, {"formatWithSchemeAndId"}, {"identifierWithIdTypeEDNA"},
-                {"identifierWithIdTypeISBN"}, {"identifierWithIdTypeISSN"}, {"identifierWithIdTypeNewArchis"}, {"identifierWithIdTypeNwoProjectNummer"},
-                {"identifierWithIdTypeOldArchis"}, {"identifierWithoutIdType"}, {"languageWithSchemeAndIdButNoEmdCode"}, {"languageWithSchemeAndIdToEmdCode"},
-                {"license"}, {"normalRelation"}, {"spatialBox"}, {"spatialGmlEnvelope"}, {"spatialGmlPoints"}, {"spatialISO3166"}, {"spatialPoint"},
-                {"spatialPolygonRD"}, {"spatialPolygonWGS84"}, {"spatialPolygonWithOnlyDescriptionInExternal"}, {"spatialPolygonWithoutDescriptions"},
-                {"spatialPolygonWithoutDescriptionsOrInternals"}, {"spatialPolygonWithoutInternals"}, {"streamingSurrogateRelation"}, {"subjectABR"},
-                {"subjectPlainText"}, {"temporalABR"}, {"temporalPlainText"}, {"typeWithSchemeAndId"},});
+        // @formatter:off
+        return Arrays.asList(new Object[][] {
+            { "alternativeTitle" },
+            { "dcxDaiAuthor" },
+            { "dcxIsniAuthor" },
+            { "ddmAccessRight" },
+            { "ddmDescriptionWithRequiredDescriptionType" },
+            { "ddmSubject" },
+            { "ddmTemporal" },
+            { "formatWithSchemeAndId" },
+            { "identifierWithIdTypeEDNA" },
+            { "identifierWithIdTypeISBN" },
+            { "identifierWithIdTypeISSN" },
+            { "identifierWithIdTypeNewArchis" },
+            { "identifierWithIdTypeNwoProjectNummer" },
+            { "identifierWithIdTypeOldArchis" },
+            { "identifierWithoutIdType" },
+            { "languageWithSchemeAndIdButNoEmdCode" },
+            { "languageWithSchemeAndIdToEmdCode" },
+            { "license" },
+            { "normalRelation" },
+            { "spatialBox" },
+            { "spatialGmlEnvelope" },
+            { "spatialGmlPoints" },
+            { "spatialISO3166" },
+            { "spatialPoint" },
+            { "spatialPolygonRD" },
+            { "spatialPolygonWGS84" },
+            { "spatialPolygonWithOnlyDescriptionInExternal" },
+            { "spatialPolygonWithoutDescriptions" },
+            { "spatialPolygonWithoutDescriptionsOrInternals" },
+            { "spatialPolygonWithoutInternals" },
+            { "streamingSurrogateRelation" },
+            { "subjectABR" },
+            { "subjectPlainText" },
+            { "temporalABR" },
+            { "temporalPlainText" },
+            { "typeWithSchemeAndId" },
+        });
+        // @formatter:on
     }
 
     private String testName;
