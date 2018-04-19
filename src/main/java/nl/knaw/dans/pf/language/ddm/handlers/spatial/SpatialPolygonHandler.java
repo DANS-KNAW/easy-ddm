@@ -84,6 +84,8 @@ public class SpatialPolygonHandler extends AbstractSpatialHandler {
 
     @Override
     protected void finishElement(final String uri, final String localName) throws SAXException {
+        super.finishElement(uri, localName);
+
         if ("description".equals(localName) && state == P_DESCR)
             polygonDescription = getCharsSinceStart().trim();
         else if ("description".equals(localName) && state == E_DESCR)

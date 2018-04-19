@@ -37,6 +37,8 @@ public class SpatialBoxHandler extends AbstractSpatialHandler {
 
     @Override
     protected void finishElement(final String uri, final String localName) throws SAXException {
+        super.finishElement(uri, localName);
+
         if ("description".equals(localName)) {
             description = getCharsSinceStart().trim();
         } else if ("lowerCorner".equals(localName))

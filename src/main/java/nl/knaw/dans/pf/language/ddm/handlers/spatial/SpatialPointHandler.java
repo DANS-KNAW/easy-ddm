@@ -36,6 +36,8 @@ public class SpatialPointHandler extends AbstractSpatialHandler {
 
     @Override
     protected void finishElement(String uri, String localName) throws SAXException {
+        super.finishElement(uri, localName);
+
         if ("description".equals(localName))
             description = getCharsSinceStart().trim();
         else if ("pos".equals(localName))
