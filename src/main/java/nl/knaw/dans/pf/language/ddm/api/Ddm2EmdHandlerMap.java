@@ -61,6 +61,7 @@ import nl.knaw.dans.pf.language.ddm.handlers.TermsTemporalHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.TitleHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.ArchisIdentifierHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.IdentifierHandler;
+import nl.knaw.dans.pf.language.ddm.handlers.spatial.AbstractSpatialHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.spatial.SpatialBoxHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.spatial.SpatialPointHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.spatial.SpatialPolygonHandler;
@@ -420,10 +421,18 @@ public class Ddm2EmdHandlerMap implements CrosswalkHandlerMap<EasyMetadata> {
         map.put("/dcterms:coverage", dcCoverageHandler);
         // EasyMetadataImpl: EmdCoverage emdCoverage;
 
+        Map<String, AbstractSpatialHandler> spatialSubHandlers = new HashMap<String, AbstractSpatialHandler>();
+
         final SpatialPointHandler spatialPointHandler = new SpatialPointHandler();
+        spatialSubHandlers.put("Point", spatialPointHandler);
+
         final SpatialBoxHandler spatialBoxHandler = new SpatialBoxHandler();
+        spatialSubHandlers.put("Envelope", spatialBoxHandler);
+
         final SpatialPolygonHandler polygonHandler = new SpatialPolygonHandler();
-        final EasSpatialHandler easSpatialHandler = new EasSpatialHandler(spatialPointHandler, spatialBoxHandler, polygonHandler);
+        spatialSubHandlers.put("Polygon", polygonHandler);
+
+        final EasSpatialHandler easSpatialHandler = new EasSpatialHandler(spatialSubHandlers);
         map.put("/dcterms:spatial", new TermsSpatialHandler());
         map.put("ISO3166/dcterms:spatial", new TermsSpatialIso3166Handler());
         map.put("/dcx-gml:spatial", easSpatialHandler);

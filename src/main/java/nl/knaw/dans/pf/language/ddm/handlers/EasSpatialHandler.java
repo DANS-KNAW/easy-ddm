@@ -16,33 +16,25 @@
 package nl.knaw.dans.pf.language.ddm.handlers;
 
 import nl.knaw.dans.pf.language.ddm.handlers.spatial.AbstractSpatialHandler;
-import nl.knaw.dans.pf.language.ddm.handlers.spatial.SpatialBoxHandler;
-import nl.knaw.dans.pf.language.ddm.handlers.spatial.SpatialPointHandler;
-import nl.knaw.dans.pf.language.ddm.handlers.spatial.SpatialPolygonHandler;
 import org.xml.sax.Attributes;
+
+import java.util.Map;
 
 public class EasSpatialHandler extends AbstractSpatialHandler {
 
-    private final SpatialPointHandler pointHandler;
-    private final SpatialBoxHandler boxHandler;
-    private final SpatialPolygonHandler polygonHandler;
+    private final Map<String, AbstractSpatialHandler> subHandlers;
 
-    public EasSpatialHandler(SpatialPointHandler pointHandler, SpatialBoxHandler boxHandler, SpatialPolygonHandler polygonHandler) {
-        this.pointHandler = pointHandler;
-        this.boxHandler = boxHandler;
-        this.polygonHandler = polygonHandler;
+    public EasSpatialHandler(Map<String, AbstractSpatialHandler> subHandlers) {
+        this.subHandlers = subHandlers;
     }
 
     @Override
     protected void initElement(final String uri, final String localName, final Attributes attributes) {
         super.initElement(uri, localName, attributes);
 
-        if ("Point".equals(localName)) {
-            this.pointHandler.setFoundSRS(getFoundSRS());
-        } else if ("Envelope".equals(localName)) {
-            this.boxHandler.setFoundSRS(getFoundSRS());
-        } else if ("Polygon".equals(localName)) {
-            this.polygonHandler.setFoundSRS(getFoundSRS());
+        if (subHandlers.containsKey(localName)) {
+          AbstractSpatialHandler handler = subHandlers.get(localName);
+          handler.setFoundSRS(getFoundSRS());
         }
     }
 }
