@@ -17,24 +17,19 @@ package nl.knaw.dans.pf.language.ddm.api;
 
 import nl.knaw.dans.pf.language.emd.EasyMetadata;
 import nl.knaw.dans.pf.language.emd.binding.EmdMarshaller;
-import nl.knaw.dans.pf.language.emd.types.EmdConstants;
 import nl.knaw.dans.pf.language.xml.crosswalk.CrosswalkException;
 import nl.knaw.dans.pf.language.xml.exc.XMLSerializationException;
 import org.apache.commons.io.FileUtils;
-import org.dom4j.tree.DefaultElement;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -110,14 +105,18 @@ public class Ddm2EmdCrosswalkTest {
         assertTrue(emdFile.exists());
 
         String ddm = FileUtils.readFileToString(ddmFile);
-        String actualEmd = FileUtils.readFileToString(emdFile);
-        String expectedEmd = emdElementFrom(ddm);
+        String actualEmd = normalize(FileUtils.readFileToString(emdFile));
+        String expectedEmd = normalize(emdElementFrom(ddm));
 
         assertThat(expectedEmd, is(actualEmd));
     }
 
     private String emdElementFrom(String ddm) throws CrosswalkException, XMLSerializationException {
         EasyMetadata emd = new Ddm2EmdCrosswalk(null).createFrom(ddm);
-        return new EmdMarshaller(emd).getXmlString() + "\n";
+        return new EmdMarshaller(emd).getXmlString();
+    }
+
+    private String normalize(String s) {
+        return s.replaceAll("\n", "");
     }
 }

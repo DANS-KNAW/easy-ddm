@@ -62,6 +62,8 @@ public class SpatialPolygonHandler extends AbstractSpatialHandler {
         exteriorPart = null;
         interiorPoints = null;
         interiorParts = new ArrayList<PolygonPart>();
+
+        multiPolygonCallback = null;
     }
 
     @Override
