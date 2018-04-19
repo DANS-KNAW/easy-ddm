@@ -31,7 +31,7 @@ public class SpatialMultiPolygonHandler extends AbstractSpatialHandler {
     protected void initElement(String uri, String localName, Attributes attributes) {
         super.initElement(uri, localName, attributes);
 
-        if ("name".equals(localName)) {
+        if ("Polygon".equals(localName)) {
             // start of a multi-polygon
             // ask SpatialPolygonHandler to add the Polygon it found to the list using a callback
             this.polygonHandler.setMultiPolygonHandler(new Consumer<Polygon>() {
@@ -52,6 +52,6 @@ public class SpatialMultiPolygonHandler extends AbstractSpatialHandler {
         if ("name".equals(localName))
             multiSurfaceDescription = getCharsSinceStart().trim();
         else if ("MultiSurface".equals(localName))
-            getTarget().getEmdCoverage().getEasSpatial().add(new Spatial(multiSurfaceDescription, polygons));
+            createAndAddSpatial(multiSurfaceDescription, polygons);
     }
 }

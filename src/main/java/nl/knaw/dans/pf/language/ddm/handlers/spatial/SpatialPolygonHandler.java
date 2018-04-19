@@ -17,7 +17,6 @@ package nl.knaw.dans.pf.language.ddm.handlers.spatial;
 
 import nl.knaw.dans.pf.language.emd.types.PolygonPart;
 import nl.knaw.dans.pf.language.emd.types.PolygonPoint;
-import nl.knaw.dans.pf.language.emd.types.Spatial;
 import nl.knaw.dans.pf.language.emd.types.Polygon;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -49,7 +48,7 @@ public class SpatialPolygonHandler extends AbstractSpatialHandler {
 
     private Consumer<Polygon> multiPolygonCallback = null;
 
-    public void setMultiPolygonHandler(Consumer<Polygon> callback) {
+    void setMultiPolygonHandler(Consumer<Polygon> callback) {
         multiPolygonCallback = callback;
     }
 
@@ -111,10 +110,10 @@ public class SpatialPolygonHandler extends AbstractSpatialHandler {
             interiorParts.add(new PolygonPart(interiorDescription, interiorPoints));
             state = state.getNextState();
         } else if ("Polygon".equals(localName)) {
-            Polygon polygon = createPolygon();
+            Polygon polygon = new Polygon(srsName2EasScheme(getFoundSRS()), polygonDescription, exteriorPart, interiorParts);
 
             if (multiPolygonCallback == null)
-                getTarget().getEmdCoverage().getEasSpatial().add(new Spatial(null, polygon));
+                createAndAddSpatial(polygon);
             else
                 multiPolygonCallback.accept(polygon);
 
@@ -126,39 +125,6 @@ public class SpatialPolygonHandler extends AbstractSpatialHandler {
                 state = END_POLYGON.getNextState();
         }
         // other types than point/box/polygon(s) not supported by EMD: don't warn
-    }
-
-    private List<PolygonPoint> createPolygonPoints() throws SAXException {
-        String[] coordinates = getCharsSinceStart().trim().split("\\s+");
-        int length = coordinates.length;
-        if (length < 8) {
-            error("expected at least 4 coordinate pairs to construct at least a triangle");
-            return null;
-        } else if (length % 2 == 1) {
-            error("expected an even number of coordinates since they're taken in pairs of two");
-            return null;
-        } else if (!coordinates[0].equals(coordinates[length - 2]) && !coordinates[1].equals(coordinates[length - 1])) {
-            error("first pair of coordinates should equal the last pair of coordinates");
-            return null;
-        }
-
-        String easScheme = srsName2EasScheme(getFoundSRS());
-        boolean isRD = easScheme != null && easScheme.contentEquals("RD");
-        List<PolygonPoint> result = new ArrayList<PolygonPoint>(length / 2);
-        for (int i = 0; i < length; i += 2) {
-            String x = coordinates[i];
-            String y = coordinates[i + 1];
-
-            if (isRD)
-                result.add(new PolygonPoint(y, x));
-            else
-                result.add(new PolygonPoint(x, y));
-        }
-        return result;
-    }
-
-    private Polygon createPolygon() {
-        return new Polygon(srsName2EasScheme(getFoundSRS()), polygonDescription, exteriorPart, interiorParts);
     }
 }
 

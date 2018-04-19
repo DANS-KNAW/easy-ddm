@@ -33,8 +33,7 @@ public class EasSpatialHandler extends AbstractSpatialHandler {
         super.initElement(uri, localName, attributes);
 
         if (subHandlers.containsKey(localName)) {
-            AbstractSpatialHandler handler = subHandlers.get(localName);
-            handler.setFoundSRS(getFoundSRS());
+            subHandlers.get(localName).setFoundSRS(getFoundSRS());
         }
     }
 }
