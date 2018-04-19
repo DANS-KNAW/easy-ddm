@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ddm:DDM xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'
+         xmlns:gml='http://www.opengis.net/gml'
+         xmlns:dcx-gml='http://easy.dans.knaw.nl/schemas/dcx/gml/'>
+    <ddm:dcmiMetadata>
+        <dcx-gml:spatial>
+            <gml:Point srsName='http://www.opengis.net/def/crs/EPSG/0/28992'>
+                <gml:pos>155000 463000</gml:pos> <!-- x y -->
+            </gml:Point>
+        </dcx-gml:spatial>
+        <dcx-gml:spatial>
+            <gml:Point srsName='http://www.opengis.net/def/crs/EPSG/0/4326'>
+                <gml:pos>52.155172 5.387203</gml:pos> <!-- y x -->
+            </gml:Point>
+        </dcx-gml:spatial>
+        <dcx-gml:spatial>
+            <gml:Point srsName='http://un.kno.wn/by/easy'>
+                <gml:pos>1 2</gml:pos> <!-- EASY unknown coordinate system, make it 'locale' -->
+            </gml:Point>
+        </dcx-gml:spatial>
+    </ddm:dcmiMetadata>
+</ddm:DDM>

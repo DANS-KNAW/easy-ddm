@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ddm:DDM xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+         xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'
+         xmlns:dc='http://purl.org/dc/elements/1.1/'
+         xmlns:abr='http://www.den.nl/standaard/166/Archeologisch-Basisregister/'>
+    <ddm:dcmiMetadata>
+        <dc:subject xsi:type='abr:ABRcomplex'>DEPO</dc:subject>
+    </ddm:dcmiMetadata>
+</ddm:DDM>

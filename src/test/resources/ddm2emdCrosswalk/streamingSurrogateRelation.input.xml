@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ddm:DDM xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'>
+    <ddm:dcmiMetadata>
+        <ddm:relation scheme='STREAMING_SURROGATE_RELATION'>presentation</ddm:relation>
+    </ddm:dcmiMetadata>
+</ddm:DDM>

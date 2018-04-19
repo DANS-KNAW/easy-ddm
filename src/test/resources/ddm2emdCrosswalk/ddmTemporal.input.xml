@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ddm:DDM xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'>
+    <ddm:dcmiMetadata>
+        <ddm:temporal subjectScheme='Archeologisch Basis Register'
+                      schemeURI='https://data.cultureelerfgoed.nl/term/id/abr/b6df7840-67bf-48bd-aa56-7ee39435d2ed'
+                      valueURI='https://data.cultureelerfgoed.nl/term/id/abr/697d935b-1d84-4145-86ce-1dcd2185a705'
+                      xml:lang='nld'>Recent
+        </ddm:temporal>
+    </ddm:dcmiMetadata>
+</ddm:DDM>

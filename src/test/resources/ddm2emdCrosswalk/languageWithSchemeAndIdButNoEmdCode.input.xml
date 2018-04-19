@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ddm:DDM xmlns:dc='http://purl.org/dc/elements/1.1/'
+         xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'
+         xmlns:dcterms='http://purl.org/dc/terms/'
+         xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+    <ddm:dcmiMetadata>
+        <dc:language xsi:type='dcterms:ISO639-2'>gre</dc:language>
+    </ddm:dcmiMetadata>
+</ddm:DDM>

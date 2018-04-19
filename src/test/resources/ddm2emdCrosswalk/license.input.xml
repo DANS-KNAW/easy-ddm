@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ddm:DDM xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+         xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'
+         xmlns:dcterms='http://purl.org/dc/terms/'>
+    <ddm:dcmiMetadata>
+        <dcterms:license xsi:type='dcterms:URI'>http://opensource.org/licenses/BSD-2-Clause</dcterms:license>
+    </ddm:dcmiMetadata>
+</ddm:DDM>

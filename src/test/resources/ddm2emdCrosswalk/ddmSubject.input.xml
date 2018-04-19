@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ddm:DDM xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'>
+    <ddm:dcmiMetadata>
+        <ddm:subject subjectScheme='Art and Architecture Thesaurus'
+                     schemeURI='http://vocab.getty.edu/aat/'
+                     valueURI='http://vocab.getty.edu/aat/300209303'
+                     xml:lang='en'>
+            fibulae
+        </ddm:subject>
+    </ddm:dcmiMetadata>
+</ddm:DDM>

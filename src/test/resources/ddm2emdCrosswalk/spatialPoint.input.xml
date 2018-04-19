@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ddm:DDM xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'
+         xmlns:dcterms='http://purl.org/dc/terms/'>
+    <ddm:dcmiMetadata>
+        <dcterms:spatial>
+            <Point>
+                <pos>1.0 2.0</pos>
+            </Point>
+        </dcterms:spatial>
+    </ddm:dcmiMetadata>
+</ddm:DDM>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ddm:DDM xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'
+         xmlns:dcx-gml='http://easy.dans.knaw.nl/schemas/dcx/gml/'>
+    <ddm:dcmiMetadata>
+        <dcx-gml:spatial>
+            <Polygon xmlns='http://www.opengis.net/gml' srsName='http://www.opengis.net/def/crs/EPSG/0/4326'>
+                <description>A triangle between DANS, NWO and the railway station</description>
+                <exterior>
+                    <LinearRing>
+                        <posList>52.08110 4.34521 52.08071 4.34422 52.07913 4.34332 52.08110 4.34521</posList>
+                    </LinearRing>
+                </exterior>
+            </Polygon>
+        </dcx-gml:spatial>
+    </ddm:dcmiMetadata>
+</ddm:DDM>

@@ -116,6 +116,7 @@
                     <excludes>
                         <exclude>doc/*</exclude>
                         <exclude>src/test/resources/output/*</exclude>
+                        <exclude>src/test/resources/ddm2emdCrosswalk/*</exclude>
                     </excludes>
                 </configuration>
             </plugin>

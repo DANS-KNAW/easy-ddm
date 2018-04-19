@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ddm:DDM xmlns:dcx-dai='http://easy.dans.knaw.nl/schemas/dcx/dai/'
+         xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'>
+    <ddm:profile>
+        <dcx-dai:creatorDetails>
+            <dcx-dai:author>
+                <dcx-dai:initials>X.I.</dcx-dai:initials>
+                <dcx-dai:surname>lastname</dcx-dai:surname>
+                <dcx-dai:ISNI>ISNI:000000012281955X</dcx-dai:ISNI>
+            </dcx-dai:author>
+        </dcx-dai:creatorDetails>
+    </ddm:profile>
+</ddm:DDM>

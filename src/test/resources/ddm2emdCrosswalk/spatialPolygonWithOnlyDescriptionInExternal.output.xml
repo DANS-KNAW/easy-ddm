@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<emd:easymetadata xmlns:emd="http://easy.dans.knaw.nl/easy/easymetadata/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dct="http://purl.org/dc/terms/" xmlns:eas="http://easy.dans.knaw.nl/easy/easymetadata/eas/" emd:version="0.1">
+    <emd:coverage>
+        <eas:spatial>
+            <eas:place/>
+            <eas:polygon eas:scheme="degrees">
+                <eas:polygon-exterior>
+                    <eas:place>main triangle</eas:place>
+                    <eas:polygon-point>
+                        <eas:x>52.08110</eas:x>
+                        <eas:y>4.34521</eas:y>
+                    </eas:polygon-point>
+                    <eas:polygon-point>
+                        <eas:x>52.08071</eas:x>
+                        <eas:y>4.34422</eas:y>
+                    </eas:polygon-point>
+                    <eas:polygon-point>
+                        <eas:x>52.07913</eas:x>
+                        <eas:y>4.34332</eas:y>
+                    </eas:polygon-point>
+                    <eas:polygon-point>
+                        <eas:x>52.08110</eas:x>
+                        <eas:y>4.34521</eas:y>
+                    </eas:polygon-point>
+                </eas:polygon-exterior>
+            </eas:polygon>
+        </eas:spatial>
+    </emd:coverage>
+    <emd:other>
+        <eas:application-specific>
+            <eas:metadataformat>ANY_DISCIPLINE</eas:metadataformat>
+            <eas:pakbon-status>NOT_IMPORTED</eas:pakbon-status>
+        </eas:application-specific>
+        <eas:etc/>
+    </emd:other>
+</emd:easymetadata>

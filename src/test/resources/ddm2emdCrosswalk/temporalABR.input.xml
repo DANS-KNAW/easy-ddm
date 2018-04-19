@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ddm:DDM xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+         xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'
+         xmlns:dcterms='http://purl.org/dc/terms/'
+         xmlns:abr='http://www.den.nl/standaard/166/Archeologisch-Basisregister/'>
+    <ddm:dcmiMetadata>
+        <dcterms:temporal xsi:type='abr:ABRperiode'>PALEOV</dcterms:temporal>
+    </ddm:dcmiMetadata>
+</ddm:DDM>

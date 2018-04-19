@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ddm:DDM xmlns:dc='http://purl.org/dc/elements/1.1/'
+         xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'>
+    <ddm:dcmiMetadata>
+        <dc:identifier>ds1</dc:identifier>
+    </ddm:dcmiMetadata>
+</ddm:DDM>
