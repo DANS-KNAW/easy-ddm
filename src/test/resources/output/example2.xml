@@ -166,6 +166,7 @@
             </eas:box>
         </eas:spatial>
         <eas:spatial>
+            <eas:place/>
             <eas:polygon eas:scheme="degrees">
                 <eas:place>A triangle between DANS, NWO and the railway station</eas:place>
                 <eas:polygon-exterior>
@@ -234,8 +235,8 @@
                 <eas:polygon-exterior>
                     <eas:place>main triangle</eas:place>
                     <eas:polygon-point>
-                        <eas:x>52.08110</eas:x>
-                        <eas:y>4.34521</eas:y>
+                        <eas:x>52.080741</eas:x>
+                        <eas:y>4.345312</eas:y>
                     </eas:polygon-point>
                     <eas:polygon-point>
                         <eas:x>52.08071</eas:x>
@@ -246,12 +247,12 @@
                         <eas:y>4.34332</eas:y>
                     </eas:polygon-point>
                     <eas:polygon-point>
-                        <eas:x>52.08110</eas:x>
-                        <eas:y>4.34521</eas:y>
+                        <eas:x>52.080741</eas:x>
+                        <eas:y>4.345312</eas:y>
                     </eas:polygon-point>
                 </eas:polygon-exterior>
                 <eas:polygon-interior>
-                    <eas:place>hole1</eas:place>
+                    <eas:place>hole in the triangle</eas:place>
                     <eas:polygon-point>
                         <eas:x>52.080542</eas:x>
                         <eas:y>4.344215</eas:y>
