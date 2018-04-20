@@ -75,6 +75,7 @@ public class Ddm2EmdCrosswalkTest {
             { "spatialISO3166" },
             { "spatialMultiSurfacePolygonEmpty" },
             { "spatialMultiSurfacePolygonNameOnly" },
+            { "spatialMultiSurfacePolygonRD" },
             { "spatialMultiSurfacePolygonSingle" },
             { "spatialMultiSurfacePolygonWGS84" },
             { "spatialMultiSurfacePolygonWithoutDescriptions" },
