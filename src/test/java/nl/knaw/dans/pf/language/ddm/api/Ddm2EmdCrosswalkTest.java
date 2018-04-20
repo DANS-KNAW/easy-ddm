@@ -45,6 +45,11 @@ public class Ddm2EmdCrosswalkTest {
     @BeforeClass
     public static void beforeAll() throws URISyntaxException {
         testFiles = new File(Ddm2EmdCrosswalkTest.class.getResource("/ddm2emdCrosswalk").toURI());
+
+        checkTestDataConsistency(testFiles);
+    }
+
+    private static void checkTestDataConsistency(File testFiles) {
         assertTrue(String.format("%s should exist", testFiles), testFiles.exists());
         assertTrue(String.format("%s should be a directory", testFiles), testFiles.isDirectory());
 
@@ -148,6 +153,6 @@ public class Ddm2EmdCrosswalkTest {
     }
 
     private String normalize(String s) {
-        return s.replaceAll("\n", "");
+        return s.replaceAll("\n", "").replaceAll("\\s+", " ").replaceAll("<emd:easymetadata[^>]+>", "");
     }
 }
