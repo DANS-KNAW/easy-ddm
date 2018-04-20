@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ddm:DDM xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'
+         xmlns:dcx-gml='http://easy.dans.knaw.nl/schemas/dcx/gml/'>
+    <ddm:dcmiMetadata>
+        <dcx-gml:spatial>
+            <MultiSurface xmlns="http://www.opengis.net/gml">
+                <name>A random surface with multiple polygons</name>
+            </MultiSurface>
+        </dcx-gml:spatial>
+    </ddm:dcmiMetadata>
+</ddm:DDM>

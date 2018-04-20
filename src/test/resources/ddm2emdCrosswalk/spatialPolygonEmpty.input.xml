@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ddm:DDM xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'
+         xmlns:dcx-gml='http://easy.dans.knaw.nl/schemas/dcx/gml/'>
+    <ddm:dcmiMetadata>
+        <dcx-gml:spatial>
+            <Polygon xmlns='http://www.opengis.net/gml'/>
+        </dcx-gml:spatial>
+    </ddm:dcmiMetadata>
+</ddm:DDM>

@@ -102,11 +102,13 @@ public abstract class AbstractSpatialHandler extends CrosswalkHandler<EasyMetada
     }
 
     void createAndAddSpatial(Polygon polygon) {
-        addSpatial(new Spatial(null, polygon));
+        if (!(polygon.getPlace() == null && polygon.getExterior() == null && polygon.getInterior().isEmpty()))
+            addSpatial(new Spatial(null, polygon));
     }
 
     void createAndAddSpatial(String description, List<Polygon> polygons) {
-        addSpatial(new Spatial(description, polygons));
+        if (!(description == null && polygons.isEmpty()))
+            addSpatial(new Spatial(description, polygons));
     }
 
     private void addSpatial(Spatial spatial) {
