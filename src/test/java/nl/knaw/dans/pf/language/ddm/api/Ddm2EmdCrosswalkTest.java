@@ -40,13 +40,13 @@ import static org.junit.Assert.assertTrue;
 @RunWith(Parameterized.class)
 public class Ddm2EmdCrosswalkTest {
 
-    private static File testFiles = null;
+    private static File testFilesDirectory = null;
 
     @BeforeClass
     public static void beforeAll() throws URISyntaxException {
-        testFiles = new File(Ddm2EmdCrosswalkTest.class.getResource("/ddm2emdCrosswalk").toURI());
+        testFilesDirectory = new File(Ddm2EmdCrosswalkTest.class.getResource("/ddm2emdCrosswalk").toURI());
 
-        checkTestDataConsistency(testFiles);
+        checkTestDataConsistency(testFilesDirectory);
     }
 
     private static void checkTestDataConsistency(File testFiles) {
@@ -134,8 +134,8 @@ public class Ddm2EmdCrosswalkTest {
 
     @Test
     public void ddm2Emd() throws Exception {
-        File ddmFile = new File(testFiles, String.format("%s.input.xml", this.testName));
-        File emdFile = new File(testFiles, String.format("%s.output.xml", this.testName));
+        File ddmFile = new File(testFilesDirectory, String.format("%s.input.xml", this.testName));
+        File emdFile = new File(testFilesDirectory, String.format("%s.output.xml", this.testName));
 
         assertTrue(ddmFile.exists());
         assertTrue(emdFile.exists());
