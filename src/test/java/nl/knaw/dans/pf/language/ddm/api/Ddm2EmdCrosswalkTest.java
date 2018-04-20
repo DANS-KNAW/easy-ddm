@@ -32,6 +32,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
@@ -44,6 +45,28 @@ public class Ddm2EmdCrosswalkTest {
     @BeforeClass
     public static void beforeAll() throws URISyntaxException {
         testFiles = new File(Ddm2EmdCrosswalkTest.class.getResource("/ddm2emdCrosswalk").toURI());
+        assertTrue(String.format("%s should exist", testFiles), testFiles.exists());
+        assertTrue(String.format("%s should be a directory", testFiles), testFiles.isDirectory());
+
+        File[] files = testFiles.listFiles();
+        assertNotNull(files);
+        assertThat("Number of files should be even", files.length % 2, is(0));
+
+        assertThat("All tests should be registered in the data() Collection", files.length, is(data().size() * 2));
+
+        for (Object[] testcase : data()) {
+            assertThat(String.format("%s should have length 1", Arrays.toString(testcase)), testcase.length, is(1));
+            assertTrue(String.format("%s[0] should be a String", Arrays.toString(testcase)), testcase[0] instanceof String);
+            String testName = (String) testcase[0];
+
+            File input = new File(testFiles, String.format("%s.input.xml", testName));
+            assertTrue(String.format("Input file %s should exist", input), input.exists());
+            assertTrue(String.format("Input file %s should be a file", input), input.isFile());
+
+            File output = new File(testFiles, String.format("%s.output.xml", testName));
+            assertTrue(String.format("Output file %s should exist", output), output.exists());
+            assertTrue(String.format("Output file %s should be a file", input), output.isFile());
+        }
     }
 
     @Parameters
