@@ -87,8 +87,26 @@ public class Ddm2EmdCrosswalk extends Crosswalker<EasyMetadata> {
      * @throws CrosswalkException
      */
     public EasyMetadata createFrom(final String xml) throws CrosswalkException {
-        return validateEMD(walk(ddmValidator, xml, newTarget()));
+        return validateEMD(walk(ddmValidator, replaceSurrogatePairsWithTempCode(xml), newTarget()));
     }
+
+    private String replaceSurrogatePairsWithTempCode(String xmlStr) {
+        char[] chars = xmlStr.toCharArray();
+        StringBuilder sb = new StringBuilder(chars.length);
+
+        for (int i = 0; i < chars.length; ++i) {
+            if (Character.isHighSurrogate(chars[i])) {
+                if (i + 1 == chars.length)
+                    throw new IllegalStateException("String contains high surrogate pair at the end");
+                if (!Character.isSurrogatePair(chars[i], chars[i + 1]))
+                    throw new IllegalStateException("Invalid surrogate pair at position " + i);
+                sb.append("@@@SURROGATE-PAIR:").append(Character.codePointAt(chars, i)).append("@@@");
+                i++;
+            } else sb.append(chars[i]);
+        }
+        return sb.toString();
+    }
+
 
     /**
      * Creates an object assuming validation against an XSD has been done.

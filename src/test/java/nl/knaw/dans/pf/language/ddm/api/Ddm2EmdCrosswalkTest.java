@@ -150,7 +150,7 @@ public class Ddm2EmdCrosswalkTest {
 
     private String emdElementFrom(String ddm) throws CrosswalkException, XMLSerializationException {
         EasyMetadata emd = new Ddm2EmdCrosswalk(null).createFrom(ddm);
-        return new EmdMarshaller(emd).getXmlString();
+        return new EmdMarshaller(emd).getXmlString().replaceAll("@@@SURROGATE-PAIR:(.*?)@@@", "&#$1;");
     }
 
     private String normalize(String s) {
