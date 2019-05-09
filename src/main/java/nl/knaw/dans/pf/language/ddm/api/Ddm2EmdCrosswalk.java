@@ -107,7 +107,6 @@ public class Ddm2EmdCrosswalk extends Crosswalker<EasyMetadata> {
         return sb.toString();
     }
 
-
     /**
      * Creates an object assuming validation against an XSD has been done.
      * 
