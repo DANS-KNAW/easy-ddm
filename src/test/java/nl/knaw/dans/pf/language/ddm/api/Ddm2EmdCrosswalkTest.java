@@ -97,6 +97,7 @@ public class Ddm2EmdCrosswalkTest {
             { "languageWithSchemeAndIdToEmdCode" },
             { "license" },
             { "normalRelation" },
+            { "SMP.char" },
             { "spatialBox" },
             { "spatialGmlEnvelope" },
             { "spatialGmlPoints" },
