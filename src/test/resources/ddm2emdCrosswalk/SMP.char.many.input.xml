@@ -5,7 +5,7 @@
                      schemeURI='http://vocab.getty.edu/aat/'
                      valueURI='http://vocab.getty.edu/aat/300209303'
                      xml:lang='en'>
-            𓁨𓃵𓄟 𠁆𠁟 🜵🝳🜁🜂🜄🜐
+            𓁨𓃵𓄟 𠁆𠁟 🜵🝳🜁some other text🜂🜄🜐
         </ddm:subject>
     </ddm:dcmiMetadata>
 </ddm:DDM>
