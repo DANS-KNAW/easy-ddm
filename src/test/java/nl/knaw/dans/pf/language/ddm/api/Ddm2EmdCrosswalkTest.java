@@ -98,6 +98,7 @@ public class Ddm2EmdCrosswalkTest {
             { "license" },
             { "normalRelation" },
             { "SMP.char" },
+            { "SMP.char.many" },
             { "spatialBox" },
             { "spatialGmlEnvelope" },
             { "spatialGmlPoints" },
