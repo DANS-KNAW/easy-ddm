@@ -49,7 +49,7 @@ public class Ddm2EmdCrosswalkTest {
         testFilesDirectory = new File(Ddm2EmdCrosswalkTest.class.getResource("/ddm2emdCrosswalk").toURI());
 
         checkTestDataConsistency(testFilesDirectory);
-        assertEquals(Charset.forName("UTF-8"), Charset.defaultCharset());
+        assertEquals("For these test to run UTF-8 MUST be the default charset. Configure this in your OS (en_US.UTF-8 on the Mac)", Charset.forName("UTF-8"), Charset.defaultCharset());
     }
 
     private static void checkTestDataConsistency(File testFiles) {
