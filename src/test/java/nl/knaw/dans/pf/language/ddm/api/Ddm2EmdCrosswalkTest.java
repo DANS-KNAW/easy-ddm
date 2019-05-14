@@ -28,10 +28,12 @@ import org.junit.runners.Parameterized.Parameters;
 
 import java.io.File;
 import java.net.URISyntaxException;
+import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.Collection;
 
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
@@ -47,6 +49,7 @@ public class Ddm2EmdCrosswalkTest {
         testFilesDirectory = new File(Ddm2EmdCrosswalkTest.class.getResource("/ddm2emdCrosswalk").toURI());
 
         checkTestDataConsistency(testFilesDirectory);
+        assertEquals(Charset.forName("UTF-8"), Charset.defaultCharset());
     }
 
     private static void checkTestDataConsistency(File testFiles) {
