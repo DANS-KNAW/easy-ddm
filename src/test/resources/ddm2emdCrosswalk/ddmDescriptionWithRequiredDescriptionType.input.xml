@@ -3,6 +3,7 @@
          xmlns:dcterms='http://purl.org/dc/terms/'>
     <ddm:profile>
         <ddm:description ddm:descriptionType='Abstract'>abstract</ddm:description>
+        <ddm:description descriptionType="TechnicalInfo">remark1</ddm:description>
         <dcterms:description>beschrijving</dcterms:description>
     </ddm:profile>
 </ddm:DDM>

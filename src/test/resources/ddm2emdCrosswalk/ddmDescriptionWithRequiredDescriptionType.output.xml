@@ -6,6 +6,7 @@
         <dc:description>beschrijving</dc:description>
     </emd:description>
     <emd:other>
+        <eas:remark>Instructions for Reuse: remark1</eas:remark>
         <eas:application-specific>
             <eas:metadataformat>ANY_DISCIPLINE</eas:metadataformat>
             <eas:pakbon-status>NOT_IMPORTED</eas:pakbon-status>
