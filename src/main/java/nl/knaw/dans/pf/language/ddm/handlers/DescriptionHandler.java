@@ -26,14 +26,12 @@ public class DescriptionHandler extends BasicStringHandler {
   protected void finishElement(final String uri, final String localName) throws SAXException {
     final BasicString basicString = createBasicString(uri, localName);
     String desciptionType = getAttribute("", "descriptionType");
-    boolean isTechnicalDescription = desciptionType == null ? false : desciptionType.equals("TechnicalInfo");
-    if (basicString == null) {
-    }
-    else if (isTechnicalDescription) {
-      getTarget().getEmdOther().getEasRemarks().add(new BasicRemark("Instructions for Reuse: " + basicString.getValue()));
-    }
-    else {
-      getTarget().getEmdDescription().getDcDescription().add(basicString);
+    boolean isTechnicalDescription = desciptionType != null && desciptionType.equals("TechnicalInfo");
+    if (basicString != null) {
+      if (isTechnicalDescription)
+        getTarget().getEmdOther().getEasRemarks().add(new BasicRemark("Instructions for Reuse: " + basicString.getValue()));
+      else
+        getTarget().getEmdDescription().getDcDescription().add(basicString);
     }
   }
 }
