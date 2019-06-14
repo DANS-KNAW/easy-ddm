@@ -21,13 +21,20 @@ import nl.knaw.dans.pf.language.ddm.handlertypes.BasicStringHandler;
 import nl.knaw.dans.pf.language.emd.types.BasicString;
 
 public class DcTypeHandler extends BasicStringHandler {
-    @Override
-    protected void finishElement(final String uri, final String localName) throws SAXException {
-        BasicString basicString = createBasicString(uri, localName);
-        if (basicString != null) {
-            basicString.setScheme("DCMI");
-            basicString.setSchemeId("common.dc.type");
-            getTarget().getEmdType().getDcType().add(basicString);
-        }
+
+  private static String DCMI_NAME = "DCMI";
+
+  @Override
+  protected void finishElement(final String uri, final String localName) throws SAXException {
+    BasicString basicString = createBasicString(uri, localName);
+
+    String schemeName = getAttribute("http://www.w3.org/2001/XMLSchema-instance", "type");
+    if (basicString != null) {
+      if (schemeName != null && schemeName.equals("dcterms:DCMIType")) {
+        basicString.setScheme(DCMI_NAME);
+        basicString.setSchemeId("common.dc.type");
+      }
+      getTarget().getEmdType().getDcType().add(basicString);
     }
+  }
 }
