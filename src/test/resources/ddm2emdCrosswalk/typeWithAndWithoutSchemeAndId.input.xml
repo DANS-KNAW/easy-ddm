@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ddm:DDM xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'
+         xmlns:dcterms='http://purl.org/dc/terms/'
+         xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+    <ddm:dcmiMetadata>
+        <dcterms:type xsi:type='dcterms:DCMIType'>Text</dcterms:type>
+        <dcterms:type>schemeless type</dcterms:type>
+    </ddm:dcmiMetadata>
+</ddm:DDM>

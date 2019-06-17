@@ -127,6 +127,7 @@ public class Ddm2EmdCrosswalkTest {
             { "temporalABR" },
             { "temporalPlainText" },
             { "typeWithSchemeAndId" },
+            { "typeWithAndWithoutSchemeAndId" },
         });
         // @formatter:on
     }
@@ -139,6 +140,7 @@ public class Ddm2EmdCrosswalkTest {
 
     @Test
     public void ddm2Emd() throws Exception {
+        System.out.println("testname = " + this.testName);
         File ddmFile = new File(testFilesDirectory, String.format("%s.input.xml", this.testName));
         File emdFile = new File(testFilesDirectory, String.format("%s.output.xml", this.testName));
 
