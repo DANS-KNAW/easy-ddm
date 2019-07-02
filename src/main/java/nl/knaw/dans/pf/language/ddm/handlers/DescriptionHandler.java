@@ -16,7 +16,6 @@
 package nl.knaw.dans.pf.language.ddm.handlers;
 
 import nl.knaw.dans.pf.language.ddm.handlertypes.BasicStringHandler;
-import nl.knaw.dans.pf.language.emd.types.BasicRemark;
 import nl.knaw.dans.pf.language.emd.types.BasicString;
 import org.xml.sax.SAXException;
 
@@ -29,9 +28,8 @@ public class DescriptionHandler extends BasicStringHandler {
     boolean isTechnicalDescription = desciptionType != null && desciptionType.equals("TechnicalInfo");
     if (basicString != null) {
       if (isTechnicalDescription)
-        getTarget().getEmdOther().getEasRemarks().add(new BasicRemark("Instructions for Reuse: " + basicString.getValue()));
-      else
-        getTarget().getEmdDescription().getDcDescription().add(basicString);
+        basicString.setValue("Instructions for Reuse: " + basicString.getValue());
+      getTarget().getEmdDescription().getDcDescription().add(basicString);
     }
   }
 }
