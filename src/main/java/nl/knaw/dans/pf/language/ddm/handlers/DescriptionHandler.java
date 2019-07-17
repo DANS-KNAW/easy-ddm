@@ -25,10 +25,16 @@ public class DescriptionHandler extends BasicStringHandler {
   protected void finishElement(final String uri, final String localName) throws SAXException {
     final BasicString basicString = createBasicString(uri, localName);
     String desciptionType = getAttribute("", "descriptionType");
-    boolean isTechnicalDescription = desciptionType != null && desciptionType.equals("TechnicalInfo");
+
     if (basicString != null) {
-      if (isTechnicalDescription)
-        basicString.setValue("Instructions for Reuse: " + basicString.getValue());
+      String prefix = "Instructions for Reuse: ";
+      String value = basicString.getValue();
+      boolean isTechnicalDescription = desciptionType != null && desciptionType.equals("TechnicalInfo");
+      boolean hasPrefix = value.toLowerCase().startsWith(prefix.toLowerCase());
+
+      if (isTechnicalDescription && !hasPrefix)
+        basicString.setValue(prefix + value);
+
       getTarget().getEmdDescription().getDcDescription().add(basicString);
     }
   }

@@ -86,6 +86,7 @@ public class Ddm2EmdCrosswalkTest {
             { "dcxIsniAuthor" },
             { "ddmAccessRight" },
             { "ddmDescriptionWithRequiredDescriptionType" },
+            { "ddmDescriptionWithRequiredDescriptionTypeAndPrefix" },
             { "ddmSubject" },
             { "ddmTemporal" },
             { "formatWithSchemeAndId" },
