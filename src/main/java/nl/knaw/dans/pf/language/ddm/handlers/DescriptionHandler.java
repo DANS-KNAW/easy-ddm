@@ -24,11 +24,11 @@ public class DescriptionHandler extends BasicStringHandler {
   @Override
   protected void finishElement(final String uri, final String localName) throws SAXException {
     final BasicString basicString = createBasicString(uri, localName);
-    String desciptionType = getAttribute("", "descriptionType");
 
     if (basicString != null) {
       String prefix = "Instructions for Reuse: ";
       String value = basicString.getValue();
+      String desciptionType = getAttribute("", "descriptionType");
       boolean isTechnicalDescription = desciptionType != null && desciptionType.equals("TechnicalInfo");
       boolean hasPrefix = value.toLowerCase().startsWith(prefix.toLowerCase());
 
