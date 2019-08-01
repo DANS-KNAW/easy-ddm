@@ -62,6 +62,7 @@ import java.util.Map;
 import java.util.TimeZone;
 
 import static nl.knaw.dans.pf.language.ddm.api.SpecialValidator.LOCAL_SCHEMA_DIR;
+import static nl.knaw.dans.pf.language.ddm.api.SpecialValidator.LOCAL_SCHEMA_EXAMPLES_DIR;
 import static nl.knaw.dans.pf.language.ddm.handlermaps.NameSpace.DC;
 import static org.apache.commons.io.FileUtils.copyFile;
 import static org.apache.commons.io.FileUtils.writeStringToFile;
@@ -73,7 +74,7 @@ import static org.junit.Assume.assumeTrue;
 public class Ddm2EmdTest {
 
     private Ddm2EmdCrosswalk crosswalk = new Ddm2EmdCrosswalk(new SpecialValidator());
-    private File[] publicExamples = new File(LOCAL_SCHEMA_DIR, "docs/examples/ddm/").listFiles();
+    private File[] publicExamples = new File(LOCAL_SCHEMA_EXAMPLES_DIR, "examples/ddm/").listFiles();
     private static final Logger logger = LoggerFactory.getLogger(Ddm2EmdTest.class);
 
     private void externalSchemaCheck() {

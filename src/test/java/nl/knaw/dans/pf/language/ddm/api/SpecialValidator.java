@@ -34,6 +34,8 @@ public class SpecialValidator extends AbstractValidator2 {
     private static final Logger logger = LoggerFactory.getLogger(SpecialValidator.class);
 
     public final static String LOCAL_SCHEMA_DIR = "target/easy-schema/";
+    public final static String LOCAL_SCHEMA_EXAMPLES_DIR = "target/easy-schema-examples/";
+
 
     // Note that the online url's can be found in nl.knaw.dans.pf.language.ddm.handlermaps.NameSpace
     public final static Map<String, File> RECENT_SCHEMAS = getRecentXsds();

@@ -25,7 +25,7 @@ public enum NameSpace {
     DCX_GML("dcx-gml", "http://easy.dans.knaw.nl/schemas/dcx/gml/", "https://easy.dans.knaw.nl/schemas/dcx/2016/dcx-gml.xsd"), //
     DDM("ddm", "http://easy.dans.knaw.nl/schemas/md/ddm/", "https://easy.dans.knaw.nl/schemas/md/2019/01/ddm.xsd"), //
     XSI("xsi", "http://www.w3.org/2001/XMLSchema-instance", "https://www.w3.org/2001/XMLSchema-instance"), //
-    NARCIS_TYPE("narcis", "http://easy.dans.knaw.nl/schemas/vocab/narcis-type/", "https://easy.dans.knaw.nl/schemas/vocab/2019/narcis-type.xsd"), //
+    NARCIS_TYPE("narcis", "http://easy.dans.knaw.nl/schemas/vocab/narcis-type/", "https://easy.dans.knaw.nl/schemas/vocab/2019/01/narcis-type.xsd"), //
     IDENTIFIER_TYPE("id-type", "http://easy.dans.knaw.nl/schemas/vocab/identifier-type/", "https://easy.dans.knaw.nl/schemas/vocab/2017/09/identifier-type.xsd"), //
     ABR("abr", "http://www.den.nl/standaard/166/Archeologisch-Basisregister/", "https://easy.dans.knaw.nl/schemas/vocab/2012/10/abr-type.xsd");
 
