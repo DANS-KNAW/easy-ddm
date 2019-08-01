@@ -34,6 +34,7 @@ public class NameSpaceTest {
                 String localPath = RECENT_SCHEMAS.get(name).toString();
                 String expectedRelativePath = localPath.replace(LOCAL_SCHEMA_DIR, "");
                 String implementedRelativePath = ns.xsd.replace("http://easy.dans.knaw.nl/schemas/", "");
+                implementedRelativePath = implementedRelativePath.replace("https://easy.dans.knaw.nl/schemas/", "");
                 assertThat("latest xsd for NameSpace " + ns, implementedRelativePath, is(expectedRelativePath));
             }
         }
