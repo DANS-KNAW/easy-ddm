@@ -30,7 +30,7 @@
     <inceptionYear>2014</inceptionYear>
     <properties>
         <easy.schema.version>2.1.10</easy.schema.version>
-        <easy.schema.examples.version>1.0.4</easy.schema.examples.version>
+        <easy.schema.examples.version>1.0.3</easy.schema.examples.version>
         <easy.emd.version>3.8.0</easy.emd.version>
     </properties>
     <scm>
