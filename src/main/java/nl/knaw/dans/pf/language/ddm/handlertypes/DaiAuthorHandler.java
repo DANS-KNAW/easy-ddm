@@ -37,7 +37,7 @@ public abstract class DaiAuthorHandler extends CrosswalkHandler<EasyMetadata> {
         return setDAI(author, attribute);
     }
 
-    protected Author setDAI(final Author author, final String value) throws SAXException {
+    Author setDAI(final Author author, final String value) throws SAXException {
         if (value.startsWith("info")) {
             final String[] strings = value.split("/");
             final String entityId = strings[strings.length - 1];
