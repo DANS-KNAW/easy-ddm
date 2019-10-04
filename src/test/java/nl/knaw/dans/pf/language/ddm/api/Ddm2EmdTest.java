@@ -68,6 +68,7 @@ import static org.apache.commons.io.FileUtils.copyFile;
 import static org.apache.commons.io.FileUtils.writeStringToFile;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.StringContains.containsString;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assume.assumeTrue;
 
@@ -94,7 +95,6 @@ public class Ddm2EmdTest {
         }
     }
 
-    @Test
     /** Proofs validity of the public examples.
      *
      * This might fail during upgrade of XSDs
@@ -103,11 +103,12 @@ public class Ddm2EmdTest {
      * NB: also eat each sword pudding (after build and deploy of easy-app/front-end/easy-sword) with:
      * 'zip -r d.zip *;curl -i --data-binary @d.zip -u easyadmin:easyadmin deasy.dans.knaw.nl/sword/deposit'
      **/
+    @Test
     public void publicExamplesAreValid() throws Exception {
         externalSchemaCheck();
         for (File file : publicExamples) {
-
             EasyMetadata emd = crosswalk.createFrom(file);
+            assertNotNull(emd);
 
             // write result
             String dir = "target/swordPuddings/" + file.getName().replace(".xml", "");
@@ -123,7 +124,6 @@ public class Ddm2EmdTest {
 
             // just a limited check of the output
             assertThat("EMD content from " + file, emdString, containsString("easy-discipline:"));
-
         }
     }
 
@@ -175,6 +175,7 @@ public class Ddm2EmdTest {
         XPath xpath = createXpathInstance();
         // Conversion
         EasyMetadata emd = crosswalk.createFrom(new File(ddmXml));
+        assertNotNull(emd);
         String emdString = new EmdMarshaller(emd).getXmlString();
         // Write the conversion result
         Files.write(Paths.get(emdXmlActual), emdString.getBytes(StandardCharsets.UTF_8));

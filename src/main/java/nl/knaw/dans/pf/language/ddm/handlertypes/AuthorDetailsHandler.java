@@ -37,8 +37,6 @@ public abstract class AuthorDetailsHandler extends DaiAuthorHandler {
                 author.setInitials(value);
             else if ("surname".equals(localName))
                 author.setSurname(value);
-            else if ("DAI".equals(localName))
-                author.setEntityId(value, "DAI");
             else if ("titles".equals(localName))
                 author.setTitle(value);
             else if ("name".equals(localName)/* part of organization */)

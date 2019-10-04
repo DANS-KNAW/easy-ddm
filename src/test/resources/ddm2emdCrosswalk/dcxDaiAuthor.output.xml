@@ -6,7 +6,7 @@
         <eas:creator>
             <eas:initials>X.I.</eas:initials>
             <eas:surname>lastname</eas:surname>
-            <eas:entityId eas:scheme="DAI">info:eu-repo/dai/nl/9876543216</eas:entityId>
+            <eas:entityId eas:identification-system="info:eu-repo/dai/nl/" eas:scheme="DAI">9876543216</eas:entityId>
         </eas:creator>
     </emd:creator>
     <emd:other>

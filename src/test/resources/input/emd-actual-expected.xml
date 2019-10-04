@@ -27,7 +27,7 @@
             <eas:prefix>v.d</eas:prefix>
             <eas:surname>Coen</eas:surname>
             <eas:organization>KNAW</eas:organization>
-            <eas:entityId eas:scheme="DAI">93313935x</eas:entityId>
+            <eas:entityId eas:identification-system="info:eu-repo/dai/nl/" eas:scheme="DAI">933139357</eas:entityId>
             <eas:role eas:scheme="DATACITE">ContactPerson</eas:role>
         </eas:creator>
         <eas:creator>
@@ -38,7 +38,7 @@
             <eas:title>MSc.</eas:title>
             <eas:initials>E</eas:initials>
             <eas:surname>Ind</eas:surname>
-            <eas:entityId eas:scheme="DAI">13313935x</eas:entityId>
+            <eas:entityId eas:identification-system="info:eu-repo/dai/nl/" eas:scheme="DAI">133139352</eas:entityId>
         </eas:creator>
     </emd:creator>
     <emd:subject/>

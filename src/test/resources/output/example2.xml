@@ -16,7 +16,7 @@
             <eas:prefix>van den</eas:prefix>
             <eas:surname>Aarden</eas:surname>
             <eas:organization>Utrecht University</eas:organization>
-            <eas:entityId eas:scheme="DAI">123456789</eas:entityId>
+            <eas:entityId eas:identification-system="info:eu-repo/dai/nl/" eas:scheme="DAI">123456789</eas:entityId>
         </eas:creator>
         <eas:creator>
             <eas:title>dr.</eas:title>

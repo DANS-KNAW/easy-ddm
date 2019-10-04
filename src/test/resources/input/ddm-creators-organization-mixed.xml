@@ -36,7 +36,7 @@
 				<dcx-dai:insertions>v.d</dcx-dai:insertions>
 				<dcx-dai:surname>Coen</dcx-dai:surname>
                 <dcx-dai:role>ContactPerson</dcx-dai:role>
-                <dcx-dai:DAI>93313935x</dcx-dai:DAI>
+                <dcx-dai:DAI>933139357</dcx-dai:DAI>
                 <dcx-dai:organization>
 					<dcx-dai:name xml:lang="en">KNAW</dcx-dai:name>
 				</dcx-dai:organization>
@@ -53,7 +53,7 @@
 				<dcx-dai:titles xml:lang="en">MSc.</dcx-dai:titles>
 				<dcx-dai:initials>E</dcx-dai:initials>
 				<dcx-dai:surname>Ind</dcx-dai:surname>
-				<dcx-dai:DAI>13313935x</dcx-dai:DAI> 
+				<dcx-dai:DAI>133139352</dcx-dai:DAI>
 			</dcx-dai:author>
 		</dcx-dai:creatorDetails>
 		<ddm:created>2013</ddm:created>

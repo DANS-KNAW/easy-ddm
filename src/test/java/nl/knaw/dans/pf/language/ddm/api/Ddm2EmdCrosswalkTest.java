@@ -151,7 +151,7 @@ public class Ddm2EmdCrosswalkTest {
         String actualEmd = normalize(FileUtils.readFileToString(emdFile));
         String expectedEmd = normalize(emdElementFrom(ddm));
 
-        assertThat(expectedEmd, is(actualEmd));
+        assertThat(String.format("ddm2Emd test failed for file %s", this.testName), expectedEmd, is(actualEmd));
     }
 
     private String emdElementFrom(String ddm) throws CrosswalkException, XMLSerializationException {
