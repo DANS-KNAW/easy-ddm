@@ -29,7 +29,7 @@
     <name>DANS Dataset Metadata Library (DDM)</name>
     <inceptionYear>2014</inceptionYear>
     <properties>
-        <easy.schema.version>3.0.2</easy.schema.version>
+        <easy.schema.version>3.1.1-SNAPSHOT</easy.schema.version>
         <easy.schema.examples.version>2.0.1</easy.schema.examples.version>
         <easy.emd.version>3.8.2</easy.emd.version>
     </properties>
@@ -146,7 +146,7 @@
                             <artifactItems>
                                 <artifactItem>
                                     <groupId>nl.knaw.dans.easy</groupId>
-                                    <artifactId>easy-schema</artifactId>
+                                    <artifactId>easy-schema-lib</artifactId>
                                     <version>${easy.schema.version}</version>
                                     <outputDirectory>${project.build.directory}/easy-schema</outputDirectory>
                                 </artifactItem>
