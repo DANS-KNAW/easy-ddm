@@ -25,12 +25,12 @@
     </parent>
     <groupId>nl.knaw.dans.easy</groupId>
     <artifactId>ddm</artifactId>
-    <version>3.9.2-SNAPSHOT</version>
+    <version>3.9.3-SNAPSHOT</version>
     <name>DANS Dataset Metadata Library (DDM)</name>
     <inceptionYear>2014</inceptionYear>
     <properties>
-        <easy.schema.version>3.1.1-SNAPSHOT</easy.schema.version>
-        <easy.schema.examples.version>2.0.2-SNAPSHOT</easy.schema.examples.version>
+        <easy.schema.version>3.2.0</easy.schema.version>
+        <easy.schema.examples.version>2.1.0</easy.schema.examples.version>
         <easy.emd.version>3.8.2</easy.emd.version>
     </properties>
     <scm>
