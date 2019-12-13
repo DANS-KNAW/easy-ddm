@@ -17,6 +17,7 @@ package nl.knaw.dans.pf.language.ddm.handlertypes;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.regex.Pattern;
 
 import nl.knaw.dans.common.lang.id.DAI;
 import nl.knaw.dans.pf.language.emd.EasyMetadata;
@@ -28,6 +29,15 @@ import nl.knaw.dans.pf.language.xml.crosswalk.CrosswalkHandler;
 import org.xml.sax.SAXException;
 
 public abstract class DaiAuthorHandler extends CrosswalkHandler<EasyMetadata> {
+
+    private static final Pattern isniStart1 = Pattern.compile("^http://isni.org/isni/");
+    private static final Pattern isniStart2 = Pattern.compile("^ISNI:");
+    private static final Pattern isniPattern1 = Pattern.compile("([0-9]){15,16}X{0,1}");
+    private static final Pattern isniPattern2 = Pattern.compile("([0-9]{4}[ ]{0,1}){3}[0-9]{3}[0-9xX]{1}");
+
+    private static final Pattern orcidStart = Pattern.compile("^https://orcid.org/");
+    private static final Pattern orcidPattern = Pattern.compile("([0-9]{4}-){3}[0-9]{3}[0-9xX]{0,1}");
+
     protected Author createDaiAuthor(final String uri, final String localName) throws SAXException {
         final String value = getCharsSinceStart().trim();
         final String attribute = getAttribute("", "DAI").trim();
@@ -58,20 +68,19 @@ public abstract class DaiAuthorHandler extends CrosswalkHandler<EasyMetadata> {
     }
 
     void setISNI(final Author author, final String value) throws SAXException {
-        String entityId = value
-            .replaceFirst("^http://isni.org/isni/", "")
-            .replaceFirst("^ISNI:", "");
+        String strippedStart1 = isniStart1.matcher(value).replaceFirst("");
+        String entityId = isniStart2.matcher(strippedStart1).replaceFirst("");
 
-        if (entityId.matches("([0-9]){15,16}X{0,1}") || entityId.matches("([0-9]{4}[ ]{0,1}){3}[0-9]{3}[0-9xX]{1}"))
+        if (isniPattern1.matcher(entityId).matches() || isniPattern2.matcher(entityId).matches())
             author.setIsni(entityId.replaceAll("\\s", ""));
         else
             error("invalid ISNI " + entityId);
     }
 
     void setORCID(final Author author, final String value) throws SAXException {
-        String entityId = value.replaceFirst("^https://orcid.org/", "");
+        String entityId = orcidStart.matcher(value).replaceFirst("");
 
-        if (entityId.matches("([0-9]{4}-){3}[0-9]{3}[0-9xX]{0,1}"))
+        if (orcidPattern.matcher(entityId).matches())
             author.setOrcid(entityId);
         else
             error("invalid ORCID " + entityId);
