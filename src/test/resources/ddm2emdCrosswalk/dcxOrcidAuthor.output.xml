@@ -6,7 +6,7 @@
         <eas:creator>
             <eas:initials>X.I.</eas:initials>
             <eas:surname>lastname</eas:surname>
-            <eas:entityId eas:identification-system="http://isni.org/isni/" eas:scheme="ISNI">000000012281955X</eas:entityId>
+            <eas:entityId eas:identification-system="https://orcid.org/" eas:scheme="ORCID">0000-0001-2281-955X</eas:entityId>
         </eas:creator>
     </emd:creator>
     <emd:other>

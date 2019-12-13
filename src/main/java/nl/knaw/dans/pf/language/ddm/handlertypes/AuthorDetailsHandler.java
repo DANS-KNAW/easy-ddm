@@ -43,6 +43,10 @@ public abstract class AuthorDetailsHandler extends DaiAuthorHandler {
                 author.setOrganization(value);
             else if ("DAI".equals(localName))
                 setDAI(author, value); // TODO dai system as attribute?
+            else if ("ISNI".equals(localName))
+                setISNI(author, value);
+            else if ("ORCID".equals(localName))
+                setORCID(author, value);
             else if ("insertions".equals(localName))
                 author.setPrefix(value);
             else if ("role".equals(localName))
