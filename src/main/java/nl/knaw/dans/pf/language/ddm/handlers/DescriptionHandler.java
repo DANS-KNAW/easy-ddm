@@ -26,16 +26,11 @@ public class DescriptionHandler extends BasicStringHandler {
     final BasicString basicString = createBasicString(uri, localName);
 
     if (basicString != null) {
-      String oldPrefix = "Instructions for Reuse: ";
       String prefix = "Suggestions for data usage: ";
       String value = basicString.getValue();
       String desciptionType = getAttribute("", "descriptionType");
       boolean isTechnicalDescription = desciptionType != null && desciptionType.equals("TechnicalInfo");
-      boolean hasOldPrefix = value.toLowerCase().startsWith(oldPrefix.toLowerCase());
       boolean hasPrefix = value.toLowerCase().startsWith(prefix.toLowerCase());
-
-      if (isTechnicalDescription && hasOldPrefix)
-        value = value.replaceFirst(oldPrefix, "");
 
       if (isTechnicalDescription && !hasPrefix)
         basicString.setValue(prefix + value);

@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<ddm:DDM xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'
-         xmlns:dcterms='http://purl.org/dc/terms/'>
-    <ddm:profile>
-        <ddm:description descriptionType='Abstract'>abstract</ddm:description>
-        <ddm:description descriptionType="TechnicalInfo">Instructions for Reuse: remark1</ddm:description>
-        <dcterms:description>beschrijving</dcterms:description>
-    </ddm:profile>
-</ddm:DDM>
