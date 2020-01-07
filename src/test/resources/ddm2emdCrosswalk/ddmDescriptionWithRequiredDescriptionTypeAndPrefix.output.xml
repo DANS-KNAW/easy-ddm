@@ -3,7 +3,7 @@
                   xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:eas="http://easy.dans.knaw.nl/easy/easymetadata/eas/" emd:version="0.1">
     <emd:description>
         <dc:description>abstract</dc:description>
-        <dc:description>Instructions for Reuse: remark1</dc:description>
+        <dc:description>Suggestions for data usage: remark1</dc:description>
         <dc:description>beschrijving</dc:description>
     </emd:description>
     <emd:other>
