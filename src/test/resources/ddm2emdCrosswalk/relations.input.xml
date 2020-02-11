@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ddm:DDM xsi:schemaLocation="http://easy.dans.knaw.nl/schemas/md/ddm/ https://easy.dans.knaw.nl/schemas/md/ddm/ddm.xsd"
+         xmlns:ddm="http://easy.dans.knaw.nl/schemas/md/ddm/"
+         xmlns:dcterms="http://purl.org/dc/terms/"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ddm:dcmiMetadata>
+        <ddm:references scheme="id-type:DOI" href="https://doi.org/10.17026/test-doi-related-identifier">10.17026/test-doi-related-identifier</ddm:references>
+        <ddm:replaces scheme="id-type:URN" href="http://persistent-identifier.nl/urn:nbn:nl:ui:test-urn-related-identifier">
+            urn:nbn:nl:ui:test-urn-related-identifier
+        </ddm:replaces>
+        <dcterms:requires xsi:type="id-type:ISBN">my-isbn-related-identifier</dcterms:requires>
+        <dcterms:hasVersion xsi:type="id-type:ISSN">my-issn-related-identifier</dcterms:hasVersion>
+        <dcterms:isFormatOf xsi:type="id-type:NWO-PROJECTNR">my-nwo-related-identifier</dcterms:isFormatOf>
+        <dcterms:isPartOf>my own related identifier</dcterms:isPartOf>
+        <ddm:relation xml:lang="eng" href="https://www.google.com">Google</ddm:relation>
+        <ddm:isFormatOf scheme="id-type:DOI" href="https://doi.org/10.17026/test-doi-alternative-identifier">10.17026/test-doi-alternative-identifier</ddm:isFormatOf>
+        <ddm:isFormatOf scheme="id-type:URN" href="http://persistent-identifier.nl/urn:nbn:nl:ui:test-urn-alternative-identifier">
+            urn:nbn:nl:ui:test-urn-alternative-identifier
+        </ddm:isFormatOf>
+        <dcterms:isFormatOf xsi:type="id-type:ISBN">my-isbn-alternative-identifier</dcterms:isFormatOf>
+        <dcterms:isFormatOf xsi:type="id-type:ISSN">my-issn-alternative-identifier</dcterms:isFormatOf>
+        <dcterms:isFormatOf xsi:type="id-type:NWO-PROJECTNR">my-nwo-alternative-identifier</dcterms:isFormatOf>
+        <dcterms:isFormatOf>my own alternative identifier</dcterms:isFormatOf>
+    </ddm:dcmiMetadata>
+</ddm:DDM>

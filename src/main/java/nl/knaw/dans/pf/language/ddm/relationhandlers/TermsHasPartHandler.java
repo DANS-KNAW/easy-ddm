@@ -21,10 +21,28 @@ import nl.knaw.dans.pf.language.ddm.handlertypes.BasicIdentifierHandler;
 import nl.knaw.dans.pf.language.emd.types.BasicIdentifier;
 
 public class TermsHasPartHandler extends BasicIdentifierHandler {
+
+    private final String scheme;
+
+    public TermsHasPartHandler() {
+        this(null);
+    }
+
+    public TermsHasPartHandler(String scheme) {
+        this.scheme = scheme;
+    }
+
     @Override
     public void finishElement(final String uri, final String localName) throws SAXException {
         final BasicIdentifier relation = createIdentifier(uri, localName);
-        if (relation != null)
+        if (relation != null) {
+            this.setScheme(relation);
             getTarget().getEmdRelation().getTermsHasPart().add(relation);
+        }
+    }
+
+    protected void setScheme(BasicIdentifier relation) {
+        if (scheme != null)
+            relation.setScheme(scheme);
     }
 }

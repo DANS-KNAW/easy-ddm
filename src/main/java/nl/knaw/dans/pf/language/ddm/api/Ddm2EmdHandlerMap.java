@@ -240,6 +240,51 @@ public class Ddm2EmdHandlerMap implements CrosswalkHandlerMap<EasyMetadata> {
         map.put("/dcterms:isFormatOf", new TermsIsFormatOfHandler());
         map.put("/dcterms:hasFormat", new TermsHasFormatHandler());
 
+        map.put("ISBN/dcterms:relation", new DcRelationHandler("ISBN"));
+        map.put("ISBN/dcterms:conformsTo", new TermsConformsToHandler("ISBN"));
+        map.put("ISBN/dcterms:isVersionOf", new TermsIsVersionOfHandler("ISBN"));
+        map.put("ISBN/dcterms:hasVersion", new TermsHasVersionHandler("ISBN"));
+        map.put("ISBN/dcterms:isReplacedBy", new TermsIsReplacedByHandler("ISBN"));
+        map.put("ISBN/dcterms:replaces", new TermsReplacesHandler("ISBN"));
+        map.put("ISBN/dcterms:isRequiredBy", new TermsIsRequiredByHandler("ISBN"));
+        map.put("ISBN/dcterms:requires", new TermsRequiresHandler("ISBN"));
+        map.put("ISBN/dcterms:isPartOf", new TermsIsPartOfHandler("ISBN"));
+        map.put("ISBN/dcterms:hasPart", new TermsHasPartHandler("ISBN"));
+        map.put("ISBN/dcterms:isReferencedBy", new TermsIsReferencedByHandler("ISBN"));
+        map.put("ISBN/dcterms:references", new TermsReferencesHandler("ISBN"));
+        map.put("ISBN/dcterms:isFormatOf", new TermsIsFormatOfHandler("ISBN"));
+        map.put("ISBN/dcterms:hasFormat", new TermsHasFormatHandler("ISBN"));
+
+        map.put("ISSN/dcterms:relation", new DcRelationHandler("ISSN"));
+        map.put("ISSN/dcterms:conformsTo", new TermsConformsToHandler("ISSN"));
+        map.put("ISSN/dcterms:isVersionOf", new TermsIsVersionOfHandler("ISSN"));
+        map.put("ISSN/dcterms:hasVersion", new TermsHasVersionHandler("ISSN"));
+        map.put("ISSN/dcterms:isReplacedBy", new TermsIsReplacedByHandler("ISSN"));
+        map.put("ISSN/dcterms:replaces", new TermsReplacesHandler("ISSN"));
+        map.put("ISSN/dcterms:isRequiredBy", new TermsIsRequiredByHandler("ISSN"));
+        map.put("ISSN/dcterms:requires", new TermsRequiresHandler("ISSN"));
+        map.put("ISSN/dcterms:isPartOf", new TermsIsPartOfHandler("ISSN"));
+        map.put("ISSN/dcterms:hasPart", new TermsHasPartHandler("ISSN"));
+        map.put("ISSN/dcterms:isReferencedBy", new TermsIsReferencedByHandler("ISSN"));
+        map.put("ISSN/dcterms:references", new TermsReferencesHandler("ISSN"));
+        map.put("ISSN/dcterms:isFormatOf", new TermsIsFormatOfHandler("ISSN"));
+        map.put("ISSN/dcterms:hasFormat", new TermsHasFormatHandler("ISSN"));
+
+        map.put("NWO-PROJECTNR/dcterms:relation", new DcRelationHandler("NWO-PROJECTNR"));
+        map.put("NWO-PROJECTNR/dcterms:conformsTo", new TermsConformsToHandler("NWO-PROJECTNR"));
+        map.put("NWO-PROJECTNR/dcterms:isVersionOf", new TermsIsVersionOfHandler("NWO-PROJECTNR"));
+        map.put("NWO-PROJECTNR/dcterms:hasVersion", new TermsHasVersionHandler("NWO-PROJECTNR"));
+        map.put("NWO-PROJECTNR/dcterms:isReplacedBy", new TermsIsReplacedByHandler("NWO-PROJECTNR"));
+        map.put("NWO-PROJECTNR/dcterms:replaces", new TermsReplacesHandler("NWO-PROJECTNR"));
+        map.put("NWO-PROJECTNR/dcterms:isRequiredBy", new TermsIsRequiredByHandler("NWO-PROJECTNR"));
+        map.put("NWO-PROJECTNR/dcterms:requires", new TermsRequiresHandler("NWO-PROJECTNR"));
+        map.put("NWO-PROJECTNR/dcterms:isPartOf", new TermsIsPartOfHandler("NWO-PROJECTNR"));
+        map.put("NWO-PROJECTNR/dcterms:hasPart", new TermsHasPartHandler("NWO-PROJECTNR"));
+        map.put("NWO-PROJECTNR/dcterms:isReferencedBy", new TermsIsReferencedByHandler("NWO-PROJECTNR"));
+        map.put("NWO-PROJECTNR/dcterms:references", new TermsReferencesHandler("NWO-PROJECTNR"));
+        map.put("NWO-PROJECTNR/dcterms:isFormatOf", new TermsIsFormatOfHandler("NWO-PROJECTNR"));
+        map.put("NWO-PROJECTNR/dcterms:hasFormat", new TermsHasFormatHandler("NWO-PROJECTNR"));
+
         map.put("/ddm:relation", new DdmRelationHandler());
         map.put("/ddm:conformsTo", new DdmConformsToHandler());
         map.put("/ddm:isVersionOf", new DdmIsVersionOfHandler());
