@@ -22,27 +22,18 @@ import nl.knaw.dans.pf.language.emd.types.BasicIdentifier;
 
 public class TermsIsFormatOfHandler extends BasicIdentifierHandler {
 
-    private final String scheme;
-
     public TermsIsFormatOfHandler() {
         this(null);
     }
 
     public TermsIsFormatOfHandler(String scheme) {
-        this.scheme = scheme;
+        super(scheme);
     }
 
     @Override
     public void finishElement(final String uri, final String localName) throws SAXException {
         final BasicIdentifier relation = createIdentifier(uri, localName);
-        if (relation != null) {
-            this.setScheme(relation);
+        if (relation != null)
             getTarget().getEmdRelation().getTermsIsFormatOf().add(relation);
-        }
-    }
-
-    protected void setScheme(BasicIdentifier relation) {
-        if (scheme != null)
-            relation.setScheme(scheme);
     }
 }

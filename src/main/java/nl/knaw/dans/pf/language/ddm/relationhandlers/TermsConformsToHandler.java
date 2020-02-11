@@ -22,27 +22,18 @@ import nl.knaw.dans.pf.language.emd.types.BasicIdentifier;
 
 public class TermsConformsToHandler extends BasicIdentifierHandler {
 
-    private final String scheme;
-
     public TermsConformsToHandler() {
         this(null);
     }
 
     public TermsConformsToHandler(String scheme) {
-        this.scheme = scheme;
+        super(scheme);
     }
 
     @Override
     public void finishElement(final String uri, final String localName) throws SAXException {
         final BasicIdentifier relation = createIdentifier(uri, localName);
-        if (relation != null) {
-            this.setScheme(relation);
+        if (relation != null)
             getTarget().getEmdRelation().getTermsConformsTo().add(relation);
-        }
-    }
-
-    protected void setScheme(BasicIdentifier relation) {
-        if (scheme != null)
-            relation.setScheme(scheme);
     }
 }

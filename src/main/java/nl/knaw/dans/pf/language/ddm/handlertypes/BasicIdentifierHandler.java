@@ -23,11 +23,26 @@ import nl.knaw.dans.pf.language.xml.crosswalk.CrosswalkHandler;
 import org.xml.sax.SAXException;
 
 public abstract class BasicIdentifierHandler extends CrosswalkHandler<EasyMetadata> {
+
+    private final String scheme;
+
+    public BasicIdentifierHandler() {
+        this(null);
+    }
+    
+    public BasicIdentifierHandler(String scheme) {
+        super();
+        this.scheme = scheme;
+    }
+
     protected BasicIdentifier createIdentifier(final String uri, final String localName) throws SAXException {
         final String value = getCharsSinceStart().trim();
         if (value.length() != 0) {
             try {
-                return new BasicIdentifier(value.trim());
+                BasicIdentifier identifier = new BasicIdentifier(value.trim());
+                if (scheme != null)
+                    identifier.setScheme(scheme);
+                return identifier;
             }
             catch (final InvalidLanguageTokenException e) {
                 error(e.getMessage());
