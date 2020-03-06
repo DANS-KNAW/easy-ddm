@@ -29,9 +29,12 @@
     <name>DANS Dataset Metadata Library (DDM)</name>
     <inceptionYear>2014</inceptionYear>
     <properties>
+        <jibx-run.version>1.2.4.7-DANS</jibx-run.version>
+        
         <easy.schema.version>3.3.1</easy.schema.version>
         <easy.schema.examples.version>2.1.1</easy.schema.examples.version>
         <easy.emd.version>3.9.0</easy.emd.version>
+        <easy.xml.version>2.16</easy.xml.version>
     </properties>
     <scm>
         <!-- Attention project name != artifactId -->
@@ -55,12 +58,12 @@
         <dependency>
             <groupId>nl.knaw.dans.easy</groupId>
             <artifactId>xml</artifactId>
-            <version>2.16</version>
+            <version>${easy.xml.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jibx</groupId>
             <artifactId>jibx-run</artifactId>
-            <version>1.2.4.7-DANS</version>
+            <version>${jibx-run.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -83,7 +86,6 @@
         <dependency>
             <groupId>jaxen</groupId>
             <artifactId>jaxen</artifactId>
-            <version>1.2.0</version>
             <exclusions>
                 <exclusion>
                     <artifactId>xercesImpl</artifactId>
