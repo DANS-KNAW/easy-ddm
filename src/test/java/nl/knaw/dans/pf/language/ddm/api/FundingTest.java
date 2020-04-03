@@ -59,21 +59,25 @@ public class FundingTest {
 
     DefaultElement top = firstEmdElementFrom(ddm);
     DefaultElement sub = (DefaultElement) top.elements().get(0);
-    DefaultElement subsub1 = (DefaultElement) sub.elements().get(0);
-    DefaultElement subsub2 = (DefaultElement) sub.elements().get(1);
-    DefaultElement subsub3 = (DefaultElement) sub.elements().get(2);
+    DefaultElement organization = (DefaultElement) sub.elements().get(0);
+    DefaultElement organizationId = (DefaultElement) sub.elements().get(1);
+    DefaultElement role = (DefaultElement) sub.elements().get(2);
 
     assertThat(top.elements().size(), is(1));
     assertThat(top.getQualifiedName(), is("emd:contributor"));
     assertThat(sub.elements().size(), is(3));
     assertThat(sub.getQualifiedName(), is("eas:contributor"));
-    assertEquals("eas:organization", subsub1.getQualifiedName());
-    assertEquals(1, subsub2.attributeCount());
-    assertEquals("ISNI", subsub2.attribute("scheme").getValue());
-    assertEquals("NWO", subsub1.getText());
-    assertEquals("123", subsub2.getText());
-    assertEquals("Funder", subsub3.getText());
-    assertEquals("EASY", subsub3.attribute("scheme").getValue());
+    assertEquals("eas:organization", organization.getQualifiedName());
+    assertEquals("NWO", organization.getText());
+
+    assertEquals("eas:organizationId", organizationId.getQualifiedName());
+    assertEquals(1, organizationId.attributeCount());
+    assertEquals("ISNI", organizationId.attribute("scheme").getValue());
+    assertEquals("123", organizationId.getText());
+
+    assertEquals("eas:role", role.getQualifiedName());
+    assertEquals("Funder", role.getText());
+    assertEquals("EASY", role.attribute("scheme").getValue());
   }
 
 
