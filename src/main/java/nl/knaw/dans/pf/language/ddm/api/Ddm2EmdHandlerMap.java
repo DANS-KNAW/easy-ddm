@@ -49,6 +49,7 @@ import nl.knaw.dans.pf.language.ddm.handlers.DcSourceHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.DcTypeHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.DescriptionHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.EasSpatialHandler;
+import nl.knaw.dans.pf.language.ddm.handlers.FundingHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.TermsLicenseHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.SimpleContributorHandler;
 import nl.knaw.dans.pf.language.ddm.handlers.SimpleCreatorHandler;
@@ -218,6 +219,7 @@ public class Ddm2EmdHandlerMap implements CrosswalkHandlerMap<EasyMetadata> {
         map.put("/dcx-dai:creatorDetails", new CreatorDetailsHandler());
         map.put("/dcx-dai:creator", new DaiCreatorHandler());
         map.put("/dcx-dai:contributor", new DaiContributorHandler());
+        map.put("/ddm:funding", new FundingHandler());
     }
 
     private void putRelationHandlers() {

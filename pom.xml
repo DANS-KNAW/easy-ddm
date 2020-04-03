@@ -33,7 +33,7 @@
         
         <easy.schema.version>3.4.1</easy.schema.version>
         <easy.schema.examples.version>2.2.1</easy.schema.examples.version>
-        <easy.emd.version>3.9.1</easy.emd.version>
+        <easy.emd.version>3.9.2</easy.emd.version>
         <easy.xml.version>2.16</easy.xml.version>
     </properties>
     <scm>

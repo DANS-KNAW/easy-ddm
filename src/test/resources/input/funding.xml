@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+
+    Copyright (C) 2014 DANS - Data Archiving and Networked Services (info@dans.knaw.nl)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<ddm:DDM xmlns:dc='http://purl.org/dc/elements/1.1/'
+	xmlns:dcmitype='http://purl.org/dc/dcmitype/' 
+	xmlns:narcis='http://easy.dans.knaw.nl/schemas/vocab/narcis-type/'
+	xmlns:dcx='http://easy.dans.knaw.nl/schemas/dcx/' 
+	xmlns:dcx-dai='http://easy.dans.knaw.nl/schemas/dcx/dai/'
+	xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/' 
+	xmlns:dcterms='http://purl.org/dc/terms/'
+	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xsi:schemaLocation='http://easy.dans.knaw.nl/schemas/md/ddm/ http://easy.dans.knaw.nl/schemas/md/2017/09/ddm.xsd
+	                    http://purl.org/dc/terms/ file://dcterms.xsd'>
+	<ddm:profile>
+		<dc:title>fabeltjeskrant</dc:title>
+		<dcterms:description>tv serie</dcterms:description>
+		<dcx-dai:creatorDetails>
+			<dcx-dai:author>
+				<dcx-dai:titles xml:lang="en">dr.</dcx-dai:titles>
+				<dcx-dai:initials>A</dcx-dai:initials>
+				<dcx-dai:insertions>v.d</dcx-dai:insertions>
+				<dcx-dai:surname>Coen</dcx-dai:surname>
+                <dcx-dai:role>ContactPerson</dcx-dai:role>
+                <dcx-dai:DAI>933139357</dcx-dai:DAI>
+                <dcx-dai:organization>
+					<dcx-dai:name xml:lang="en">KNAW</dcx-dai:name>
+				</dcx-dai:organization>
+            </dcx-dai:author>
+		</dcx-dai:creatorDetails>
+		<ddm:created>2013</ddm:created>
+		<ddm:available>2013</ddm:available>
+		<ddm:audience>D41500</ddm:audience>
+		<ddm:accessRights>OPEN_ACCESS</ddm:accessRights>
+	</ddm:profile>
+	<ddm:dcmiMetadata>
+		<ddm:funding>
+			<ddm:funderName>NWO</ddm:funderName>
+			<ddm:funderIdentifier funderIdentifierType="ISNI">123</ddm:funderIdentifier>
+		</ddm:funding>
+	</ddm:dcmiMetadata>
+</ddm:DDM>
+
