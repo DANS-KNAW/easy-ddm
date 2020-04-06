@@ -90,6 +90,7 @@ public class Ddm2EmdCrosswalkTest {
             { "ddmSubject" },
             { "ddmTemporal" },
             { "formatWithSchemeAndId" },
+            { "funding" },
             { "identifierWithIdTypeEDNA" },
             { "identifierWithIdTypeISBN" },
             { "identifierWithIdTypeISSN" },

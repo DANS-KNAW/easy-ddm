@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<emd:easymetadata xmlns:emd="http://easy.dans.knaw.nl/easy/easymetadata/"
+                  xmlns:eas="http://easy.dans.knaw.nl/easy/easymetadata/eas/"
+                  emd:version="0.1">
+    <emd:contributor>
+        <eas:contributor>
+            <eas:organization>NWO</eas:organization>
+            <eas:organizationId eas:scheme="ISNI">123</eas:organizationId>
+            <eas:role eas:scheme="EASY">Funder</eas:role>
+        </eas:contributor>
+    </emd:contributor>
+    <emd:other>
+        <eas:application-specific>
+            <eas:metadataformat>ANY_DISCIPLINE</eas:metadataformat>
+            <eas:pakbon-status>NOT_IMPORTED</eas:pakbon-status>
+        </eas:application-specific>
+        <eas:etc/>
+    </emd:other>
+</emd:easymetadata>

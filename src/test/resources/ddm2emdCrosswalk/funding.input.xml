@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ddm:DDM xmlns:dcx-dai='http://easy.dans.knaw.nl/schemas/dcx/dai/'
+         xmlns:ddm='http://easy.dans.knaw.nl/schemas/md/ddm/'>
+    <ddm:dcmiMetadata>
+        <ddm:funding>
+            <ddm:funderName>NWO</ddm:funderName>
+            <ddm:funderIdentifier funderIdentifierType="ISNI">123</ddm:funderIdentifier>
+        </ddm:funding>
+    </ddm:dcmiMetadata>
+</ddm:DDM>
