@@ -19,13 +19,10 @@ import nl.knaw.dans.pf.language.emd.EasyMetadata;
 import nl.knaw.dans.pf.language.emd.types.Author;
 import nl.knaw.dans.pf.language.emd.types.EntityId;
 import nl.knaw.dans.pf.language.xml.crosswalk.CrosswalkHandler;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 
-public class FundingHandler  extends CrosswalkHandler<EasyMetadata> {
-  private static final Logger logger = LoggerFactory.getLogger(FundingHandler.class);
+public class FundingHandler extends CrosswalkHandler<EasyMetadata> {
   protected Author author;
 
   @Override

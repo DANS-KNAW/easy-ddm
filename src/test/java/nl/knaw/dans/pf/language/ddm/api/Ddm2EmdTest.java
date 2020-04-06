@@ -91,7 +91,6 @@ public class Ddm2EmdTest {
             return true;
         }
         catch (IOException e) {
-//            System.out.println(e.getMessage());
             return false;
         }
     }
