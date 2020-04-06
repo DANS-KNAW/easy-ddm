@@ -51,8 +51,8 @@ public class FundingTest {
     <emd:contributor>
       <eas:contributor>
         <eas:organization>NWO</eas:organization>
-        <eas:organizationId scheme="ISNI">123</eas:organizationId>
-        <eas:role scheme="EASY">Funder</eas:role>
+        <eas:organizationId eas:scheme="ISNI">123</eas:organizationId>
+        <eas:role eas:scheme="EASY">Funder</eas:role>
       <eas:contributor>
     </emd:contributor>
      */

@@ -15,12 +15,8 @@
  */
 package nl.knaw.dans.pf.language.ddm.handlers;
 
-import nl.knaw.dans.pf.language.ddm.handlermaps.NameSpace;
-import nl.knaw.dans.pf.language.ddm.handlertypes.AuthorDetailsHandler;
 import nl.knaw.dans.pf.language.emd.EasyMetadata;
 import nl.knaw.dans.pf.language.emd.types.Author;
-import nl.knaw.dans.pf.language.emd.types.BasicString;
-import nl.knaw.dans.pf.language.emd.types.EmdConstants;
 import nl.knaw.dans.pf.language.emd.types.EntityId;
 import nl.knaw.dans.pf.language.xml.crosswalk.CrosswalkHandler;
 import org.slf4j.Logger;
@@ -42,8 +38,8 @@ public class FundingHandler  extends CrosswalkHandler<EasyMetadata> {
   protected void finishElement(final String uri, final String localName) throws SAXException {
     if ("funding".equals(localName)) {
       author.setRole(new Author.Role("Funder", "EASY"));
-      logger.debug("collected: " + author.toString());
-    }else {
+    }
+    else {
       final String value = getCharsSinceStart().trim();
       if (value.length() == 0)
         return;
