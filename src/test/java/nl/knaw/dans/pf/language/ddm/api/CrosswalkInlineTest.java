@@ -52,7 +52,7 @@ public class CrosswalkInlineTest {
     private static final Logger logger = LoggerFactory.getLogger(CrosswalkInlineTest.class);
 
     // for some tests we need the offline validator
-    private static Ddm2EmdCrosswalk crosswalk = new Ddm2EmdCrosswalk(new SpecialValidator());
+    private static Ddm2EmdCrosswalk crosswalk = new Ddm2EmdCrosswalk(new DDMValidator());
 
     @BeforeClass
     public static void externalSchemaCheck() {

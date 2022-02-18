@@ -74,7 +74,7 @@ import static org.junit.Assume.assumeTrue;
 
 public class Ddm2EmdTest {
 
-    private Ddm2EmdCrosswalk crosswalk = new Ddm2EmdCrosswalk(new SpecialValidator());
+    private Ddm2EmdCrosswalk crosswalk = new Ddm2EmdCrosswalk(new DDMValidator());
     private File[] publicExamples = new File(LOCAL_SCHEMA_EXAMPLES_DIR, "examples/ddm/").listFiles();
     private static final Logger logger = LoggerFactory.getLogger(Ddm2EmdTest.class);
 
@@ -127,43 +127,6 @@ public class Ddm2EmdTest {
         }
     }
 
-    // TODO: FIX timezone problem in Travis (and fix typo in method name ;)
-    @Test
-    @Ignore
-    public void publicExamplesTransformToExceptedEMD() throws Exception {
-        externalSchemaCheck();
-        DateTimeZone.setDefault(DateTimeZone.forTimeZone(TimeZone.getTimeZone("Europe/Amsterdam")));
-        for (File ddmFile : publicExamples) {
-            File emdFile = new File(getClass().getResource("/output/" + ddmFile.getName()).toURI());
-            String expected = FileUtils.readFileToString(emdFile).trim();
-
-            Ddm2EmdCrosswalk crosswalk = new Ddm2EmdCrosswalk();
-            EasyMetadata emd = crosswalk.createFrom(ddmFile);
-            String actual = new EmdMarshaller(emd).getXmlString().trim();
-
-            assertThat("", actual, is(expected));
-        }
-    }
-
-    @Test
-    @Ignore
-    public void publicExamplesUseLastXsdVersions() throws Exception {
-        DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-        Map<String, String> xsdUri2Url = new HashMap<String, String>();
-        for (NameSpace ns : NameSpace.values())
-            xsdUri2Url.put(ns.uri, ns.xsd);
-        for (File file : publicExamples) {
-            String[] locations = documentBuilder.parse(file).getElementsByTagName("ddm:DDM").item(0).getAttributes().getNamedItem("xsi:schemaLocation")
-                    .getNodeValue().trim().split("\\s+");
-            for (int i = 1; i < locations.length; i += 2) {
-                String uri = locations[i - 1];
-                String url = locations[i];
-                logger.debug(uri + " - " + url);
-                if (xsdUri2Url.containsKey(uri))
-                    assertThat(" namspace location " + file, url, is(xsdUri2Url.get(uri)));
-            }
-        }
-    }
 
     @Test
     public void fundingTest() throws Exception {

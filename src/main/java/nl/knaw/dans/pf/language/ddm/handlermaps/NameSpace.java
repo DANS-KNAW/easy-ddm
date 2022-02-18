@@ -16,17 +16,17 @@
 package nl.knaw.dans.pf.language.ddm.handlermaps;
 
 public enum NameSpace {
-    DC("dc", "http://purl.org/dc/elements/1.1/", "https://dublincore.org/schemas/xmls/qdc/2008/02/11/dc.xsd"), //
-    DC_TERMS("dcterms", "http://purl.org/dc/terms/", "https://dublincore.org/schemas/xmls/qdc/2008/02/11/dcterms.xsd"), //
-    DCMITYPE("dcmitype", "http://purl.org/dc/dcmitype/", "https://dublincore.org/schemas/xmls/qdc/2008/02/11/dcmitype.xsd"), //
+    DC("dc", "http://purl.org/dc/elements/1.1/", "https://easy.dans.knaw.nl/schemas/extern/dc.xsd"), //
+    DC_TERMS("dcterms", "http://purl.org/dc/terms/", "https://easy.dans.knaw.nl/schemas/extern/dcterms.xsd"), //
+    DCMITYPE("dcmitype", "http://purl.org/dc/dcmitype/", "https://easy.dans.knaw.nl/schemas/extern/dcmitype.xsd"), //
     DCX("dcx", "http://easy.dans.knaw.nl/schemas/dcx/", "https://easy.dans.knaw.nl/schemas/dcx/2012/10/dcx.xsd"), //
-    GML("gml", "http://www.opengis.net/gml", "http://schemas.opengis.net/gml/3.2.1/gml.xsd"), //
-    DCX_DAI("dcx-dai", "http://easy.dans.knaw.nl/schemas/dcx/dai/", "https://easy.dans.knaw.nl/schemas/dcx/2020/03/dcx-dai.xsd"), //
-    DCX_GML("dcx-gml", "http://easy.dans.knaw.nl/schemas/dcx/gml/", "https://easy.dans.knaw.nl/schemas/dcx/2016/dcx-gml.xsd"), //
-    DDM("ddm", "http://easy.dans.knaw.nl/schemas/md/ddm/", "https://easy.dans.knaw.nl/schemas/md/2020/03/23/ddm.xsd"), //
-    XSI("xsi", "http://www.w3.org/2001/XMLSchema-instance", "https://www.w3.org/2001/XMLSchema-instance"), //
-    NARCIS_TYPE("narcis", "http://easy.dans.knaw.nl/schemas/vocab/narcis-type/", "https://easy.dans.knaw.nl/schemas/vocab/2019/01/narcis-type.xsd"), //
-    IDENTIFIER_TYPE("id-type", "http://easy.dans.knaw.nl/schemas/vocab/identifier-type/", "https://easy.dans.knaw.nl/schemas/vocab/2017/09/identifier-type.xsd"), //
+    GML("gml", "http://www.opengis.net/gml", "http://schemas.opengis.net/gml/3.2.1/gml.xsd"), // TODO: provide in folder 'extern'
+    DCX_DAI("dcx-dai", "http://easy.dans.knaw.nl/schemas/dcx/dai/", "https://easy.dans.knaw.nl/schemas/dcx/dcx-dai.xsd"), //
+    DCX_GML("dcx-gml", "http://easy.dans.knaw.nl/schemas/dcx/gml/", "https://easy.dans.knaw.nl/schemas/dcx/dcx-gml.xsd"), //
+    DDM("ddm", "http://easy.dans.knaw.nl/schemas/md/ddm/", "https://easy.dans.knaw.nl/schemas/md/ddm/ddm.xsd"), //
+    XSI("xsi", "http://www.w3.org/2001/XMLSchema-instance", "https://www.w3.org/2001/XMLSchema-instance"), // TODO: FIXME
+    NARCIS_TYPE("narcis", "http://easy.dans.knaw.nl/schemas/vocab/narcis-type/", "https://easy.dans.knaw.nl/schemas/vocab/narcis-type.xsd"), //
+    IDENTIFIER_TYPE("id-type", "http://easy.dans.knaw.nl/schemas/vocab/identifier-type/", "https://easy.dans.knaw.nl/schemas/vocab/identifier-type.xsd"), //
     ABR("abr", "http://www.den.nl/standaard/166/Archeologisch-Basisregister/", "https://easy.dans.knaw.nl/schemas/vocab/2012/10/abr-type.xsd");
 
     public final String uri;
