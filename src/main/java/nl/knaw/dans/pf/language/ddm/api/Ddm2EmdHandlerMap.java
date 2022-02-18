@@ -106,6 +106,7 @@ import nl.knaw.dans.pf.language.xml.vocabulary.MapFromXSD;
 import org.dom4j.DocumentException;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -133,8 +134,8 @@ public class Ddm2EmdHandlerMap implements CrosswalkHandlerMap<EasyMetadata> {
     private Ddm2EmdHandlerMap() {}
 
     /** TODO let test achieve this with mocking and make the class not public */
-    public Set<String> getKeys() {
-        return map.keySet();
+    public Set<String> getKeys() throws SAXException {
+        return getMap().keySet();
     }
 
     /** lazy initialization */
