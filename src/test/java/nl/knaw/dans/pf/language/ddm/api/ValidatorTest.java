@@ -15,27 +15,22 @@
  */
 package nl.knaw.dans.pf.language.ddm.api;
 
-import static nl.knaw.dans.pf.language.ddm.api.SpecialValidator.RECENT_SCHEMAS;
-import static nl.knaw.dans.pf.language.ddm.handlermaps.NameSpace.DC;
-import static nl.knaw.dans.pf.language.ddm.handlermaps.NameSpace.DDM;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assume.assumeTrue;
+import nl.knaw.dans.pf.language.xml.validation.XMLErrorHandler;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import javax.xml.transform.Source;
+import javax.xml.transform.stream.StreamSource;
 import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import javax.xml.transform.Source;
-import javax.xml.transform.stream.StreamSource;
-
-import nl.knaw.dans.pf.language.ddm.handlermaps.NameSpace;
-import nl.knaw.dans.pf.language.xml.validation.XMLErrorHandler;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static nl.knaw.dans.pf.language.ddm.handlermaps.NameSpace.DC;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assume.assumeTrue;
 
 public class ValidatorTest {
 
@@ -50,14 +45,13 @@ public class ValidatorTest {
     @Test
     public void testValidation() throws Exception {
         Source xmlSource = new StreamSource(new File("src/test/resources/input/spatial.xml"));
-        XMLErrorHandler handler = new SpecialValidator().validate(xmlSource);
+        XMLErrorHandler handler = new DDMValidator().validate(xmlSource);
         logger.info(handler.getMessages());
         logger.info(handler.passed() + "");
     }
 
     @Test
     public void testDDMValidation() throws Exception {
-        assumeTrue("last DDM is published", lastDdmIsPublished());
         XMLErrorHandler handler = new DDMValidator().validate(new File("src/test/resources/input/ddm.xml"));
 
         assertTrue(handler.getMessages(), handler.passed());
@@ -65,7 +59,6 @@ public class ValidatorTest {
 
     @Test
     public void testDDMValidationWithDOI() throws Exception {
-        assumeTrue("last DDM is published", lastDdmIsPublished());
         XMLErrorHandler handler = new DDMValidator().validate(new File("src/test/resources/input/ddm-with-doi.xml"));
         assertTrue(handler.passed());
     }
@@ -80,14 +73,5 @@ public class ValidatorTest {
         catch (IOException e) {
             return false;
         }
-    }
-
-    private static boolean lastDdmIsPublished() {
-        File other = RECENT_SCHEMAS.get(new File(DDM.xsd).getName());
-        String targetSchema = other.toString().replace("target/easy-schema/", "");
-
-        String ddmSchema = DDM.xsd.replace("https://easy.dans.knaw.nl/schemas/", "");
-
-        return targetSchema.equals(ddmSchema);
     }
 }

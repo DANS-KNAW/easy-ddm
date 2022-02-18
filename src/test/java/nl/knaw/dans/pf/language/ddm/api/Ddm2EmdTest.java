@@ -18,17 +18,9 @@
  */
 package nl.knaw.dans.pf.language.ddm.api;
 
-import nl.knaw.dans.pf.language.ddm.handlermaps.NameSpace;
 import nl.knaw.dans.pf.language.emd.EasyMetadata;
 import nl.knaw.dans.pf.language.emd.binding.EmdMarshaller;
-import nl.knaw.dans.pf.language.emd.binding.EmdUnmarshaller;
-import nl.knaw.dans.pf.language.emd.types.IsoDate;
 import nl.knaw.dans.pf.language.xml.validation.XMLErrorHandler;
-import org.apache.commons.io.FileUtils;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeUtils;
-import org.joda.time.DateTimeZone;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,8 +34,6 @@ import org.w3c.dom.Text;
 import org.xml.sax.InputSource;
 
 import javax.xml.namespace.NamespaceContext;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
@@ -57,12 +47,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Locale;
-import java.util.Map;
-import java.util.TimeZone;
 
-import static nl.knaw.dans.pf.language.ddm.api.SpecialValidator.LOCAL_SCHEMA_DIR;
-import static nl.knaw.dans.pf.language.ddm.api.SpecialValidator.LOCAL_SCHEMA_EXAMPLES_DIR;
 import static nl.knaw.dans.pf.language.ddm.handlermaps.NameSpace.DC;
 import static org.apache.commons.io.FileUtils.copyFile;
 import static org.apache.commons.io.FileUtils.writeStringToFile;
@@ -73,8 +58,11 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assume.assumeTrue;
 
 public class Ddm2EmdTest {
+    public final static String LOCAL_SCHEMA_DIR = "target/easy-schema/";
+    public final static String LOCAL_SCHEMA_EXAMPLES_DIR = "target/easy-schema-examples/";
 
-    private Ddm2EmdCrosswalk crosswalk = new Ddm2EmdCrosswalk(new SpecialValidator());
+
+    private Ddm2EmdCrosswalk crosswalk = new Ddm2EmdCrosswalk(new DDMValidator());
     private File[] publicExamples = new File(LOCAL_SCHEMA_EXAMPLES_DIR, "examples/ddm/").listFiles();
     private static final Logger logger = LoggerFactory.getLogger(Ddm2EmdTest.class);
 
@@ -127,43 +115,6 @@ public class Ddm2EmdTest {
         }
     }
 
-    // TODO: FIX timezone problem in Travis (and fix typo in method name ;)
-    @Test
-    @Ignore
-    public void publicExamplesTransformToExceptedEMD() throws Exception {
-        externalSchemaCheck();
-        DateTimeZone.setDefault(DateTimeZone.forTimeZone(TimeZone.getTimeZone("Europe/Amsterdam")));
-        for (File ddmFile : publicExamples) {
-            File emdFile = new File(getClass().getResource("/output/" + ddmFile.getName()).toURI());
-            String expected = FileUtils.readFileToString(emdFile).trim();
-
-            Ddm2EmdCrosswalk crosswalk = new Ddm2EmdCrosswalk();
-            EasyMetadata emd = crosswalk.createFrom(ddmFile);
-            String actual = new EmdMarshaller(emd).getXmlString().trim();
-
-            assertThat("", actual, is(expected));
-        }
-    }
-
-    @Test
-    @Ignore
-    public void publicExamplesUseLastXsdVersions() throws Exception {
-        DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-        Map<String, String> xsdUri2Url = new HashMap<String, String>();
-        for (NameSpace ns : NameSpace.values())
-            xsdUri2Url.put(ns.uri, ns.xsd);
-        for (File file : publicExamples) {
-            String[] locations = documentBuilder.parse(file).getElementsByTagName("ddm:DDM").item(0).getAttributes().getNamedItem("xsi:schemaLocation")
-                    .getNodeValue().trim().split("\\s+");
-            for (int i = 1; i < locations.length; i += 2) {
-                String uri = locations[i - 1];
-                String url = locations[i];
-                logger.debug(uri + " - " + url);
-                if (xsdUri2Url.containsKey(uri))
-                    assertThat(" namspace location " + file, url, is(xsdUri2Url.get(uri)));
-            }
-        }
-    }
 
     @Test
     public void fundingTest() throws Exception {

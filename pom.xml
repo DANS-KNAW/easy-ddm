@@ -31,8 +31,8 @@
     <properties>
         <jibx-run.version>1.2.4.8-DANS</jibx-run.version>
         
-        <easy.schema.version>3.4.1</easy.schema.version>
-        <easy.schema.examples.version>2.2.1</easy.schema.examples.version>
+        <easy.schema.version>3.5.3</easy.schema.version>
+        <easy.schema.examples.version>2.2.2</easy.schema.examples.version>
         <easy.emd.version>3.9.2</easy.emd.version>
         <easy.xml.version>2.16</easy.xml.version>
     </properties>
