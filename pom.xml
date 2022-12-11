@@ -38,7 +38,7 @@
     </properties>
     <scm>
         <!-- Attention project name != artifactId -->
-        <developerConnection>scm:git:https://github.com/DANS-KNAW/easy-ddm</developerConnection>
+        <developerConnection>scm:git:ssh://github.com/DANS-KNAW/easy-ddm</developerConnection>
         <tag>HEAD</tag>
     </scm>
     <dependencies>
